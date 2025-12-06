@@ -58,7 +58,7 @@ export default function Skills() {
 
           {/* Skills grid */}
           {category && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+            <div key={activeCategory} className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
               {category.skills.map((skill, index) => (
                 <div
                   key={skill.name}
