@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { Brain, Eye, Server, Database } from 'lucide-react';
 import skillsDataRaw from '@/data/skills.json';
 import { SkillsData } from '@/types/data';
 import { textColorClasses, bgColorClasses, borderColorClasses, bgOpacityClasses } from '@/lib/colorClasses';
@@ -42,11 +43,11 @@ export default function Skills() {
                     : 'border-gray-800 hover:border-gray-700'
                 }`}
               >
-                <div className={`text-2xl mb-2 ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-500'}`}>
-                  {cat.icon === 'brain' && '🤖'}
-                  {cat.icon === 'eye' && '👁️'}
-                  {cat.icon === 'server' && '🖥️'}
-                  {cat.icon === 'database' && '🗄️'}
+                <div className={`mb-2 ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-500'}`}>
+                  {cat.icon === 'brain' && <Brain className="w-8 h-8" />}
+                  {cat.icon === 'eye' && <Eye className="w-8 h-8" />}
+                  {cat.icon === 'server' && <Server className="w-8 h-8" />}
+                  {cat.icon === 'database' && <Database className="w-8 h-8" />}
                 </div>
                 <div className={`font-bold text-sm ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-400'}`}>
                   {cat.title[language]}

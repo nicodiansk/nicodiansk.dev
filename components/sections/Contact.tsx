@@ -4,7 +4,7 @@
 'use client';
 
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import { Mail } from 'lucide-react';
+import { Mail, CheckCircle, Lock } from 'lucide-react';
 import { SiLinkedin, SiGithub, SiGitlab } from 'react-icons/si';
 import { textColorClasses } from '@/lib/colorClasses';
 import aboutDataRaw from '@/data/about.json';
@@ -116,13 +116,17 @@ export default function Contact() {
             <div className="border-t border-cyber-cyan pt-6 mt-8">
               <div className="flex items-center justify-between text-sm font-mono">
                 <span className="text-gray-500">CONNECTION_STATUS:</span>
-                <span className="text-cyber-lime animate-neon-glow">
-                  ✅ {t.errors.transmitted}
+                <span className="text-cyber-lime animate-neon-glow flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4" />
+                  {t.errors.transmitted}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm font-mono mt-2">
                 <span className="text-gray-500">ENCRYPTION:</span>
-                <span className="text-cyber-cyan">🔐 TLS_v1.3 [SECURE]</span>
+                <span className="text-cyber-cyan flex items-center gap-2">
+                  <Lock className="w-4 h-4" />
+                  TLS_v1.3 [SECURE]
+                </span>
               </div>
             </div>
           </div>
