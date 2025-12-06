@@ -1,11 +1,15 @@
-// ABOUTME: Hero section with terminal boot sequence animation
-// ABOUTME: Animated intro with typewriter effect and loading progress bars
+// ABOUTME: Hero section with cyberpunk terminal boot sequence (5-stage loading animation)
+// ABOUTME: Features typewriter effect, progress bars, glitch text, and smooth fade-in reveal
 
 'use client';
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import aboutDataRaw from '@/data/about.json';
+import { AboutData } from '@/types/data';
 import GlitchText from '@/components/effects/GlitchText';
+
+const aboutData = aboutDataRaw as AboutData;
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -79,7 +83,7 @@ export default function Hero() {
             <div className="text-center space-y-6 animate-fade-in">
               <h1 className="text-5xl md:text-7xl font-bold">
                 <GlitchText
-                  text="NICHOLAS PREVITALI"
+                  text={aboutData.name.toUpperCase()}
                   className="text-cyber-cyan"
                   intensity="medium"
                 />

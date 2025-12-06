@@ -1,12 +1,16 @@
-// ABOUTME: Skills section with category tabs and proficiency levels
-// ABOUTME: Interactive tech stack display with animated progress bars
+// ABOUTME: Skills section displaying tech proficiency across 4 categories (LLMs, ML/Vision, Infra, Vector DBs)
+// ABOUTME: Features tabbed navigation, animated progress bars (0-100%), and bilingual skill descriptions
 
 'use client';
 
 import { useState } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import skillsData from '@/data/skills.json';
+import skillsDataRaw from '@/data/skills.json';
+import { SkillsData } from '@/types/data';
+import { textColorClasses, bgColorClasses, borderColorClasses, bgOpacityClasses } from '@/lib/colorClasses';
 import GlitchText from '@/components/effects/GlitchText';
+
+const skillsData = skillsDataRaw as SkillsData;
 
 export default function Skills() {
   const { language, t } = useLanguage();
@@ -34,17 +38,17 @@ export default function Skills() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`p-4 border-2 transition-all duration-300 text-left ${
                   activeCategory === cat.id
-                    ? `border-cyber-${cat.color} bg-cyber-${cat.color}/10`
+                    ? `${borderColorClasses[cat.color]} ${bgOpacityClasses[cat.color]}`
                     : 'border-gray-800 hover:border-gray-700'
                 }`}
               >
-                <div className={`text-2xl mb-2 ${activeCategory === cat.id ? `text-cyber-${cat.color}` : 'text-gray-500'}`}>
+                <div className={`text-2xl mb-2 ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-500'}`}>
                   {cat.icon === 'brain' && '🤖'}
                   {cat.icon === 'eye' && '👁️'}
                   {cat.icon === 'server' && '🖥️'}
                   {cat.icon === 'database' && '🗄️'}
                 </div>
-                <div className={`font-bold text-sm ${activeCategory === cat.id ? `text-cyber-${cat.color}` : 'text-gray-400'}`}>
+                <div className={`font-bold text-sm ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-400'}`}>
                   {cat.title[language]}
                 </div>
               </button>
@@ -63,7 +67,7 @@ export default function Skills() {
                   {/* Skill name and level */}
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-lg font-bold text-white">{skill.name}</h3>
-                    <span className={`text-sm font-bold text-cyber-${category.color}`}>
+                    <span className={`text-sm font-bold ${textColorClasses[category.color]}`}>
                       {skill.level}%
                     </span>
                   </div>
@@ -71,7 +75,7 @@ export default function Skills() {
                   {/* Progress bar */}
                   <div className="w-full bg-gray-900 h-2 mb-3 overflow-hidden">
                     <div
-                      className={`h-full bg-cyber-${category.color} transition-all duration-1000 ease-out`}
+                      className={`h-full ${bgColorClasses[category.color]} transition-all duration-1000 ease-out`}
                       style={{
                         width: `${skill.level}%`,
                         animation: 'progress-fill 1.5s ease-out',

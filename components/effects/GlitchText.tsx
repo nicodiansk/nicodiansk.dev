@@ -1,5 +1,5 @@
-// ABOUTME: Glitch text effect component with RGB split and random displacement
-// ABOUTME: Creates cyberpunk-style text distortion using CSS animations
+// ABOUTME: Glitch text effect with RGB split and random displacement (configurable intensity: low/medium/high)
+// ABOUTME: Uses CSS-based animations for performance, triggers periodically based on intensity level
 
 'use client';
 

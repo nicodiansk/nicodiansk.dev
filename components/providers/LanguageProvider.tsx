@@ -1,9 +1,9 @@
-// ABOUTME: Language context provider for bilingual IT/EN support
-// ABOUTME: Manages language state and translation access across the application
+// ABOUTME: Language context provider with localStorage persistence for bilingual IT/EN support
+// ABOUTME: Auto-detects browser language on first visit, persists preference across sessions
 
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import translations from '@/data/translations.json';
 
 type Language = 'en' | 'it';
@@ -17,7 +17,24 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    // Server-side: default to English
+    if (typeof window === 'undefined') return 'en';
+
+    // Client-side: check localStorage or browser language
+    const stored = localStorage.getItem('language') as Language;
+    if (stored) return stored;
+
+    // Auto-detect from browser
+    return navigator.language.startsWith('it') ? 'it' : 'en';
+  });
+
+  // Persist language preference
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', language);
+    }
+  }, [language]);
 
   const value: LanguageContextType = {
     language,

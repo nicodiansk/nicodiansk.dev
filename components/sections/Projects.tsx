@@ -1,12 +1,16 @@
-// ABOUTME: Projects section with database-style cards and filtering
-// ABOUTME: Displays deployed AI projects with metrics, tech stack, and details
+// ABOUTME: Projects section displaying 6 deployed AI systems with database-style cards
+// ABOUTME: Features filtering by status, detail modals, metrics display, and bilingual support
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import projectsData from '@/data/projects.json';
+import projectsDataRaw from '@/data/projects.json';
+import { ProjectsData } from '@/types/data';
+import { textColorClasses } from '@/lib/colorClasses';
 import GlitchText from '@/components/effects/GlitchText';
+
+const projectsData = projectsDataRaw as ProjectsData;
 
 export default function Projects() {
   const { language, t } = useLanguage();
@@ -96,7 +100,7 @@ export default function Projects() {
                     {project.metrics.map((metric, idx) => (
                       <div key={idx} className="flex items-center justify-between text-sm">
                         <span className="text-gray-500">{metric.label[language]}</span>
-                        <span className={`font-bold text-cyber-${metric.color}`}>
+                        <span className={`font-bold ${textColorClasses[metric.color]}`}>
                           {metric.value}
                         </span>
                       </div>
@@ -110,19 +114,26 @@ export default function Projects() {
           {/* Project detail modal */}
           {selectedProjectData && (
             <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-title"
               className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => setSelectedProject(null)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') setSelectedProject(null);
+              }}
             >
               <div
                 className="bg-cyber-dark border-2 border-cyber-cyan max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-start justify-between mb-6">
-                  <h3 className="text-3xl font-bold text-cyber-cyan">
+                  <h3 id="modal-title" className="text-3xl font-bold text-cyber-cyan">
                     {selectedProjectData.title[language]}
                   </h3>
                   <button
                     onClick={() => setSelectedProject(null)}
+                    aria-label="Close modal"
                     className="text-gray-400 hover:text-cyber-cyan text-2xl"
                   >
                     ×
@@ -155,7 +166,7 @@ export default function Projects() {
                         {selectedProjectData.metrics.map((metric, idx) => (
                           <div key={idx} className="flex items-center justify-between">
                             <span className="text-gray-400">{metric.label[language]}</span>
-                            <span className={`font-bold text-cyber-${metric.color}`}>
+                            <span className={`font-bold ${textColorClasses[metric.color]}`}>
                               {metric.value}
                             </span>
                           </div>
