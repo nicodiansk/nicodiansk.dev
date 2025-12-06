@@ -1,0 +1,144 @@
+{
+  "name": "Nicholas Previtali",
+  "bio": {
+    "en": "AI-focused Software Engineer and AI Unit Lead with 4+ years of experience in NLP, RAG architectures, Generative AI, and Computer Vision. Led a team of 5+ engineers delivering 10+ enterprise AI solutions. Expert in production-grade multi-agent systems, advanced RAG pipelines, and GEO/SEO AI optimization for e-commerce. Proven track record reducing manual workflows by up to 100% and boosting developer productivity by ~60-70% through AI-powered automation and multi-agent orchestration.",
+    "it": "Software Engineer focalizzato sull'AI e Lead di Unità AI con 4+ anni di esperienza in NLP, architetture RAG, AI Generativa e Computer Vision. Ho guidato un team di 5+ ingegneri nella realizzazione di 10+ soluzioni AI enterprise. Esperto in sistemi multi-agente production-grade, pipeline RAG avanzate e ottimizzazione GEO/SEO AI per e-commerce. Track record provato nella riduzione di workflow manuali fino al 100% e aumento della produttività sviluppatori di ~60-70% tramite automazione AI e orchestrazione multi-agente."
+  },
+  "mission": {
+    "en": "Building AI that ships, not just demos.",
+    "it": "Costruire AI che va in produzione, non solo demo."
+  },
+  "location": {
+    "city": "Bergamo",
+    "country": "Italy",
+    "coordinates": {
+      "lat": 45.6983,
+      "lng": 9.6773
+    }
+  },
+  "contact": {
+    "email": "nicholasprevitali96@gmail.com",
+    "phone": "+39 380 126 2131",
+    "linkedin": "https://www.linkedin.com/in/nicholas-previtali-660b83190",
+    "gitlab": "https://gitlab.com/nicholasprevitali96"
+  },
+  "work": {
+    "current": {
+      "company": "S.I. 2001 SpA",
+      "role": {
+        "en": "Head of Artificial Intelligence Business Unit",
+        "it": "Responsabile Unità di Business Intelligenza Artificiale"
+      },
+      "location": "Bergamo",
+      "period": {
+        "start": "2021-04",
+        "end": null,
+        "display": {
+          "en": "Apr 2021 – Present",
+          "it": "Apr 2021 – Presente"
+        }
+      },
+      "team": "5+ engineers",
+      "projects": "10+ enterprise AI solutions",
+      "highlights": [
+        {
+          "en": "Led and scaled an AI team of 5+ engineers, managing high-impact AI/ML projects for enterprise clients using Agile/Scrum methodologies",
+          "it": "Guidato e scalato un team AI di 5+ ingegneri, gestendo progetti AI/ML ad alto impatto per clienti enterprise usando metodologie Agile/Scrum"
+        },
+        {
+          "en": "Owned end-to-end delivery of 10+ AI solutions, driving automation efficiencies and improved customer experience across legal, e-commerce, industrial, and HR domains",
+          "it": "Gestito delivery end-to-end di 10+ soluzioni AI, guidando efficienze di automazione e miglioramento customer experience nei domini legale, e-commerce, industriale e HR"
+        },
+        {
+          "en": "Architected multimodal RAG systems implementing hybrid search, knowledge graphs, and domain-specific embeddings",
+          "it": "Architettato sistemi RAG multimodali implementando hybrid search, knowledge graphs ed embeddings domain-specific"
+        }
+      ]
+    }
+  },
+  "education": [
+    {
+      "degree": {
+        "en": "Master's Degree in Computer Engineering",
+        "it": "Laurea Magistrale in Ingegneria Informatica"
+      },
+      "institution": "Università degli Studi di Bergamo",
+      "location": "Bergamo",
+      "period": {
+        "start": "2019-09",
+        "end": "2022-03",
+        "display": {
+          "en": "Sep 2019 – Mar 2022",
+          "it": "Set 2019 – Mar 2022"
+        }
+      },
+      "grade": {
+        "en": "Summa cum laude (110/110 with honors)",
+        "it": "Summa cum laude (110/110 con lode)"
+      },
+      "thesis": {
+        "title": {
+          "en": "Extraction of Semantic Topological Maps from 2D Occupational Maps",
+          "it": "Estrazione di Mappe Topologiche Semantiche da Mappe Occupazionali 2D"
+        },
+        "description": {
+          "en": "Developed algorithms for semantic topological mapping to improve robot navigation through graph-based spatial representations.",
+          "it": "Sviluppato algoritmi per mappatura topologica semantica per migliorare la navigazione robotica tramite rappresentazioni spaziali basate su grafi."
+        }
+      }
+    },
+    {
+      "degree": {
+        "en": "Bachelor's Degree in Computer Engineering",
+        "it": "Laurea Triennale in Ingegneria Informatica"
+      },
+      "institution": "Università degli Studi di Bergamo",
+      "location": "Bergamo",
+      "period": {
+        "start": "2016-09",
+        "end": "2019-12",
+        "display": {
+          "en": "Sep 2016 – Dec 2019",
+          "it": "Set 2016 – Dic 2019"
+        }
+      },
+      "grade": null,
+      "thesis": {
+        "title": {
+          "en": "Iridology Analysis Using Computer Vision for Eye Feature Detection",
+          "it": "Analisi Iridologica Utilizzando Computer Vision per Rilevamento Caratteristiche Oculari"
+        },
+        "description": {
+          "en": "Applied computer vision for automated iris analysis, implementing feature extraction for pattern and anomaly detection.",
+          "it": "Applicato computer vision per analisi automatizzata dell'iride, implementando estrazione di feature per pattern e anomaly detection."
+        }
+      }
+    }
+  ],
+  "hobbies": [
+    {
+      "name": { "en": "Tattoos", "it": "Tatuaggi" },
+      "icon": "palette"
+    },
+    {
+      "name": { "en": "JDM Cars", "it": "Auto JDM" },
+      "icon": "car"
+    },
+    {
+      "name": { "en": "Guitar solos nobody asked for", "it": "Assoli di chitarra che nessuno ha chiesto" },
+      "icon": "music"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Italian",
+      "level": { "en": "Native", "it": "Madrelingua" },
+      "proficiency": 100
+    },
+    {
+      "name": "English",
+      "level": { "en": "Professional", "it": "Professionale" },
+      "proficiency": 95
+    }
+  ]
+}
