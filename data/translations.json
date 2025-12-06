@@ -1,0 +1,218 @@
+{
+  "en": {
+    "nav": {
+      "home": "Home",
+      "projects": "Projects",
+      "skills": "Skills",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "hero": {
+      "boot": {
+        "initializing": "SYSTEM INITIALIZING...",
+        "loading_llm": "Loading LLM modules...",
+        "connecting_vector": "Connecting vector database...",
+        "initializing_neural": "Initializing neural network...",
+        "online": "⚡ SYSTEM ONLINE",
+        "complete": "100%"
+      },
+      "title": "HEAD OF AI BUSINESS UNIT",
+      "subtitle": "GENERATIVE AI ARCHITECT",
+      "subtitle2": "MULTI-AGENT SYSTEMS ENGINEER",
+      "cta": "View Projects",
+      "scroll": "Scroll to explore"
+    },
+    "projects": {
+      "title": "> PROJECTS.DEPLOYED",
+      "subtitle": "Production AI systems shipping real value",
+      "status": {
+        "live": "LIVE",
+        "development": "DEV",
+        "archived": "ARCHIVED"
+      },
+      "filterAll": "ALL",
+      "viewDetails": "View Details",
+      "closeDetails": "Close",
+      "techStack": "Tech Stack",
+      "metrics": "Metrics",
+      "tags": "Tags",
+      "year": "Year"
+    },
+    "skills": {
+      "title": "> TECH.ARSENAL",
+      "subtitle": "Production-grade stack for enterprise AI",
+      "level": "Proficiency"
+    },
+    "about": {
+      "title": "> SYSTEM.INFO",
+      "subtitle": "Background and credentials",
+      "bio": "Bio",
+      "mission": "Mission",
+      "work": "Work Experience",
+      "education": "Education",
+      "hobbies": "Hobbies",
+      "languages": "Languages",
+      "current": "Current",
+      "team": "Team",
+      "projects": "Projects",
+      "location": "Location",
+      "summa": "summa cum laude"
+    },
+    "contact": {
+      "title": "> CONNECT.INIT",
+      "subtitle": "Let's build something together",
+      "email": "Email",
+      "phone": "Phone",
+      "linkedin": "LinkedIn",
+      "gitlab": "GitLab",
+      "sendMessage": "Send Message",
+      "name": "Name",
+      "message": "Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message"
+    },
+    "footer": {
+      "status": "System Status",
+      "uptime": "Uptime",
+      "version": "Version",
+      "build": "Build",
+      "rights": "All rights reserved",
+      "builtWith": "Built with",
+      "madeIn": "Made in Bergamo, Italy"
+    },
+    "common": {
+      "readMore": "Read More",
+      "readLess": "Read Less",
+      "loading": "Loading...",
+      "error": "Error",
+      "retry": "Retry",
+      "close": "Close",
+      "open": "Open",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "language": "Language"
+    },
+    "errors": {
+      "database": "❌ ERROR: Database query failed",
+      "retrying": "🔄 RETRYING...",
+      "fallback": "⚠️ FALLBACK: Accessing backup server",
+      "success": "✅ SUCCESS: Records retrieved",
+      "timeout": "❌ ERROR: Connection timeout",
+      "rerouting": "🔄 REROUTING through proxy...",
+      "establishing": "🔐 ESTABLISHING secure channel...",
+      "transmitted": "✅ MESSAGE TRANSMITTED",
+      "overflow": "⚠️ MEMORY_OVERFLOW",
+      "feature": "It's not a bug, it's a feature!"
+    }
+  },
+  "it": {
+    "nav": {
+      "home": "Home",
+      "projects": "Progetti",
+      "skills": "Competenze",
+      "about": "Chi Sono",
+      "contact": "Contatti"
+    },
+    "hero": {
+      "boot": {
+        "initializing": "INIZIALIZZAZIONE SISTEMA...",
+        "loading_llm": "Caricamento moduli LLM...",
+        "connecting_vector": "Connessione database vettoriale...",
+        "initializing_neural": "Inizializzazione rete neurale...",
+        "online": "⚡ SISTEMA ONLINE",
+        "complete": "100%"
+      },
+      "title": "RESPONSABILE UNITÀ BUSINESS AI",
+      "subtitle": "ARCHITETTO AI GENERATIVA",
+      "subtitle2": "INGEGNERE SISTEMI MULTI-AGENTE",
+      "cta": "Vedi Progetti",
+      "scroll": "Scorri per esplorare"
+    },
+    "projects": {
+      "title": "> PROGETTI.DEPLOYATI",
+      "subtitle": "Sistemi AI in produzione che generano valore reale",
+      "status": {
+        "live": "LIVE",
+        "development": "DEV",
+        "archived": "ARCHIVIATO"
+      },
+      "filterAll": "TUTTI",
+      "viewDetails": "Vedi Dettagli",
+      "closeDetails": "Chiudi",
+      "techStack": "Stack Tecnologico",
+      "metrics": "Metriche",
+      "tags": "Tag",
+      "year": "Anno"
+    },
+    "skills": {
+      "title": "> ARSENALE.TECH",
+      "subtitle": "Stack production-grade per AI enterprise",
+      "level": "Competenza"
+    },
+    "about": {
+      "title": "> INFO.SISTEMA",
+      "subtitle": "Background e credenziali",
+      "bio": "Bio",
+      "mission": "Missione",
+      "work": "Esperienza Lavorativa",
+      "education": "Istruzione",
+      "hobbies": "Hobby",
+      "languages": "Lingue",
+      "current": "Attuale",
+      "team": "Team",
+      "projects": "Progetti",
+      "location": "Località",
+      "summa": "summa cum laude"
+    },
+    "contact": {
+      "title": "> CONNETTI.INIT",
+      "subtitle": "Costruiamo qualcosa insieme",
+      "email": "Email",
+      "phone": "Telefono",
+      "linkedin": "LinkedIn",
+      "gitlab": "GitLab",
+      "sendMessage": "Invia Messaggio",
+      "name": "Nome",
+      "message": "Messaggio",
+      "sending": "Invio...",
+      "success": "Messaggio inviato con successo!",
+      "error": "Invio messaggio fallito"
+    },
+    "footer": {
+      "status": "Stato Sistema",
+      "uptime": "Uptime",
+      "version": "Versione",
+      "build": "Build",
+      "rights": "Tutti i diritti riservati",
+      "builtWith": "Costruito con",
+      "madeIn": "Made in Bergamo, Italia"
+    },
+    "common": {
+      "readMore": "Leggi Altro",
+      "readLess": "Leggi Meno",
+      "loading": "Caricamento...",
+      "error": "Errore",
+      "retry": "Riprova",
+      "close": "Chiudi",
+      "open": "Apri",
+      "back": "Indietro",
+      "next": "Avanti",
+      "previous": "Precedente",
+      "language": "Lingua"
+    },
+    "errors": {
+      "database": "❌ ERRORE: Query database fallita",
+      "retrying": "🔄 NUOVO TENTATIVO...",
+      "fallback": "⚠️ FALLBACK: Accesso server di backup",
+      "success": "✅ SUCCESSO: Record recuperati",
+      "timeout": "❌ ERRORE: Timeout connessione",
+      "rerouting": "🔄 REINDIRIZZAMENTO tramite proxy...",
+      "establishing": "🔐 CREAZIONE canale sicuro...",
+      "transmitted": "✅ MESSAGGIO TRASMESSO",
+      "overflow": "⚠️ OVERFLOW_MEMORIA",
+      "feature": "Non è un bug, è una feature!"
+    }
+  }
+}

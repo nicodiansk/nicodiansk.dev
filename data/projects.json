@@ -1,0 +1,165 @@
+{
+  "projects": [
+    {
+      "id": "dev-velocity-mcp",
+      "status": "LIVE",
+      "title": {
+        "en": "DEV_VELOCITY_MCP",
+        "it": "DEV_VELOCITY_MCP"
+      },
+      "description": {
+        "en": "SSOT via Confluence+Slack+Jira → AI coding assistants",
+        "it": "SSOT via Confluence+Slack+Jira → assistenti AI per coding"
+      },
+      "longDescription": {
+        "en": "Architected MCP-based system integrating Confluence, Slack, and Jira as Single Source of Truth for AI coding assistants. Designed custom agents with single-scope responsibilities (code review, docs ingestion, context building) using advanced prompt engineering, orchestrating Claude + Gemini cooperation for context-aware development.",
+        "it": "Sistema MCP che integra Confluence, Slack e Jira come Single Source of Truth per assistenti AI di coding. Agenti personalizzati con responsabilità specifiche (code review, docs ingestion, context building) usando prompt engineering avanzato, orchestrando cooperazione Claude + Gemini per sviluppo context-aware."
+      },
+      "techStack": ["Claude", "Gemini", "LangGraph", "MCP", "LangChain"],
+      "metrics": [
+        {
+          "label": { "en": "Dev Productivity", "it": "Produttività Dev" },
+          "value": "↑ 60-70%",
+          "color": "lime"
+        }
+      ],
+      "tags": ["multi-agent", "mcp", "orchestration"],
+      "year": 2024,
+      "featured": true
+    },
+    {
+      "id": "geo-seo-engine",
+      "status": "LIVE",
+      "title": {
+        "en": "GEO_SEO_ENGINE",
+        "it": "GEO_SEO_ENGINE"
+      },
+      "description": {
+        "en": "Auto-gen product content • FAQs • JSON-LD • multilingual",
+        "it": "Auto-gen contenuti prodotti • FAQ • JSON-LD • multilingua"
+      },
+      "longDescription": {
+        "en": "Built end-to-end AI pipeline for automatic product enhancement: descriptions, FAQs, structured data (JSON-LD), and multilingual tone-of-voice adaptation. AI-powered product feed optimization using latest OpenAI models for GEO (Generative Engine Optimization) and SEO discoverability.",
+        "it": "Pipeline AI end-to-end per enhancement automatico prodotti: descrizioni, FAQ, dati strutturati (JSON-LD), e adattamento multilingua del tono di voce. Ottimizzazione feed prodotti con modelli OpenAI per GEO (Generative Engine Optimization) e SEO."
+      },
+      "techStack": ["OpenAI", "FastAPI", "Knowledge Graphs", "NLP"],
+      "metrics": [
+        {
+          "label": { "en": "Content Opt Time", "it": "Tempo Opt Contenuti" },
+          "value": "↓ 80%",
+          "color": "cyan"
+        }
+      ],
+      "tags": ["seo", "geo", "e-commerce"],
+      "year": 2024,
+      "featured": true
+    },
+    {
+      "id": "legal-rag-v2",
+      "status": "LIVE",
+      "title": {
+        "en": "LEGAL_RAG_v2",
+        "it": "LEGAL_RAG_v2"
+      },
+      "description": {
+        "en": "100K+ Italian legal docs • cross-citation • hierarchical retrieval",
+        "it": "100K+ doc legali italiani • cross-citation • retrieval gerarchico"
+      },
+      "longDescription": {
+        "en": "Architected RAG platform for ~100K Italian legal documents with cross-citation handling and hierarchical retrieval. Multimodal RAG system implementing hybrid search (semantic + lexical), knowledge graphs, domain-specific embeddings, and vector databases. Designed context window management strategies and retrieval optimization for large-scale document processing.",
+        "it": "Piattaforma RAG per ~100K documenti legali italiani con gestione cross-citation e retrieval gerarchico. Sistema RAG multimodale con hybrid search (semantica + lessicale), knowledge graphs, embeddings domain-specific e vector databases. Strategie di gestione context window e ottimizzazione retrieval per processing documenti su larga scala."
+      },
+      "techStack": ["LangChain", "Pinecone", "GPT-4", "Hybrid Search"],
+      "metrics": [
+        {
+          "label": { "en": "Recall@10", "it": "Recall@10" },
+          "value": "91%",
+          "color": "yellow"
+        },
+        {
+          "label": { "en": "Answer Relevance", "it": "Rilevanza Risposte" },
+          "value": "89%",
+          "color": "magenta"
+        }
+      ],
+      "tags": ["rag", "legal", "knowledge-graph"],
+      "year": 2023,
+      "featured": true
+    },
+    {
+      "id": "vision-classify",
+      "status": "LIVE",
+      "title": {
+        "en": "VISION_CLASSIFY",
+        "it": "VISION_CLASSIFY"
+      },
+      "description": {
+        "en": "CNN page classification • image similarity • product discovery",
+        "it": "Classificazione pagine CNN • similarity immagini • product discovery"
+      },
+      "longDescription": {
+        "en": "Developed full ML pipeline—data collection, labeling, training, validation, and monitoring—for classifying e-commerce page types using CNN-based computer vision models. Transfer learning and custom architectures for image classification, object detection, and similarity search. Integrated with Qdrant vector database for fast similarity retrieval.",
+        "it": "Pipeline ML completa—raccolta dati, labeling, training, validazione, monitoring—per classificare tipologie pagine e-commerce usando modelli CNN di computer vision. Transfer learning e architetture custom per classificazione immagini, object detection e similarity search. Integrato con Qdrant vector database per retrieval veloce."
+      },
+      "techStack": ["PyTorch", "Qdrant", "Transfer Learning", "ONNX"],
+      "metrics": [
+        {
+          "label": { "en": "Manual Work", "it": "Lavoro Manuale" },
+          "value": "↓ 100%",
+          "color": "magenta"
+        }
+      ],
+      "tags": ["computer-vision", "cnn", "e-commerce"],
+      "year": 2023,
+      "featured": false
+    },
+    {
+      "id": "hr-assistant",
+      "status": "LIVE",
+      "title": {
+        "en": "HR_ASSISTANT",
+        "it": "HR_ASSISTANT"
+      },
+      "description": {
+        "en": "NLP queries • guardrails • HITL escalation",
+        "it": "Query NLP • guardrails • escalation HITL"
+      },
+      "longDescription": {
+        "en": "Built conversational AI chatbot enabling employees to access HR and company information in natural language: PTO balance queries, room booking requests, company newsletter summaries, and policy lookups. Integrated with internal systems via API, with guardrails and human-in-the-loop escalation for sensitive requests.",
+        "it": "Chatbot AI conversazionale per accesso info HR e aziendali in linguaggio naturale: query balance ferie, prenotazioni sale, riassunti newsletter aziendale, lookup policy. Integrato con sistemi interni via API, con guardrails e escalation human-in-the-loop per richieste sensibili."
+      },
+      "techStack": ["LangChain", "FastAPI", "Custom Agents", "NLP"],
+      "metrics": [],
+      "tags": ["nlp", "chatbot", "hr-automation"],
+      "year": 2022,
+      "featured": false
+    },
+    {
+      "id": "hybrid-recsys",
+      "status": "LIVE",
+      "title": {
+        "en": "HYBRID_RECSYS",
+        "it": "HYBRID_RECSYS"
+      },
+      "description": {
+        "en": "Sub-100ms recs • collaborative + vector search",
+        "it": "Rec sub-100ms • collaborative + vector search"
+      },
+      "longDescription": {
+        "en": "Built low-latency recommendation engine combining collaborative filtering with vector similarity search. Hybrid system using semantic ranking, embeddings, vector search, and knowledge-graph signals for personalized product discovery. Optimized for minimal compute overhead while maintaining sub-100ms response times.",
+        "it": "Motore raccomandazioni low-latency combinando collaborative filtering con vector similarity search. Sistema ibrido con semantic ranking, embeddings, vector search e segnali knowledge-graph per product discovery personalizzata. Ottimizzato per minimo overhead computazionale mantenendo tempi risposta sub-100ms."
+      },
+      "techStack": ["Embeddings", "Custom Rankers", "Vector Search", "Collaborative Filtering"],
+      "metrics": [
+        {
+          "label": { "en": "Response Time", "it": "Tempo Risposta" },
+          "value": "<100ms",
+          "color": "lime"
+        }
+      ],
+      "tags": ["recommendation", "hybrid-search", "low-latency"],
+      "year": 2022,
+      "featured": false
+    }
+  ]
+}
