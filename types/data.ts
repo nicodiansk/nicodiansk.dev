@@ -104,9 +104,9 @@ export interface AboutData {
   };
   contact: {
     email: string;
-    phone: string;
     linkedin: string;
     gitlab: string;
+    github: string;
   };
   work: WorkExperience;
   education: Education[];

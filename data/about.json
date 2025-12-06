@@ -12,15 +12,15 @@
     "city": "Bergamo",
     "country": "Italy",
     "coordinates": {
-      "lat": 45.6983,
-      "lng": 9.6773
+      "lat": 45.6945,
+      "lng": 9.6700
     }
   },
   "contact": {
     "email": "nicholasprevitali96@gmail.com",
-    "phone": "+39 380 126 2131",
     "linkedin": "https://www.linkedin.com/in/nicholas-previtali-660b83190",
-    "gitlab": "https://gitlab.com/nicholasprevitali96"
+    "gitlab": "https://gitlab.com/nicholasprevitali96",
+    "github": "https://github.com/nicodiansk"
   },
   "work": {
     "current": {

@@ -21,18 +21,18 @@ export default function Contact() {
       color: 'cyber-cyan',
     },
     {
-      label: t.contact.phone,
-      value: aboutData.contact.phone,
-      href: `tel:${aboutData.contact.phone}`,
-      icon: '📱',
-      color: 'cyber-lime',
-    },
-    {
       label: t.contact.linkedin,
       value: 'LinkedIn Profile',
       href: aboutData.contact.linkedin,
       icon: '💼',
       color: 'cyber-magenta',
+    },
+    {
+      label: 'GitHub',
+      value: 'GitHub Profile',
+      href: aboutData.contact.github,
+      icon: '🐙',
+      color: 'cyber-lime',
     },
     {
       label: t.contact.gitlab,
@@ -126,13 +126,7 @@ export default function Contact() {
               href={`mailto:${aboutData.contact.email}`}
               className="border-2 border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:text-cyber-dark transition-all duration-300 p-4 text-center font-mono font-bold"
             >
-              {t.contact.email}
-            </a>
-            <a
-              href={`tel:${aboutData.contact.phone}`}
-              className="border-2 border-cyber-lime text-cyber-lime hover:bg-cyber-lime hover:text-cyber-dark transition-all duration-300 p-4 text-center font-mono font-bold"
-            >
-              {t.contact.phone}
+              Email
             </a>
             <a
               href={aboutData.contact.linkedin}
@@ -141,6 +135,14 @@ export default function Contact() {
               className="border-2 border-cyber-magenta text-cyber-magenta hover:bg-cyber-magenta hover:text-cyber-dark transition-all duration-300 p-4 text-center font-mono font-bold"
             >
               LinkedIn
+            </a>
+            <a
+              href={aboutData.contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-cyber-lime text-cyber-lime hover:bg-cyber-lime hover:text-cyber-dark transition-all duration-300 p-4 text-center font-mono font-bold"
+            >
+              GitHub
             </a>
             <a
               href={aboutData.contact.gitlab}

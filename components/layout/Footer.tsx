@@ -49,6 +49,11 @@ export default function Footer() {
       icon: '💼',
     },
     {
+      name: 'GitHub',
+      href: aboutData.contact.github,
+      icon: '🐙',
+    },
+    {
       name: 'GitLab',
       href: aboutData.contact.gitlab,
       icon: '🦊',
