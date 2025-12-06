@@ -10,13 +10,13 @@ Standard locations for project files:
 
 ```
 docs/
-├── nicholas_previtali_ai_gen.pdf  # Resume (source for content)
-└── archive/                       # Old session docs (auto-archived by /session-wrap)
+├── plans/
+│   └── quirky-leaping-rabbit.md   # Cyberpunk portfolio implementation plan
+├── archive/                       # Old session docs (auto-archived by /session-wrap)
+└── nicholas_previtali_ai_gen.pdf  # Resume (source for content)
 
 .claude/
-├── commands/                      # Custom slash commands
-└── plans/
-    └── quirky-leaping-rabbit.md   # Cyberpunk portfolio implementation plan
+└── commands/                      # Custom slash commands
 
 app/                               # Next.js app directory
 ├── layout.tsx                     # Root layout
