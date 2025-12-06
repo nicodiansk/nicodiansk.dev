@@ -1,10 +1,12 @@
-// ABOUTME: Footer component with system status display, fake uptime metrics, and social links
+// ABOUTME: Footer component with system status display, uptime counter, and social links with official logos
 // ABOUTME: Features cyberpunk terminal aesthetic with version info and Made in Bergamo branding
 
 'use client';
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { Mail } from 'lucide-react';
+import { SiLinkedin, SiGithub, SiGitlab } from 'react-icons/si';
 import aboutDataRaw from '@/data/about.json';
 import { AboutData } from '@/types/data';
 
@@ -41,22 +43,22 @@ export default function Footer() {
     {
       name: 'Email',
       href: `mailto:${aboutData.contact.email}`,
-      icon: '📧',
+      Icon: Mail,
     },
     {
       name: 'LinkedIn',
       href: aboutData.contact.linkedin,
-      icon: '💼',
+      Icon: SiLinkedin,
     },
     {
       name: 'GitHub',
       href: aboutData.contact.github,
-      icon: '🐙',
+      Icon: SiGithub,
     },
     {
       name: 'GitLab',
       href: aboutData.contact.gitlab,
-      icon: '🦊',
+      Icon: SiGitlab,
     },
   ];
 
@@ -123,20 +125,23 @@ export default function Footer() {
               &gt; CONNECT
             </h3>
             <div className="flex flex-col gap-3">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-2 text-gray-300 hover:text-cyber-cyan transition-colors font-mono text-sm group"
-                >
-                  <span className="text-lg">{link.icon}</span>
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    {link.name}
-                  </span>
-                </a>
-              ))}
+              {socialLinks.map((link) => {
+                const IconComponent = link.Icon;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="flex items-center gap-2 text-gray-300 hover:text-cyber-cyan transition-colors font-mono text-sm group"
+                  >
+                    <IconComponent className="w-5 h-5" />
+                    <span className="group-hover:translate-x-1 transition-transform">
+                      {link.name}
+                    </span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

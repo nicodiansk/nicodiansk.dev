@@ -1,9 +1,12 @@
 // ABOUTME: Contact section with command-line inspired layout displaying contact links
-// ABOUTME: Features email, phone, LinkedIn, GitLab links with cyberpunk terminal aesthetic
+// ABOUTME: Features email, LinkedIn, GitHub, GitLab with official brand logos and cyberpunk terminal aesthetic
 
 'use client';
 
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { Mail } from 'lucide-react';
+import { SiLinkedin, SiGithub, SiGitlab } from 'react-icons/si';
+import { textColorClasses } from '@/lib/colorClasses';
 import aboutDataRaw from '@/data/about.json';
 import { AboutData } from '@/types/data';
 
@@ -17,29 +20,29 @@ export default function Contact() {
       label: t.contact.email,
       value: aboutData.contact.email,
       href: `mailto:${aboutData.contact.email}`,
-      icon: '📧',
-      color: 'cyber-cyan',
+      Icon: Mail,
+      color: 'cyan' as const,
     },
     {
       label: t.contact.linkedin,
       value: 'LinkedIn Profile',
       href: aboutData.contact.linkedin,
-      icon: '💼',
-      color: 'cyber-magenta',
+      Icon: SiLinkedin,
+      color: 'magenta' as const,
     },
     {
       label: 'GitHub',
       value: 'GitHub Profile',
       href: aboutData.contact.github,
-      icon: '🐙',
-      color: 'cyber-lime',
+      Icon: SiGithub,
+      color: 'lime' as const,
     },
     {
       label: t.contact.gitlab,
       value: 'GitLab Profile',
       href: aboutData.contact.gitlab,
-      icon: '🦊',
-      color: 'cyber-yellow',
+      Icon: SiGitlab,
+      color: 'yellow' as const,
     },
   ];
 
@@ -77,32 +80,36 @@ export default function Contact() {
 
             {/* Contact methods */}
             <div className="space-y-6">
-              {contactMethods.map((method, idx) => (
-                <div key={idx} className="font-mono">
-                  <div className="flex items-start gap-3 mb-2">
-                    <span className="text-2xl">{method.icon}</span>
-                    <div className="flex-1">
-                      <p className="text-gray-400 text-sm mb-1">
-                        &gt; PROTOCOL: {method.label.toUpperCase()}
-                      </p>
-                      <a
-                        href={method.href}
-                        target={method.href.startsWith('http') ? '_blank' : undefined}
-                        rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className={`text-${method.color} hover:text-shadow-neon transition-all duration-300 break-all`}
-                      >
-                        {method.value}
-                      </a>
+              {contactMethods.map((method, idx) => {
+                const IconComponent = method.Icon;
+                const textColor = textColorClasses[method.color];
+                return (
+                  <div key={idx} className="font-mono">
+                    <div className="flex items-start gap-3 mb-2">
+                      <IconComponent className={`w-6 h-6 ${textColor}`} />
+                      <div className="flex-1">
+                        <p className="text-gray-400 text-sm mb-1">
+                          &gt; PROTOCOL: {method.label.toUpperCase()}
+                        </p>
+                        <a
+                          href={method.href}
+                          target={method.href.startsWith('http') ? '_blank' : undefined}
+                          rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          className={`${textColor} hover:text-shadow-neon transition-all duration-300 break-all`}
+                        >
+                          {method.value}
+                        </a>
+                      </div>
+                      <span className="text-cyber-lime text-sm whitespace-nowrap">
+                        [ACTIVE]
+                      </span>
                     </div>
-                    <span className="text-cyber-lime text-sm whitespace-nowrap">
-                      [ACTIVE]
-                    </span>
+                    {idx < contactMethods.length - 1 && (
+                      <div className="border-t border-gray-800 my-4"></div>
+                    )}
                   </div>
-                  {idx < contactMethods.length - 1 && (
-                    <div className="border-t border-gray-800 my-4"></div>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Connection status footer */}
