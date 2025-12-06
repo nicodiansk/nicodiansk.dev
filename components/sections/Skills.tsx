@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { Brain, Eye, Server, Database } from 'lucide-react';
 import skillsDataRaw from '@/data/skills.json';
@@ -16,8 +16,20 @@ const skillsData = skillsDataRaw as SkillsData;
 export default function Skills() {
   const { language, t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState(skillsData.categories[0].id);
+  const [animateProgress, setAnimateProgress] = useState(false);
 
   const category = skillsData.categories.find(cat => cat.id === activeCategory);
+
+  // Reset and trigger progress bar animation when category changes
+  useEffect(() => {
+    setAnimateProgress(false);
+    // Use requestAnimationFrame to ensure DOM update before animating
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setAnimateProgress(true);
+      });
+    });
+  }, [activeCategory]);
 
   return (
     <section id="skills" className="min-h-screen py-20 bg-gradient-to-b from-cyber-dark to-black">
@@ -76,10 +88,10 @@ export default function Skills() {
                   {/* Progress bar */}
                   <div className="w-full bg-gray-900 h-2 mb-3 overflow-hidden">
                     <div
+                      key={`${activeCategory}-${skill.name}`}
                       className={`h-full ${bgColorClasses[category.color]} transition-all duration-1000 ease-out`}
                       style={{
-                        width: `${skill.level}%`,
-                        animation: 'progress-fill 1.5s ease-out',
+                        width: animateProgress ? `${skill.level}%` : '0%',
                       }}
                     />
                   </div>

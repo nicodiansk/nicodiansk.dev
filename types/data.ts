@@ -15,6 +15,7 @@ export interface ProjectMetric {
 export interface Project {
   id: string;
   status: 'LIVE' | 'DEV' | 'ARCHIVED';
+  evolution?: BilingualText;
   title: BilingualText;
   description: BilingualText;
   longDescription: BilingualText;
