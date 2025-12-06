@@ -7,7 +7,10 @@
       "Bash(git commit -m \"$(cat <<''EOF''\ndocs: add cyberpunk portfolio implementation plan\n\n- Updated CLAUDE.md with nicodiansk.dev project context\n- Created comprehensive implementation plan in .claude/plans/\n- Tech stack: Next.js 16.0.7+, React 19, TypeScript, Tailwind\n- Features: glitch effects, particles, fake bugs, IT/EN bilingual\n- Strategy: 7 focused sessions, Git Flow, rapid iteration\n- Added resume PDF to docs/ for content extraction\nEOF\n)\")",
       "Bash(mkdir:*)",
       "Bash(git checkout:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
