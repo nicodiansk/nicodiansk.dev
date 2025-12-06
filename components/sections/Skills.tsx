@@ -22,13 +22,15 @@ export default function Skills() {
 
   // Reset and trigger progress bar animation when category changes
   useEffect(() => {
+    // Reset to 0% immediately
     setAnimateProgress(false);
-    // Use requestAnimationFrame to ensure DOM update before animating
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setAnimateProgress(true);
-      });
-    });
+
+    // Small delay to ensure reset renders, then animate to target width
+    const timer = setTimeout(() => {
+      setAnimateProgress(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [activeCategory]);
 
   return (
@@ -70,7 +72,7 @@ export default function Skills() {
 
           {/* Skills grid */}
           {category && (
-            <div key={activeCategory} className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
               {category.skills.map((skill, index) => (
                 <div
                   key={skill.name}
@@ -88,7 +90,6 @@ export default function Skills() {
                   {/* Progress bar */}
                   <div className="w-full bg-gray-900 h-2 mb-3 overflow-hidden">
                     <div
-                      key={`${activeCategory}-${skill.name}`}
                       className={`h-full ${bgColorClasses[category.color]} transition-all duration-1000 ease-out`}
                       style={{
                         width: animateProgress ? `${skill.level}%` : '0%',
