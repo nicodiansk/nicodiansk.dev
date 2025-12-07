@@ -4,11 +4,15 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import projectsDataRaw from '@/data/projects.json';
 import { ProjectsData } from '@/types/data';
 import { textColorClasses } from '@/lib/colorClasses';
 import GlitchText from '@/components/effects/GlitchText';
+import { OrbitingCircles } from '@/components/ui/OrbitingCircles';
+import { getTechLogoPath, getProjectIconPath } from '@/lib/techLogos';
+import Image from 'next/image';
 
 const projectsData = projectsDataRaw as ProjectsData;
 
@@ -119,79 +123,184 @@ export default function Projects() {
           </div>
 
           {/* Project detail modal */}
-          {selectedProjectData && (
-            <div
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-title"
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedProject(null)}
-              onKeyDown={(e) => {
-                if (e.key === 'Escape') setSelectedProject(null);
-              }}
-            >
-              <div
-                className="bg-cyber-dark border-2 border-cyber-cyan max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 rounded-xl shadow-2xl shadow-cyber-cyan/20"
-                onClick={(e) => e.stopPropagation()}
+          <AnimatePresence>
+            {selectedProjectData && (
+              <motion.div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-title"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                onClick={() => setSelectedProject(null)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setSelectedProject(null);
+                }}
               >
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <h3 id="modal-title" className="text-3xl font-bold text-cyber-cyan mb-2">
-                      {selectedProjectData.title[language]}
-                    </h3>
-                    {selectedProjectData.evolution && (
-                      <p className="text-gray-500 text-sm italic">
-                        {selectedProjectData.evolution[language]}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    onClick={() => setSelectedProject(null)}
-                    aria-label="Close modal"
-                    className="text-gray-400 hover:text-cyber-cyan text-2xl"
-                  >
-                    ×
-                  </button>
-                </div>
-
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  {selectedProjectData.longDescription[language]}
-                </p>
-
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-cyber-magenta font-bold mb-2">{t.projects.techStack}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProjectData.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 border border-cyber-magenta/50 text-cyber-magenta text-sm rounded-md hover:bg-cyber-magenta/10 transition-colors duration-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {selectedProjectData.metrics.length > 0 && (
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.95, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="bg-cyber-dark border-2 border-cyber-cyan max-w-3xl w-full max-h-[85vh] overflow-y-auto p-8 rounded-xl shadow-2xl shadow-cyber-cyan/20"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Header with close button */}
+                  <div className="flex items-start justify-between mb-6">
                     <div>
-                      <h4 className="text-cyber-lime font-bold mb-2">{t.projects.metrics}</h4>
-                      <div className="space-y-2">
+                      <h3 id="modal-title" className="text-3xl font-bold text-cyber-cyan mb-2">
+                        {selectedProjectData.title[language]}
+                      </h3>
+                      {selectedProjectData.evolution && (
+                        <p className="text-gray-500 text-sm italic">
+                          {selectedProjectData.evolution[language]}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => setSelectedProject(null)}
+                      aria-label="Close modal"
+                      className="text-gray-400 hover:text-cyber-cyan text-2xl transition-colors"
+                    >
+                      ×
+                    </button>
+                  </div>
+
+                  {/* Section 1: Overview */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
+                    className="mb-8"
+                  >
+                    <h4 className="text-cyber-magenta font-bold mb-3 flex items-center gap-2">
+                      <span>📋</span> {t.projects.overview}
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      {selectedProjectData.overview[language]}
+                    </p>
+                  </motion.div>
+
+                  {/* Section 2: Challenge */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.3 }}
+                    className="mb-8"
+                  >
+                    <h4 className="text-cyber-yellow font-bold mb-3 flex items-center gap-2">
+                      <span>🎯</span> {t.projects.challenge}
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      {selectedProjectData.challenge[language]}
+                    </p>
+                  </motion.div>
+
+                  {/* Section 3: Solution */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.3 }}
+                    className="mb-8"
+                  >
+                    <h4 className="text-cyber-lime font-bold mb-3 flex items-center gap-2">
+                      <span>⚙️</span> {t.projects.solution}
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      {selectedProjectData.solution[language]}
+                    </p>
+                  </motion.div>
+
+                  {/* Section 4: Architecture - Orbiting Tech Stack */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.3 }}
+                    className="mb-8"
+                  >
+                    <h4 className="text-cyber-cyan font-bold mb-6 flex items-center gap-2">
+                      <span>🏗️</span> {t.projects.architecture}
+                    </h4>
+
+                    {/* Orbiting Circles Container */}
+                    <div className="relative h-[320px] w-full flex items-center justify-center mb-6">
+                      {/* Center Project Icon */}
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <div className="w-20 h-20 rounded-full bg-cyber-dark border-2 border-cyber-cyan flex items-center justify-center shadow-lg shadow-cyber-cyan/30">
+                          <Image
+                            src={getProjectIconPath(selectedProjectData.id)}
+                            alt={selectedProjectData.title[language]}
+                            width={48}
+                            height={48}
+                            className="opacity-80"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Orbiting Tech Logos */}
+                      <OrbitingCircles
+                        radius={120}
+                        duration={25}
+                        iconSize={50}
+                      >
+                        {selectedProjectData.primaryTech.map((tech) => (
+                          <Image
+                            key={tech}
+                            src={getTechLogoPath(tech)}
+                            alt={tech}
+                            width={32}
+                            height={32}
+                            className="opacity-90"
+                            title={tech}
+                          />
+                        ))}
+                      </OrbitingCircles>
+                    </div>
+
+                    {/* Complete Tech Stack Badges */}
+                    <div>
+                      <p className="text-gray-400 text-sm mb-2">{t.projects.techStack}:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProjectData.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 border border-cyber-magenta/50 text-cyber-magenta text-sm rounded-md hover:bg-cyber-magenta/10 transition-colors duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Section 5: Results & Metrics */}
+                  {selectedProjectData.metrics.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 0.3 }}
+                    >
+                      <h4 className="text-cyber-lime font-bold mb-4 flex items-center gap-2">
+                        <span>📊</span> {t.projects.results}
+                      </h4>
+                      <div className="space-y-3">
                         {selectedProjectData.metrics.map((metric, idx) => (
-                          <div key={idx} className="flex items-center justify-between">
+                          <div key={idx} className="flex items-center justify-between p-3 bg-gray-900/50 rounded-lg border border-gray-800">
                             <span className="text-gray-400">{metric.label[language]}</span>
-                            <span className={`font-bold ${textColorClasses[metric.color]}`}>
+                            <span className={`font-bold text-xl ${textColorClasses[metric.color]}`}>
                               {metric.value}
                             </span>
                           </div>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                   )}
-                </div>
-              </div>
-            </div>
-          )}
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>

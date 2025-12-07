@@ -19,6 +19,10 @@ export interface Project {
   title: BilingualText;
   description: BilingualText;
   longDescription: BilingualText;
+  overview: BilingualText;
+  challenge: BilingualText;
+  solution: BilingualText;
+  primaryTech: string[];
   techStack: string[];
   metrics: ProjectMetric[];
   tags: string[];
