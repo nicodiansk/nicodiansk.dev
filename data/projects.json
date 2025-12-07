@@ -32,6 +32,58 @@
         "it": "Architettato integrazione MCP stabilendo Confluence, Slack e Jira come Single Source of Truth (SSOT). Progettati agenti AI custom con responsabilità specifiche usando prompt engineering avanzato. Orchestrata cooperazione multi-modello (Claude + Gemini) abilitando accesso documentazione real-time in assistenti coding (Claude Code, Cursor)."
       },
       "primaryTech": ["Claude", "Gemini", "MCP", "LangGraph", "LangChain", "Jira"],
+      "architecture": [
+        {
+          "id": "input-sources",
+          "label": {
+            "en": "Documentation Sources",
+            "it": "Fonti Documentazione"
+          },
+          "tech": "Confluence • Slack • Jira",
+          "type": "input",
+          "color": "cyan"
+        },
+        {
+          "id": "mcp-integration",
+          "label": {
+            "en": "MCP Server Integration",
+            "it": "Integrazione MCP Server"
+          },
+          "tech": "Model Context Protocol",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "specialized-agents",
+          "label": {
+            "en": "Specialized AI Agents",
+            "it": "Agenti AI Specializzati"
+          },
+          "tech": "Doc Ingestion • Code Review • Context Building",
+          "type": "agent",
+          "color": "yellow"
+        },
+        {
+          "id": "orchestration",
+          "label": {
+            "en": "Multi-Model Orchestration",
+            "it": "Orchestrazione Multi-Modello"
+          },
+          "tech": "LangGraph • Claude • Gemini",
+          "type": "process",
+          "color": "lime"
+        },
+        {
+          "id": "context-delivery",
+          "label": {
+            "en": "Unified Context Delivery",
+            "it": "Delivery Contesto Unificato"
+          },
+          "tech": "Claude Code • Cursor",
+          "type": "output",
+          "color": "cyan"
+        }
+      ],
       "techStack": ["Claude", "Gemini", "LangGraph", "MCP", "LangChain"],
       "metrics": [
         {
@@ -76,6 +128,68 @@
         "it": "Costruita pipeline AI end-to-end usando modelli OpenAI più recenti (GPT-4, GPT-4o) per enhancement automatico prodotti. Sistema genera descrizioni SEO-ottimizzate, FAQ complete, markup schema JSON-LD e adatta tono-di-voce su più lingue mantenendo consistenza brand."
       },
       "primaryTech": ["OpenAI", "GPT-4", "FastAPI", "Knowledge Graphs", "NLP", "Python"],
+      "architecture": [
+        {
+          "id": "product-catalog",
+          "label": {
+            "en": "Product Catalog Data",
+            "it": "Dati Catalogo Prodotti"
+          },
+          "tech": "SKU Metadata • Product Attributes",
+          "type": "input",
+          "color": "cyan"
+        },
+        {
+          "id": "content-generation",
+          "label": {
+            "en": "AI Content Generation",
+            "it": "Generazione Contenuti AI"
+          },
+          "tech": "GPT-4 • GPT-4o",
+          "type": "agent",
+          "color": "magenta"
+        },
+        {
+          "id": "structured-data",
+          "label": {
+            "en": "Structured Data Creation",
+            "it": "Creazione Dati Strutturati"
+          },
+          "tech": "JSON-LD Schema Markup",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
+          "id": "knowledge-graph",
+          "label": {
+            "en": "Product Relationship Graph",
+            "it": "Grafo Relazioni Prodotti"
+          },
+          "tech": "Knowledge Graphs • NLP",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "multilingual-adaptation",
+          "label": {
+            "en": "Multilingual Tone Adaptation",
+            "it": "Adattamento Tono Multilingua"
+          },
+          "tech": "GPT-4 • Brand Voice Guidelines",
+          "type": "process",
+          "color": "lime"
+        },
+        {
+          "id": "seo-package",
+          "label": {
+            "en": "SEO-Optimized Content Package",
+            "it": "Pacchetto Contenuti SEO"
+          },
+          "tech": "Descriptions • FAQs • Schema Markup",
+          "type": "output",
+          "color": "cyan"
+        }
+      ],
       "techStack": ["OpenAI", "FastAPI", "Knowledge Graphs", "NLP"],
       "metrics": [
         {
@@ -120,6 +234,88 @@
         "it": "Architettata evoluzione piattaforma RAG multi-anno (2023→2025) implementando hybrid search (semantica + lessicale) con knowledge graphs Neo4j. Sistema traccia relazioni entità legali, reti cross-citation e catene precedenti usando embeddings domain-specific e vector databases (Pinecone, Qdrant). Raggiunto 91% recall@10 e 89% rilevanza risposte validato da esperti legali."
       },
       "primaryTech": ["LangChain", "Neo4j", "Pinecone", "GPT-4", "Hybrid Search", "Qdrant"],
+      "architecture": [
+        {
+          "id": "legal-docs",
+          "label": {
+            "en": "Legal Document Corpus",
+            "it": "Corpus Documenti Legali"
+          },
+          "tech": "100K+ PDF Documents",
+          "type": "input",
+          "color": "cyan"
+        },
+        {
+          "id": "preprocessing",
+          "label": {
+            "en": "Document Preprocessing",
+            "it": "Preprocessing Documenti"
+          },
+          "tech": "Text Extraction • Chunking • Entity Recognition",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "embeddings",
+          "label": {
+            "en": "Domain-Specific Embeddings",
+            "it": "Embeddings Domain-Specific"
+          },
+          "tech": "OpenAI Embeddings • Legal Context",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
+          "id": "vector-db",
+          "label": {
+            "en": "Vector Database Storage",
+            "it": "Storage Database Vettoriale"
+          },
+          "tech": "Pinecone • Qdrant",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "knowledge-graph",
+          "label": {
+            "en": "Legal Knowledge Graph",
+            "it": "Knowledge Graph Legale"
+          },
+          "tech": "Neo4j • Entity Relations • Cross-Citations",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "hybrid-search",
+          "label": {
+            "en": "Hybrid Search Orchestration",
+            "it": "Orchestrazione Hybrid Search"
+          },
+          "tech": "Semantic + Lexical Search • LangChain",
+          "type": "process",
+          "color": "lime"
+        },
+        {
+          "id": "legal-reasoning",
+          "label": {
+            "en": "Legal Reasoning Agent",
+            "it": "Agente Reasoning Legale"
+          },
+          "tech": "GPT-4 • Precedent Analysis",
+          "type": "agent",
+          "color": "magenta"
+        },
+        {
+          "id": "legal-response",
+          "label": {
+            "en": "Context-Aware Legal Response",
+            "it": "Risposta Legale Context-Aware"
+          },
+          "tech": "Citations • Precedents • 91% Recall@10",
+          "type": "output",
+          "color": "cyan"
+        }
+      ],
       "techStack": ["LangChain", "Neo4j", "Pinecone", "GPT-4", "Hybrid Search"],
       "metrics": [
         {
@@ -169,6 +365,78 @@
         "it": "Sviluppata pipeline ML completa—raccolta dati, labeling, training, validazione, monitoring—usando modelli computer vision CNN. Implementato transfer learning e architetture custom per classificazione immagini, object detection e similarity search visiva. Integrato con Qdrant vector database per retrieval veloce, abilitando automazione SEO downstream."
       },
       "primaryTech": ["PyTorch", "Qdrant", "Transfer Learning", "ONNX", "Computer Vision", "Python"],
+      "architecture": [
+        {
+          "id": "image-input",
+          "label": {
+            "en": "Web Pages & Images",
+            "it": "Pagine Web & Immagini"
+          },
+          "tech": "E-commerce Pages • Product Images",
+          "type": "input",
+          "color": "cyan"
+        },
+        {
+          "id": "data-collection",
+          "label": {
+            "en": "Data Collection & Labeling",
+            "it": "Raccolta Dati & Labeling"
+          },
+          "tech": "Web Scraping • Manual Annotation",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "cnn-training",
+          "label": {
+            "en": "CNN Model Training",
+            "it": "Training Modello CNN"
+          },
+          "tech": "PyTorch • Transfer Learning",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
+          "id": "model-optimization",
+          "label": {
+            "en": "Model Optimization",
+            "it": "Ottimizzazione Modello"
+          },
+          "tech": "ONNX Conversion • Inference Optimization",
+          "type": "process",
+          "color": "lime"
+        },
+        {
+          "id": "vector-storage",
+          "label": {
+            "en": "Visual Embeddings Storage",
+            "it": "Storage Embeddings Visuali"
+          },
+          "tech": "Qdrant Vector Database",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "monitoring",
+          "label": {
+            "en": "Model Performance Monitoring",
+            "it": "Monitoring Performance Modello"
+          },
+          "tech": "Validation Metrics • Drift Detection",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "classification-output",
+          "label": {
+            "en": "Classification & Similarity",
+            "it": "Classificazione & Similarity"
+          },
+          "tech": "Page Types • Visual Search • 100% Automation",
+          "type": "output",
+          "color": "cyan"
+        }
+      ],
       "techStack": ["PyTorch", "Qdrant", "Transfer Learning", "ONNX"],
       "metrics": [
         {
@@ -213,6 +481,78 @@
         "it": "Costruita evoluzione chatbot multi-anno (2023→2025) migrando da NLP rule-based ad architettura RAG completa con Supabase vector store e semantic search. Sistema gestisce query ferie, prenotazioni sale, riassunti newsletter e lookup policy. Integrato con API interne implementando guardrails ed escalation human-in-the-loop per richieste sensibili."
       },
       "primaryTech": ["LangChain", "Supabase", "RAG", "Vector Search", "FastAPI", "NLP"],
+      "architecture": [
+        {
+          "id": "employee-query",
+          "label": {
+            "en": "Employee Query Input",
+            "it": "Input Query Dipendente"
+          },
+          "tech": "PTO • Room Booking • Policy Questions",
+          "type": "input",
+          "color": "cyan"
+        },
+        {
+          "id": "nlp-processing",
+          "label": {
+            "en": "NLP Query Processing",
+            "it": "Processing Query NLP"
+          },
+          "tech": "Intent Classification • Entity Extraction",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "vector-search",
+          "label": {
+            "en": "Semantic Vector Search",
+            "it": "Ricerca Vettoriale Semantica"
+          },
+          "tech": "Supabase Vector Store • Embeddings",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "rag-generation",
+          "label": {
+            "en": "RAG Response Generation",
+            "it": "Generazione Risposta RAG"
+          },
+          "tech": "LangChain • Context Retrieval",
+          "type": "agent",
+          "color": "yellow"
+        },
+        {
+          "id": "guardrails",
+          "label": {
+            "en": "Response Guardrails",
+            "it": "Guardrails Risposta"
+          },
+          "tech": "Policy Validation • Sensitivity Detection",
+          "type": "process",
+          "color": "lime"
+        },
+        {
+          "id": "api-integration",
+          "label": {
+            "en": "HR System Integration",
+            "it": "Integrazione Sistemi HR"
+          },
+          "tech": "PTO API • Room Booking API",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "response-output",
+          "label": {
+            "en": "Response with Escalation",
+            "it": "Risposta con Escalation"
+          },
+          "tech": "Answer • Human-in-the-Loop • +45% Accuracy",
+          "type": "output",
+          "color": "cyan"
+        }
+      ],
       "techStack": ["LangChain", "Supabase", "RAG", "Vector Search", "FastAPI"],
       "metrics": [
         {
@@ -257,6 +597,78 @@
         "it": "Costruito motore raccomandazioni ibrido low-latency combinando collaborative filtering con vector similarity search. Sistema sfrutta semantic ranking, embeddings, vector search e segnali knowledge-graph per product discovery personalizzata. Progettato per minimo overhead computazionale mantenendo tempi risposta rigorosi sub-100ms per esperienza utente real-time."
       },
       "primaryTech": ["Embeddings", "Semantic Ranking", "Vector Search", "Collaborative Filtering", "Knowledge Graphs", "Python"],
+      "architecture": [
+        {
+          "id": "user-behavior",
+          "label": {
+            "en": "User Behavior & Product Data",
+            "it": "Comportamento Utente & Dati Prodotti"
+          },
+          "tech": "Click Streams • Purchase History • Catalog",
+          "type": "input",
+          "color": "cyan"
+        },
+        {
+          "id": "collaborative-signals",
+          "label": {
+            "en": "Collaborative Filtering Signals",
+            "it": "Segnali Collaborative Filtering"
+          },
+          "tech": "User-Item Matrix • Co-occurrence Patterns",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "embeddings-generation",
+          "label": {
+            "en": "Product Embeddings Generation",
+            "it": "Generazione Embeddings Prodotti"
+          },
+          "tech": "Semantic Vectors • Content Features",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
+          "id": "knowledge-context",
+          "label": {
+            "en": "Knowledge Graph Context",
+            "it": "Contesto Knowledge Graph"
+          },
+          "tech": "Product Relations • Category Hierarchies",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "vector-search",
+          "label": {
+            "en": "Fast Vector Search",
+            "it": "Ricerca Vettoriale Veloce"
+          },
+          "tech": "Semantic Similarity • Low-Latency Index",
+          "type": "process",
+          "color": "lime"
+        },
+        {
+          "id": "hybrid-scoring",
+          "label": {
+            "en": "Hybrid Scoring Algorithm",
+            "it": "Algoritmo Scoring Ibrido"
+          },
+          "tech": "Collaborative + Semantic + Graph Signals",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "recommendations",
+          "label": {
+            "en": "Real-Time Recommendations",
+            "it": "Raccomandazioni Real-Time"
+          },
+          "tech": "Personalized Results • <100ms Response",
+          "type": "output",
+          "color": "cyan"
+        }
+      ],
       "techStack": ["Embeddings", "Semantic Ranking", "Vector Search", "Collaborative Filtering", "Knowledge Graphs"],
       "metrics": [
         {

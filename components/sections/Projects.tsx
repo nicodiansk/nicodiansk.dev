@@ -10,9 +10,7 @@ import projectsDataRaw from '@/data/projects.json';
 import { ProjectsData } from '@/types/data';
 import { textColorClasses } from '@/lib/colorClasses';
 import GlitchText from '@/components/effects/GlitchText';
-import { OrbitingCircles } from '@/components/ui/OrbitingCircles';
-import { TechIcon } from '@/components/ui/TechIcon';
-import { Code2, Search, Scale, Eye, Users, Star } from 'lucide-react';
+import { ArchitectureFlow } from '@/components/ui/ArchitectureFlow';
 
 const projectsData = projectsDataRaw as ProjectsData;
 
@@ -213,7 +211,7 @@ export default function Projects() {
                     </p>
                   </motion.div>
 
-                  {/* Section 4: Architecture - Orbiting Tech Stack */}
+                  {/* Section 4: Architecture Flow Diagram */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -224,39 +222,17 @@ export default function Projects() {
                       <span>🏗️</span> {t.projects.architecture}
                     </h4>
 
-                    {/* Orbiting Circles Container */}
-                    <div className="relative h-[320px] w-full flex items-center justify-center mb-6">
-                      {/* Center Project Icon */}
-                      <div className="absolute inset-0 flex items-center justify-center z-10">
-                        <div className="w-20 h-20 rounded-full bg-cyber-dark border-2 border-cyber-cyan flex items-center justify-center shadow-lg shadow-cyber-cyan/30">
-                          {selectedProjectData.id === 'dev-velocity-mcp' && <Code2 className="w-12 h-12 text-cyber-cyan" />}
-                          {selectedProjectData.id === 'geo-seo-engine' && <Search className="w-12 h-12 text-cyber-magenta" />}
-                          {selectedProjectData.id === 'legal-rag-v2' && <Scale className="w-12 h-12 text-cyber-yellow" />}
-                          {selectedProjectData.id === 'vision-classify' && <Eye className="w-12 h-12 text-cyber-magenta" />}
-                          {selectedProjectData.id === 'hr-assistant' && <Users className="w-12 h-12 text-cyber-cyan" />}
-                          {selectedProjectData.id === 'hybrid-recsys' && <Star className="w-12 h-12 text-cyber-lime" />}
-                        </div>
-                      </div>
-
-                      {/* Orbiting Tech Logos */}
-                      <OrbitingCircles
-                        radius={120}
-                        duration={25}
-                        iconSize={50}
-                      >
-                        {selectedProjectData.primaryTech.map((tech) => (
-                          <TechIcon
-                            key={tech}
-                            techName={tech}
-                            size={32}
-                            className="opacity-90"
-                          />
-                        ))}
-                      </OrbitingCircles>
-                    </div>
+                    {/* Architecture Flow Diagram */}
+                    <ArchitectureFlow
+                      nodes={selectedProjectData.architecture.map(node => ({
+                        ...node,
+                        label: node.label[language]
+                      }))}
+                      connections={[]}
+                    />
 
                     {/* Complete Tech Stack Badges */}
-                    <div>
+                    <div className="mt-6">
                       <p className="text-gray-400 text-sm mb-2">{t.projects.techStack}:</p>
                       <div className="flex flex-wrap gap-2">
                         {selectedProjectData.techStack.map((tech) => (

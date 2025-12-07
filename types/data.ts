@@ -12,6 +12,14 @@ export interface ProjectMetric {
   color: 'lime' | 'cyan' | 'yellow' | 'magenta';
 }
 
+export interface ArchitectureNode {
+  id: string;
+  label: BilingualText;
+  tech?: string;
+  type: 'input' | 'process' | 'storage' | 'output' | 'agent';
+  color: 'cyan' | 'magenta' | 'yellow' | 'lime' | 'blue';
+}
+
 export interface Project {
   id: string;
   status: 'LIVE' | 'DEV' | 'ARCHIVED';
@@ -23,6 +31,7 @@ export interface Project {
   challenge: BilingualText;
   solution: BilingualText;
   primaryTech: string[];
+  architecture: ArchitectureNode[];
   techStack: string[];
   metrics: ProjectMetric[];
   tags: string[];
