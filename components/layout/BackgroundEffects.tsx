@@ -1,4 +1,4 @@
-// ABOUTME: Background effects orchestrator combining Matrix rain, scanlines, and CRT aesthetics
+// ABOUTME: Background effects orchestrator combining Matrix rain, scanlines, particles, and CRT aesthetics
 // ABOUTME: Manages all cyberpunk visual effects with performance-conscious rendering
 
 'use client';
@@ -12,18 +12,27 @@ const MatrixRain = dynamic(() => import('@/components/effects/MatrixRain'), {
   loading: () => null,
 });
 
+const CyberParticles = dynamic(() => import('@/components/effects/Particles'), {
+  ssr: false,
+  loading: () => null,
+});
+
 interface BackgroundEffectsProps {
   enableMatrixRain?: boolean;
   enableScanlines?: boolean;
+  enableParticles?: boolean;
   matrixDensity?: number;
   matrixSpeed?: number;
+  particleCount?: number;
 }
 
 export default function BackgroundEffects({
   enableMatrixRain = true,
   enableScanlines = true,
+  enableParticles = true,
   matrixDensity = 0.3,
   matrixSpeed = 2,
+  particleCount = 40,
 }: BackgroundEffectsProps) {
   return (
     <>
@@ -33,6 +42,10 @@ export default function BackgroundEffects({
           speed={matrixSpeed}
           color="#39FF14"
         />
+      )}
+
+      {enableParticles && (
+        <CyberParticles particleCount={particleCount} />
       )}
 
       {enableScanlines && <Scanline opacity={0.08} animate={true} />}
