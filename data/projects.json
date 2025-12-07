@@ -3,6 +3,10 @@
     {
       "id": "dev-velocity-mcp",
       "status": "LIVE",
+      "evolution": {
+        "en": "2024 → Present (agents doing the heavy lifting)",
+        "it": "2024 → Presente (gli agenti fanno il lavoro pesante)"
+      },
       "title": {
         "en": "DEV_VELOCITY_MCP",
         "it": "DEV_VELOCITY_MCP"
@@ -30,6 +34,10 @@
     {
       "id": "geo-seo-engine",
       "status": "LIVE",
+      "evolution": {
+        "en": "2024 (because humans hate writing JSON-LD)",
+        "it": "2024 (perché gli umani odiano scrivere JSON-LD)"
+      },
       "title": {
         "en": "GEO_SEO_ENGINE",
         "it": "GEO_SEO_ENGINE"
@@ -57,19 +65,23 @@
     {
       "id": "legal-rag-v2",
       "status": "LIVE",
+      "evolution": {
+        "en": "2023 → 2025 (plot twist: now with graphs)",
+        "it": "2023 → 2025 (colpo di scena: ora con grafi)"
+      },
       "title": {
         "en": "LEGAL_RAG_v2",
         "it": "LEGAL_RAG_v2"
       },
       "description": {
-        "en": "100K+ Italian legal docs • cross-citation • hierarchical retrieval",
-        "it": "100K+ doc legali italiani • cross-citation • retrieval gerarchico"
+        "en": "100K+ docs • Neo4j knowledge graph • cross-citation",
+        "it": "100K+ doc • knowledge graph Neo4j • cross-citation"
       },
       "longDescription": {
-        "en": "Architected RAG platform for ~100K Italian legal documents with cross-citation handling and hierarchical retrieval. Multimodal RAG system implementing hybrid search (semantic + lexical), knowledge graphs, domain-specific embeddings, and vector databases. Designed context window management strategies and retrieval optimization for large-scale document processing.",
-        "it": "Piattaforma RAG per ~100K documenti legali italiani con gestione cross-citation e retrieval gerarchico. Sistema RAG multimodale con hybrid search (semantica + lessicale), knowledge graphs, embeddings domain-specific e vector databases. Strategie di gestione context window e ottimizzazione retrieval per processing documenti su larga scala."
+        "en": "Multi-year RAG platform evolution (2023→2025) for ~100K Italian legal documents. Started 2023 with foundational retrieval architecture and hybrid search (semantic + lexical). Major 2024-2025 upgrade: integrated Neo4j knowledge graphs for legal entity relationships, cross-citation networks, and precedent tracking. Current stack includes multimodal RAG, domain-specific embeddings, vector databases, and optimized context window management for large-scale legal document processing.",
+        "it": "Evoluzione piattaforma RAG multi-anno (2023→2025) per ~100K documenti legali italiani. Partenza 2023 con architettura retrieval e hybrid search (semantica + lessicale). Upgrade maggiore 2024-2025: integrazione Neo4j knowledge graphs per relazioni entità legali, reti cross-citation e tracking precedenti. Stack attuale include RAG multimodale, embeddings domain-specific, vector databases e gestione ottimizzata context window per processing documenti legali su larga scala."
       },
-      "techStack": ["LangChain", "Pinecone", "GPT-4", "Hybrid Search"],
+      "techStack": ["LangChain", "Neo4j", "Pinecone", "GPT-4", "Hybrid Search"],
       "metrics": [
         {
           "label": { "en": "Recall@10", "it": "Recall@10" },
@@ -82,13 +94,17 @@
           "color": "magenta"
         }
       ],
-      "tags": ["rag", "legal", "knowledge-graph"],
+      "tags": ["rag", "legal", "neo4j", "knowledge-graph"],
       "year": 2023,
       "featured": true
     },
     {
       "id": "vision-classify",
       "status": "LIVE",
+      "evolution": {
+        "en": "2023 (teaching computers to shop)",
+        "it": "2023 (insegnando ai computer a fare shopping)"
+      },
       "title": {
         "en": "VISION_CLASSIFY",
         "it": "VISION_CLASSIFY"
@@ -116,27 +132,41 @@
     {
       "id": "hr-assistant",
       "status": "LIVE",
+      "evolution": {
+        "en": "2023 → 2025 (RAG got an upgrade)",
+        "it": "2023 → 2025 (RAG ha fatto l'upgrade)"
+      },
       "title": {
         "en": "HR_ASSISTANT",
         "it": "HR_ASSISTANT"
       },
       "description": {
-        "en": "NLP queries • guardrails • HITL escalation",
-        "it": "Query NLP • guardrails • escalation HITL"
+        "en": "RAG-powered HR assistant • vector search • Supabase",
+        "it": "Assistente HR con RAG • vector search • Supabase"
       },
       "longDescription": {
-        "en": "Built conversational AI chatbot enabling employees to access HR and company information in natural language: PTO balance queries, room booking requests, company newsletter summaries, and policy lookups. Integrated with internal systems via API, with guardrails and human-in-the-loop escalation for sensitive requests.",
-        "it": "Chatbot AI conversazionale per accesso info HR e aziendali in linguaggio naturale: query balance ferie, prenotazioni sale, riassunti newsletter aziendale, lookup policy. Integrato con sistemi interni via API, con guardrails e escalation human-in-the-loop per richieste sensibili."
+        "en": "Multi-year HR chatbot evolution (2023→2025) enabling employees to access HR and company information in natural language. Started 2023 with rule-based NLP query system for basic HR lookups. Major 2025 upgrade: migrated to full RAG architecture with Supabase vector store and semantic search capabilities. Current features: PTO balance queries, room booking, newsletter summaries, policy lookups with vector search. Integrated with internal systems via API, guardrails, and human-in-the-loop escalation.",
+        "it": "Evoluzione chatbot HR multi-anno (2023→2025) per accesso info HR e aziendali in linguaggio naturale. Partenza 2023 con sistema query NLP rule-based per lookup HR base. Upgrade maggiore 2025: migrazione ad architettura RAG completa con Supabase vector store e semantic search. Features attuali: query ferie, prenotazioni, riassunti newsletter, lookup policy con vector search. Integrato con sistemi interni via API, guardrails ed escalation human-in-the-loop."
       },
-      "techStack": ["LangChain", "FastAPI", "Custom Agents", "NLP"],
-      "metrics": [],
-      "tags": ["nlp", "chatbot", "hr-automation"],
-      "year": 2022,
+      "techStack": ["LangChain", "Supabase", "RAG", "Vector Search", "FastAPI"],
+      "metrics": [
+        {
+          "label": { "en": "Query Accuracy", "it": "Accuratezza Query" },
+          "value": "↑ 45%",
+          "color": "cyan"
+        }
+      ],
+      "tags": ["rag", "chatbot", "hr-automation", "vector-search"],
+      "year": 2023,
       "featured": false
     },
     {
       "id": "hybrid-recsys",
       "status": "LIVE",
+      "evolution": {
+        "en": "2022 (when speed was everything)",
+        "it": "2022 (quando la velocità era tutto)"
+      },
       "title": {
         "en": "HYBRID_RECSYS",
         "it": "HYBRID_RECSYS"

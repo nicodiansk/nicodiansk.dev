@@ -3,8 +3,9 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { Brain, Eye, Server, Database } from 'lucide-react';
 import skillsDataRaw from '@/data/skills.json';
 import { SkillsData } from '@/types/data';
 import { textColorClasses, bgColorClasses, borderColorClasses, bgOpacityClasses } from '@/lib/colorClasses';
@@ -15,8 +16,22 @@ const skillsData = skillsDataRaw as SkillsData;
 export default function Skills() {
   const { language, t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState(skillsData.categories[0].id);
+  const [animateProgress, setAnimateProgress] = useState(false);
 
   const category = skillsData.categories.find(cat => cat.id === activeCategory);
+
+  // Reset and trigger progress bar animation when category changes
+  useEffect(() => {
+    // Reset to 0% immediately
+    setAnimateProgress(false);
+
+    // Small delay to ensure reset renders, then animate to target width
+    const timer = setTimeout(() => {
+      setAnimateProgress(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [activeCategory]);
 
   return (
     <section id="skills" className="min-h-screen py-20 bg-gradient-to-b from-cyber-dark to-black">
@@ -42,11 +57,11 @@ export default function Skills() {
                     : 'border-gray-800 hover:border-gray-700'
                 }`}
               >
-                <div className={`text-2xl mb-2 ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-500'}`}>
-                  {cat.icon === 'brain' && '🤖'}
-                  {cat.icon === 'eye' && '👁️'}
-                  {cat.icon === 'server' && '🖥️'}
-                  {cat.icon === 'database' && '🗄️'}
+                <div className={`mb-2 ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-500'}`}>
+                  {cat.icon === 'brain' && <Brain className="w-8 h-8" />}
+                  {cat.icon === 'eye' && <Eye className="w-8 h-8" />}
+                  {cat.icon === 'server' && <Server className="w-8 h-8" />}
+                  {cat.icon === 'database' && <Database className="w-8 h-8" />}
                 </div>
                 <div className={`font-bold text-sm ${activeCategory === cat.id ? textColorClasses[cat.color] : 'text-gray-400'}`}>
                   {cat.title[language]}
@@ -77,8 +92,7 @@ export default function Skills() {
                     <div
                       className={`h-full ${bgColorClasses[category.color]} transition-all duration-1000 ease-out`}
                       style={{
-                        width: `${skill.level}%`,
-                        animation: 'progress-fill 1.5s ease-out',
+                        width: animateProgress ? `${skill.level}%` : '0%',
                       }}
                     />
                   </div>

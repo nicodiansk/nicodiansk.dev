@@ -13,7 +13,7 @@
         "loading_llm": "Loading LLM modules...",
         "connecting_vector": "Connecting vector database...",
         "initializing_neural": "Initializing neural network...",
-        "online": "⚡ SYSTEM ONLINE",
+        "online": "SYSTEM ONLINE",
         "complete": "100%"
       },
       "title": "HEAD OF AI BUSINESS UNIT",
@@ -95,15 +95,15 @@
       "language": "Language"
     },
     "errors": {
-      "database": "❌ ERROR: Database query failed",
-      "retrying": "🔄 RETRYING...",
-      "fallback": "⚠️ FALLBACK: Accessing backup server",
-      "success": "✅ SUCCESS: Records retrieved",
-      "timeout": "❌ ERROR: Connection timeout",
-      "rerouting": "🔄 REROUTING through proxy...",
-      "establishing": "🔐 ESTABLISHING secure channel...",
-      "transmitted": "✅ MESSAGE TRANSMITTED",
-      "overflow": "⚠️ MEMORY_OVERFLOW",
+      "database": "ERROR: Database query failed",
+      "retrying": "RETRYING...",
+      "fallback": "FALLBACK: Accessing backup server",
+      "success": "SUCCESS: Records retrieved",
+      "timeout": "ERROR: Connection timeout",
+      "rerouting": "REROUTING through proxy...",
+      "establishing": "ESTABLISHING secure channel...",
+      "transmitted": "MESSAGE TRANSMITTED",
+      "overflow": "MEMORY_OVERFLOW",
       "feature": "It's not a bug, it's a feature!"
     }
   },
@@ -121,7 +121,7 @@
         "loading_llm": "Caricamento moduli LLM...",
         "connecting_vector": "Connessione database vettoriale...",
         "initializing_neural": "Inizializzazione rete neurale...",
-        "online": "⚡ SISTEMA ONLINE",
+        "online": "SISTEMA ONLINE",
         "complete": "100%"
       },
       "title": "RESPONSABILE UNITÀ BUSINESS AI",
@@ -203,15 +203,15 @@
       "language": "Lingua"
     },
     "errors": {
-      "database": "❌ ERRORE: Query database fallita",
-      "retrying": "🔄 NUOVO TENTATIVO...",
-      "fallback": "⚠️ FALLBACK: Accesso server di backup",
-      "success": "✅ SUCCESSO: Record recuperati",
-      "timeout": "❌ ERRORE: Timeout connessione",
-      "rerouting": "🔄 REINDIRIZZAMENTO tramite proxy...",
-      "establishing": "🔐 CREAZIONE canale sicuro...",
-      "transmitted": "✅ MESSAGGIO TRASMESSO",
-      "overflow": "⚠️ OVERFLOW_MEMORIA",
+      "database": "ERRORE: Query database fallita",
+      "retrying": "NUOVO TENTATIVO...",
+      "fallback": "FALLBACK: Accesso server di backup",
+      "success": "SUCCESSO: Record recuperati",
+      "timeout": "ERRORE: Timeout connessione",
+      "rerouting": "REINDIRIZZAMENTO tramite proxy...",
+      "establishing": "CREAZIONE canale sicuro...",
+      "transmitted": "MESSAGGIO TRASMESSO",
+      "overflow": "OVERFLOW_MEMORIA",
       "feature": "Non è un bug, è una feature!"
     }
   }

@@ -62,14 +62,18 @@ export default function Projects() {
               >
                 {/* Project header */}
                 <div className="flex items-start justify-between mb-4">
-                  <div>
+                  <div className="w-full">
                     <div className="flex items-center gap-2 mb-2">
                       <span className={`px-2 py-1 text-xs font-bold ${
                         project.status === 'LIVE' ? 'bg-cyber-lime/20 text-cyber-lime' : 'bg-gray-700 text-gray-400'
                       }`}>
                         {project.status}
                       </span>
-                      <span className="text-gray-500 text-sm">{project.year}</span>
+                      {project.evolution && (
+                        <span className="text-gray-500 text-xs italic">
+                          {project.evolution[language]}
+                        </span>
+                      )}
                     </div>
                     <h3 className="text-xl font-bold text-cyber-cyan group-hover:text-cyber-lime transition-colors">
                       {project.title[language]}
@@ -128,9 +132,16 @@ export default function Projects() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-start justify-between mb-6">
-                  <h3 id="modal-title" className="text-3xl font-bold text-cyber-cyan">
-                    {selectedProjectData.title[language]}
-                  </h3>
+                  <div>
+                    <h3 id="modal-title" className="text-3xl font-bold text-cyber-cyan mb-2">
+                      {selectedProjectData.title[language]}
+                    </h3>
+                    {selectedProjectData.evolution && (
+                      <p className="text-gray-500 text-sm italic">
+                        {selectedProjectData.evolution[language]}
+                      </p>
+                    )}
+                  </div>
                   <button
                     onClick={() => setSelectedProject(null)}
                     aria-label="Close modal"

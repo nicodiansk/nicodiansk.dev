@@ -15,6 +15,7 @@ export interface ProjectMetric {
 export interface Project {
   id: string;
   status: 'LIVE' | 'DEV' | 'ARCHIVED';
+  evolution?: BilingualText;
   title: BilingualText;
   description: BilingualText;
   longDescription: BilingualText;
@@ -104,9 +105,9 @@ export interface AboutData {
   };
   contact: {
     email: string;
-    phone: string;
     linkedin: string;
     gitlab: string;
+    github: string;
   };
   work: WorkExperience;
   education: Education[];
