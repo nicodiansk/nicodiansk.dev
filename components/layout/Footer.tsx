@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import { Mail } from 'lucide-react';
+import { Mail, Heart } from 'lucide-react';
 import { SiLinkedin, SiGithub, SiGitlab } from 'react-icons/si';
 import aboutDataRaw from '@/data/about.json';
 import { AboutData } from '@/types/data';
@@ -153,8 +153,9 @@ export default function Footer() {
               <span className="text-cyber-cyan">&copy; {currentYear}</span> Nicholas Previtali.{' '}
               {t.footer.rights}
             </div>
-            <div className="font-mono text-gray-400">
-              <span className="text-cyber-magenta">❤️</span> {t.footer.madeIn}
+            <div className="font-mono text-gray-400 flex items-center gap-2">
+              <Heart className="w-4 h-4 text-cyber-magenta fill-cyber-magenta" />
+              {t.footer.madeIn}
             </div>
           </div>
 

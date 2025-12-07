@@ -4,6 +4,7 @@
 'use client';
 
 import React, { Component, ReactNode } from 'react';
+import { AlertTriangle } from 'lucide-react';
 
 interface Props {
   children: ReactNode;
@@ -38,8 +39,9 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen flex items-center justify-center bg-cyber-dark p-4">
           <div className="max-w-lg border-2 border-cyber-magenta p-8 bg-black/50">
-            <h2 className="text-2xl font-bold text-cyber-magenta mb-4">
-              ⚠️ SYSTEM_ERROR
+            <h2 className="text-2xl font-bold text-cyber-magenta mb-4 flex items-center gap-3">
+              <AlertTriangle className="w-7 h-7" />
+              SYSTEM_ERROR
             </h2>
             <p className="text-gray-400 mb-4">
               An unexpected error occurred in this section.

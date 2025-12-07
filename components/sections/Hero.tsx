@@ -5,6 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { Zap } from 'lucide-react';
 import aboutDataRaw from '@/data/about.json';
 import { AboutData } from '@/types/data';
 import GlitchText from '@/components/effects/GlitchText';
@@ -71,7 +72,8 @@ export default function Hero() {
                 </div>
               )}
               {bootStage >= 5 && (
-                <div className="text-cyber-lime text-lg font-bold mt-4 animate-neon-glow">
+                <div className="text-cyber-lime text-lg font-bold mt-4 animate-neon-glow flex items-center gap-2 justify-center">
+                  <Zap className="w-5 h-5 fill-cyber-lime" />
                   {t.hero.boot.online}
                 </div>
               )}
