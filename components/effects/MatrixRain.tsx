@@ -27,31 +27,35 @@ export default function MatrixRain({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size to window size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
     // Matrix characters - using code-related symbols and letters
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
     const charArray = chars.split('');
-
     const fontSize = 16;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops: number[] = Array(columns).fill(0);
 
-    // Adjust number of active columns based on density
-    const activeColumns = Math.floor(columns * density);
-    const activeIndices = new Set<number>();
+    let columns = 0;
+    let drops: number[] = [];
+    let activeIndices = new Set<number>();
 
-    // Randomly select which columns will be active
-    while (activeIndices.size < activeColumns) {
-      activeIndices.add(Math.floor(Math.random() * columns));
-    }
+    // Initialize or recalculate matrix parameters
+    const initializeMatrix = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      columns = Math.floor(canvas.width / fontSize);
+      drops = Array(columns).fill(0);
+
+      // Adjust number of active columns based on density
+      const activeColumns = Math.floor(columns * density);
+      activeIndices = new Set<number>();
+
+      // Randomly select which columns will be active
+      while (activeIndices.size < activeColumns) {
+        activeIndices.add(Math.floor(Math.random() * columns));
+      }
+    };
+
+    initializeMatrix();
+    window.addEventListener('resize', initializeMatrix);
 
     let animationId: number;
     let lastTime = 0;
@@ -96,7 +100,7 @@ export default function MatrixRain({
     animationId = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', initializeMatrix);
       cancelAnimationFrame(animationId);
     };
   }, [density, speed, color]);

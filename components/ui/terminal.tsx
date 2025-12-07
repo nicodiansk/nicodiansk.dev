@@ -1,7 +1,7 @@
 // ABOUTME: Terminal UI component with sequential typing animations for cyberpunk boot sequences
 // ABOUTME: Supports AnimatedSpan (fade-in text) and TypingAnimation (typewriter effect) with auto-sequencing
 
-"use client"
+'use client'
 
 import {
   Children,

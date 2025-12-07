@@ -23,8 +23,9 @@ export default function TextScramble({
   triggerOnView = true,
 }: TextScrambleProps) {
   const [displayText, setDisplayText] = useState(text);
-  const [isScrambling, setIsScrambling] = useState(false);
   const elementRef = useRef<HTMLSpanElement>(null);
+  const hasScrambledRef = useRef(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (!triggerOnView) {
@@ -34,7 +35,7 @@ export default function TextScramble({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !isScrambling) {
+        if (entries[0].isIntersecting && !hasScrambledRef.current) {
           startScramble();
         }
       },
@@ -45,20 +46,32 @@ export default function TextScramble({
       observer.observe(elementRef.current);
     }
 
-    return () => observer.disconnect();
-  }, [triggerOnView, isScrambling]);
+    return () => {
+      observer.disconnect();
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [triggerOnView, duration, scrambleSpeed, text]);
 
   const startScramble = () => {
-    setIsScrambling(true);
+    hasScrambledRef.current = true;
     const textLength = text.length;
     const scrambleIterations = duration / scrambleSpeed;
     let currentIteration = 0;
 
-    const scrambleInterval = setInterval(() => {
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    intervalRef.current = setInterval(() => {
       if (currentIteration >= scrambleIterations) {
         setDisplayText(text);
-        setIsScrambling(false);
-        clearInterval(scrambleInterval);
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
         return;
       }
 
@@ -79,8 +92,6 @@ export default function TextScramble({
       setDisplayText(newText);
       currentIteration++;
     }, scrambleSpeed);
-
-    return () => clearInterval(scrambleInterval);
   };
 
   return (

@@ -22,9 +22,14 @@ export default function CyberParticles({
   useEffect(() => {
     initParticlesEngine(async (engine: Engine) => {
       await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
+    })
+      .then(() => {
+        setInit(true);
+      })
+      .catch((error) => {
+        console.error('Failed to initialize particles engine:', error);
+        // Silently fail - particles are decorative and non-essential
+      });
   }, []);
 
   const options: ISourceOptions = {
@@ -104,7 +109,7 @@ export default function CyberParticles({
     <Particles
       id="cyber-particles"
       options={options}
-      className={`fixed inset-0 pointer-events-auto ${className}`}
+      className={`fixed inset-0 pointer-events-none ${className}`}
       style={{ zIndex: 2 }}
     />
   );
