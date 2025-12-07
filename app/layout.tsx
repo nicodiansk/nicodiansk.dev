@@ -6,6 +6,7 @@ import { Share_Tech_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BackgroundEffects from "@/components/layout/BackgroundEffects";
 import "./globals.css";
 
 const shareTechMono = Share_Tech_Mono({
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${shareTechMono.variable} font-mono antialiased bg-cyber-dark text-white`}>
+        <BackgroundEffects />
         <LanguageProvider>
           <Header />
           {children}
