@@ -11,8 +11,8 @@ import { ProjectsData } from '@/types/data';
 import { textColorClasses } from '@/lib/colorClasses';
 import GlitchText from '@/components/effects/GlitchText';
 import { OrbitingCircles } from '@/components/ui/OrbitingCircles';
-import { getTechLogoPath, getProjectIconPath } from '@/lib/techLogos';
-import Image from 'next/image';
+import { TechIcon } from '@/components/ui/TechIcon';
+import { Code2, Search, Scale, Eye, Users, Star } from 'lucide-react';
 
 const projectsData = projectsDataRaw as ProjectsData;
 
@@ -229,13 +229,12 @@ export default function Projects() {
                       {/* Center Project Icon */}
                       <div className="absolute inset-0 flex items-center justify-center z-10">
                         <div className="w-20 h-20 rounded-full bg-cyber-dark border-2 border-cyber-cyan flex items-center justify-center shadow-lg shadow-cyber-cyan/30">
-                          <Image
-                            src={getProjectIconPath(selectedProjectData.id)}
-                            alt={selectedProjectData.title[language]}
-                            width={48}
-                            height={48}
-                            className="opacity-80"
-                          />
+                          {selectedProjectData.id === 'dev-velocity-mcp' && <Code2 className="w-12 h-12 text-cyber-cyan" />}
+                          {selectedProjectData.id === 'geo-seo-engine' && <Search className="w-12 h-12 text-cyber-magenta" />}
+                          {selectedProjectData.id === 'legal-rag-v2' && <Scale className="w-12 h-12 text-cyber-yellow" />}
+                          {selectedProjectData.id === 'vision-classify' && <Eye className="w-12 h-12 text-cyber-magenta" />}
+                          {selectedProjectData.id === 'hr-assistant' && <Users className="w-12 h-12 text-cyber-cyan" />}
+                          {selectedProjectData.id === 'hybrid-recsys' && <Star className="w-12 h-12 text-cyber-lime" />}
                         </div>
                       </div>
 
@@ -246,14 +245,11 @@ export default function Projects() {
                         iconSize={50}
                       >
                         {selectedProjectData.primaryTech.map((tech) => (
-                          <Image
+                          <TechIcon
                             key={tech}
-                            src={getTechLogoPath(tech)}
-                            alt={tech}
-                            width={32}
-                            height={32}
+                            techName={tech}
+                            size={32}
                             className="opacity-90"
-                            title={tech}
                           />
                         ))}
                       </OrbitingCircles>
