@@ -1,5 +1,5 @@
-// ABOUTME: Hero section with cyberpunk terminal boot sequence (5-stage loading animation)
-// ABOUTME: Features typewriter effect, progress bars, glitch text, and smooth fade-in reveal
+// ABOUTME: Hero section with cyberpunk terminal boot sequence using Magic UI Terminal component
+// ABOUTME: Features typewriter effects, animated progress bars, glitch text, and smooth fade-in reveal
 
 'use client';
 
@@ -9,33 +9,18 @@ import { Zap } from 'lucide-react';
 import aboutDataRaw from '@/data/about.json';
 import { AboutData } from '@/types/data';
 import GlitchText from '@/components/effects/GlitchText';
+import { Terminal, TypingAnimation, AnimatedSpan } from '@/components/ui/terminal';
 
 const aboutData = aboutDataRaw as AboutData;
 
 export default function Hero() {
   const { t } = useLanguage();
-  const [bootStage, setBootStage] = useState(0);
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    const stages = [
-      { delay: 500, duration: 1000 },  // Stage 0: initializing
-      { delay: 1500, duration: 800 },  // Stage 1: loading LLM
-      { delay: 2300, duration: 800 },  // Stage 2: connecting vector db
-      { delay: 3100, duration: 800 },  // Stage 3: initializing neural net
-      { delay: 3900, duration: 500 },  // Stage 4: system online
-    ];
-
-    const timers = stages.map((stage, index) => {
-      return setTimeout(() => {
-        setBootStage(index + 1);
-        if (index === stages.length - 1) {
-          setTimeout(() => setShowContent(true), 500);
-        }
-      }, stage.delay);
-    });
-
-    return () => timers.forEach(clearTimeout);
+    // Show hero content after terminal boot sequence completes (approximately 6 seconds)
+    const timer = setTimeout(() => setShowContent(true), 6000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -47,36 +32,25 @@ export default function Hero() {
         {/* Terminal boot sequence */}
         <div className="max-w-3xl mx-auto">
           {!showContent && (
-            <div className="font-mono text-sm space-y-2 mb-12">
-              {bootStage >= 1 && (
-                <div className="text-cyber-cyan animate-flicker">
+            <div className="flex justify-center mb-12">
+              <Terminal className="w-full max-w-2xl">
+                <TypingAnimation duration={40} className="text-cyber-cyan">
                   {t.hero.boot.initializing}
-                </div>
-              )}
-              {bootStage >= 2 && (
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-400">{t.hero.boot.loading_llm}</span>
-                  <span className="text-cyber-lime">[████████] {t.hero.boot.complete}</span>
-                </div>
-              )}
-              {bootStage >= 3 && (
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-400">{t.hero.boot.connecting_vector}</span>
-                  <span className="text-cyber-lime">[████████] {t.hero.boot.complete}</span>
-                </div>
-              )}
-              {bootStage >= 4 && (
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-400">{t.hero.boot.initializing_neural}</span>
-                  <span className="text-cyber-lime">[████████] {t.hero.boot.complete}</span>
-                </div>
-              )}
-              {bootStage >= 5 && (
-                <div className="text-cyber-lime text-lg font-bold mt-4 animate-neon-glow flex items-center gap-2 justify-center">
-                  <Zap className="w-5 h-5 fill-cyber-lime" />
+                </TypingAnimation>
+                <AnimatedSpan className="text-gray-400">
+                  {t.hero.boot.loading_llm} <span className="text-cyber-lime">[████████] {t.hero.boot.complete}</span>
+                </AnimatedSpan>
+                <AnimatedSpan className="text-gray-400">
+                  {t.hero.boot.connecting_vector} <span className="text-cyber-lime">[████████] {t.hero.boot.complete}</span>
+                </AnimatedSpan>
+                <AnimatedSpan className="text-gray-400">
+                  {t.hero.boot.initializing_neural} <span className="text-cyber-lime">[████████] {t.hero.boot.complete}</span>
+                </AnimatedSpan>
+                <AnimatedSpan className="text-cyber-lime text-lg font-bold mt-2 flex items-center gap-2">
+                  <Zap className="w-5 h-5 fill-cyber-lime inline-block" />
                   {t.hero.boot.online}
-                </div>
-              )}
+                </AnimatedSpan>
+              </Terminal>
             </div>
           )}
 
