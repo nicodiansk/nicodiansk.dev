@@ -113,9 +113,9 @@ See [LICENSE](LICENSE) for details.
 Head of AI Business Unit @ S.I. 2001 SpA
 Specialized in Generative AI, RAG, and Multi-Agent Systems
 
-- LinkedIn: [nicholas-previtali](https://www.linkedin.com/in/nicholas-previtali/)
+- LinkedIn: [nicholas-previtali](https://www.linkedin.com/in/nicholas-previtali/](https://www.linkedin.com/in/nicholas-previtali-660b83190/))
 - GitLab: [@nicodiansk](https://gitlab.com/nicodiansk)
-- Email: nicholas.previtali@me.com
+- Email: nicholasprevitali96@gmail.com
 
 ---
 
