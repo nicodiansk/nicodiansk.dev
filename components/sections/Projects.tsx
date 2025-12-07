@@ -41,10 +41,10 @@ export default function Projects() {
               <button
                 key={filterOption}
                 onClick={() => setFilter(filterOption)}
-                className={`px-4 py-2 border transition-all duration-300 ${
+                className={`px-4 py-2 border transition-all duration-300 rounded-lg ${
                   filter === filterOption
-                    ? 'border-cyber-cyan text-cyber-cyan bg-cyber-cyan/10'
-                    : 'border-gray-700 text-gray-400 hover:border-cyber-cyan/50'
+                    ? 'border-cyber-cyan text-cyber-cyan bg-cyber-cyan/10 shadow-lg shadow-cyber-cyan/20'
+                    : 'border-gray-700 text-gray-400 hover:border-cyber-cyan/50 hover:bg-gray-800/30'
                 }`}
               >
                 {filterOption === 'all' ? t.projects.filterAll : t.projects.status.live}
@@ -57,15 +57,18 @@ export default function Projects() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="border border-gray-800 hover:border-cyber-cyan transition-all duration-300 p-6 bg-cyber-dark/50 backdrop-blur cursor-pointer group"
+                className="relative border border-gray-800 hover:border-cyber-cyan transition-all duration-500 p-6 bg-cyber-dark/50 backdrop-blur cursor-pointer group rounded-lg overflow-hidden"
                 onClick={() => setSelectedProject(project.id)}
               >
+                {/* Gradient border effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyber-cyan/20 via-cyber-magenta/20 to-cyber-lime/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg pointer-events-none" />
+
                 {/* Project header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-full">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className={`px-2 py-1 text-xs font-bold ${
-                        project.status === 'LIVE' ? 'bg-cyber-lime/20 text-cyber-lime' : 'bg-gray-700 text-gray-400'
+                    <div className="flex items-center gap-2 mb-2 relative z-10">
+                      <span className={`px-2 py-1 text-xs font-bold rounded-md ${
+                        project.status === 'LIVE' ? 'bg-cyber-lime/20 text-cyber-lime border border-cyber-lime/30' : 'bg-gray-700 text-gray-400'
                       }`}>
                         {project.status}
                       </span>
@@ -87,11 +90,11 @@ export default function Projects() {
                 </p>
 
                 {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-4 relative z-10">
                   {project.techStack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-2 py-1 border border-gray-700 text-gray-400"
+                      className="text-xs px-2 py-1 border border-gray-700 text-gray-400 rounded-md bg-cyber-dark/80 hover:border-gray-500 transition-colors duration-200"
                     >
                       {tech}
                     </span>
@@ -128,7 +131,7 @@ export default function Projects() {
               }}
             >
               <div
-                className="bg-cyber-dark border-2 border-cyber-cyan max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8"
+                className="bg-cyber-dark border-2 border-cyber-cyan max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 rounded-xl shadow-2xl shadow-cyber-cyan/20"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-start justify-between mb-6">
@@ -162,7 +165,7 @@ export default function Projects() {
                       {selectedProjectData.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 border border-cyber-magenta/50 text-cyber-magenta text-sm"
+                          className="px-3 py-1 border border-cyber-magenta/50 text-cyber-magenta text-sm rounded-md hover:bg-cyber-magenta/10 transition-colors duration-300"
                         >
                           {tech}
                         </span>
