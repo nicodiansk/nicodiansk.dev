@@ -12,7 +12,8 @@
       "Bash(npm install)",
       "Bash(npm install:*)",
       "Bash(gh api:*)",
-      "Bash(gh run list:*)"
+      "Bash(gh run list:*)",
+      "WebFetch(domain:magicui.design)"
     ],
     "deny": [],
     "ask": []

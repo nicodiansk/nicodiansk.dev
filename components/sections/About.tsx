@@ -30,7 +30,7 @@ export default function About() {
           {/* Left Column: Bio, Mission, Work */}
           <div className="space-y-6">
             {/* Bio Panel */}
-            <div className="border-2 border-cyber-magenta bg-black/50 p-6">
+            <div className="border-2 border-cyber-magenta bg-black/50 p-6 rounded-lg hover:shadow-lg hover:shadow-cyber-magenta/20 transition-shadow duration-500">
               <h3 className="text-xl font-bold text-cyber-cyan mb-4 font-mono">
                 &gt; {t.about.bio}
               </h3>
@@ -38,7 +38,7 @@ export default function About() {
             </div>
 
             {/* Mission Panel */}
-            <div className="border-2 border-cyber-cyan bg-black/50 p-6">
+            <div className="border-2 border-cyber-cyan bg-black/50 p-6 rounded-lg hover:shadow-lg hover:shadow-cyber-cyan/20 transition-shadow duration-500">
               <h3 className="text-xl font-bold text-cyber-lime mb-4 font-mono">
                 &gt; {t.about.mission}
               </h3>
@@ -48,7 +48,7 @@ export default function About() {
             </div>
 
             {/* Current Work Panel */}
-            <div className="border-2 border-cyber-yellow bg-black/50 p-6">
+            <div className="border-2 border-cyber-yellow bg-black/50 p-6 rounded-lg hover:shadow-lg hover:shadow-cyber-yellow/20 transition-shadow duration-500">
               <h3 className="text-xl font-bold text-cyber-yellow mb-4 font-mono">
                 &gt; {t.about.work}
               </h3>
@@ -86,13 +86,13 @@ export default function About() {
           {/* Right Column: Education, Hobbies, Languages */}
           <div className="space-y-6">
             {/* Education Panel */}
-            <div className="border-2 border-cyber-lime bg-black/50 p-6">
+            <div className="border-2 border-cyber-lime bg-black/50 p-6 rounded-lg hover:shadow-lg hover:shadow-cyber-lime/20 transition-shadow duration-500">
               <h3 className="text-xl font-bold text-cyber-lime mb-4 font-mono">
                 &gt; {t.about.education}
               </h3>
               <div className="space-y-6">
                 {aboutData.education.map((edu, idx) => (
-                  <div key={idx} className="border-l-2 border-cyber-lime pl-4">
+                  <div key={idx} className="border-l-2 border-cyber-lime pl-4 rounded-r-md">
                     <p className="text-white font-bold">{edu.degree[language]}</p>
                     <p className="text-gray-400">{edu.institution}</p>
                     <p className="text-gray-500 text-sm">{edu.location}</p>
@@ -110,7 +110,7 @@ export default function About() {
             </div>
 
             {/* Hobbies Panel */}
-            <div className="border-2 border-cyber-cyan bg-black/50 p-6">
+            <div className="border-2 border-cyber-cyan bg-black/50 p-6 rounded-lg hover:shadow-lg hover:shadow-cyber-cyan/20 transition-shadow duration-500">
               <h3 className="text-xl font-bold text-cyber-cyan mb-4 font-mono">
                 &gt; {t.about.hobbies}
               </h3>
@@ -125,7 +125,7 @@ export default function About() {
             </div>
 
             {/* Languages Panel */}
-            <div className="border-2 border-cyber-magenta bg-black/50 p-6">
+            <div className="border-2 border-cyber-magenta bg-black/50 p-6 rounded-lg hover:shadow-lg hover:shadow-cyber-magenta/20 transition-shadow duration-500">
               <h3 className="text-xl font-bold text-cyber-magenta mb-4 font-mono">
                 &gt; {t.about.languages}
               </h3>
@@ -136,9 +136,9 @@ export default function About() {
                       <span className="text-white">{lang.name}</span>
                       <span className="text-cyber-cyan text-sm">{lang.level[language]}</span>
                     </div>
-                    <div className="w-full bg-gray-800 h-2">
+                    <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
                       <div
-                        className="h-2 bg-cyber-magenta"
+                        className="h-2 bg-cyber-magenta transition-all duration-500 rounded-full"
                         style={{ width: `${lang.proficiency}%` }}
                       />
                     </div>
@@ -150,7 +150,7 @@ export default function About() {
         </div>
 
         {/* Location Info */}
-        <div className="mt-8 border-2 border-cyber-yellow bg-black/50 p-4 inline-block">
+        <div className="mt-8 border-2 border-cyber-yellow bg-black/50 p-4 inline-block rounded-lg hover:shadow-lg hover:shadow-cyber-yellow/20 transition-shadow duration-500">
           <p className="text-gray-400">
             <span className="text-cyber-yellow">{t.about.location}:</span>{' '}
             <span className="text-white">

@@ -16,8 +16,8 @@
         "it": "SSOT via Confluence+Slack+Jira → assistenti AI per coding"
       },
       "longDescription": {
-        "en": "Architected MCP-based system integrating Confluence, Slack, and Jira as Single Source of Truth for AI coding assistants. Designed custom agents with single-scope responsibilities (code review, docs ingestion, context building) using advanced prompt engineering, orchestrating Claude + Gemini cooperation for context-aware development.",
-        "it": "Sistema MCP che integra Confluence, Slack e Jira come Single Source of Truth per assistenti AI di coding. Agenti personalizzati con responsabilità specifiche (code review, docs ingestion, context building) usando prompt engineering avanzato, orchestrando cooperazione Claude + Gemini per sviluppo context-aware."
+        "en": "Architected MCP-based system integrating Confluence, Slack, and Jira as Single Source of Truth (SSOT) for AI coding assistants (Claude Code, Cursor). Designed custom agents with single-scope responsibilities (code review, documentation ingestion, context building) using advanced prompt engineering techniques. Orchestrated multi-model cooperation (Claude + Gemini) for context-aware development, enabling real-time access to project documentation and reducing context-switching overhead. Achieved ~60-70% improvement in team development velocity through AI-powered automation.",
+        "it": "Sistema MCP che integra Confluence, Slack e Jira come Single Source of Truth (SSOT) per assistenti AI di coding (Claude Code, Cursor). Agenti personalizzati con responsabilità specifiche (code review, docs ingestion, context building) usando tecniche avanzate di prompt engineering. Orchestrazione cooperazione multi-modello (Claude + Gemini) per sviluppo context-aware, abilitando accesso real-time a documentazione progetto e riducendo overhead context-switching. Raggiunto ~60-70% miglioramento velocità sviluppo team tramite automazione AI."
       },
       "techStack": ["Claude", "Gemini", "LangGraph", "MCP", "LangChain"],
       "metrics": [
@@ -47,8 +47,8 @@
         "it": "Auto-gen contenuti prodotti • FAQ • JSON-LD • multilingua"
       },
       "longDescription": {
-        "en": "Built end-to-end AI pipeline for automatic product enhancement: descriptions, FAQs, structured data (JSON-LD), and multilingual tone-of-voice adaptation. AI-powered product feed optimization using latest OpenAI models for GEO (Generative Engine Optimization) and SEO discoverability.",
-        "it": "Pipeline AI end-to-end per enhancement automatico prodotti: descrizioni, FAQ, dati strutturati (JSON-LD), e adattamento multilingua del tono di voce. Ottimizzazione feed prodotti con modelli OpenAI per GEO (Generative Engine Optimization) e SEO."
+        "en": "Built end-to-end AI pipeline for automatic e-commerce product enhancement: generating descriptions, FAQs, structured data (JSON-LD schema markup), and multilingual tone-of-voice adaptation. Developed AI-powered product feed optimization using latest OpenAI models (GPT-4, GPT-4o) for GEO (Generative Engine Optimization) and SEO discoverability. Reduced manual content optimization time by ~80% while maintaining brand consistency across multiple languages and product categories.",
+        "it": "Pipeline AI end-to-end per enhancement automatico prodotti e-commerce: generazione descrizioni, FAQ, dati strutturati (JSON-LD schema markup), e adattamento multilingua tono di voce. Ottimizzazione feed prodotti AI con modelli OpenAI più recenti (GPT-4, GPT-4o) per GEO (Generative Engine Optimization) e SEO. Ridotto tempo ottimizzazione contenuti manuale di ~80% mantenendo consistenza brand su più lingue e categorie prodotti."
       },
       "techStack": ["OpenAI", "FastAPI", "Knowledge Graphs", "NLP"],
       "metrics": [
@@ -78,8 +78,8 @@
         "it": "100K+ doc • knowledge graph Neo4j • cross-citation"
       },
       "longDescription": {
-        "en": "Multi-year RAG platform evolution (2023→2025) for ~100K Italian legal documents. Started 2023 with foundational retrieval architecture and hybrid search (semantic + lexical). Major 2024-2025 upgrade: integrated Neo4j knowledge graphs for legal entity relationships, cross-citation networks, and precedent tracking. Current stack includes multimodal RAG, domain-specific embeddings, vector databases, and optimized context window management for large-scale legal document processing.",
-        "it": "Evoluzione piattaforma RAG multi-anno (2023→2025) per ~100K documenti legali italiani. Partenza 2023 con architettura retrieval e hybrid search (semantica + lessicale). Upgrade maggiore 2024-2025: integrazione Neo4j knowledge graphs per relazioni entità legali, reti cross-citation e tracking precedenti. Stack attuale include RAG multimodale, embeddings domain-specific, vector databases e gestione ottimizzata context window per processing documenti legali su larga scala."
+        "en": "Multi-year RAG platform evolution (2023→2025) architected for ~100K Italian legal documents with cross-citation handling and hierarchical retrieval. Started 2023 with foundational retrieval architecture implementing hybrid search (semantic + lexical). Major 2024-2025 upgrade: integrated Neo4j knowledge graphs for legal entity relationships, cross-citation networks, and precedent tracking. Current stack includes multimodal RAG, domain-specific legal embeddings, vector databases (Pinecone, Qdrant), and optimized context window management. Achieved 91% retrieval recall@10 and 89% answer relevance, validated via LLM-as-judge and legal expert evaluation.",
+        "it": "Evoluzione piattaforma RAG multi-anno (2023→2025) architettata per ~100K documenti legali italiani con gestione cross-citation e retrieval gerarchico. Partenza 2023 con architettura retrieval implementando hybrid search (semantica + lessicale). Upgrade maggiore 2024-2025: integrazione Neo4j knowledge graphs per relazioni entità legali, reti cross-citation e tracking precedenti. Stack attuale include RAG multimodale, embeddings domain-specific legali, vector databases (Pinecone, Qdrant) e gestione ottimizzata context window. Raggiunto 91% recall@10 retrieval e 89% rilevanza risposte, validato via LLM-as-judge e valutazione esperti legali."
       },
       "techStack": ["LangChain", "Neo4j", "Pinecone", "GPT-4", "Hybrid Search"],
       "metrics": [
@@ -114,8 +114,8 @@
         "it": "Classificazione pagine CNN • similarity immagini • product discovery"
       },
       "longDescription": {
-        "en": "Developed full ML pipeline—data collection, labeling, training, validation, and monitoring—for classifying e-commerce page types using CNN-based computer vision models. Transfer learning and custom architectures for image classification, object detection, and similarity search. Integrated with Qdrant vector database for fast similarity retrieval.",
-        "it": "Pipeline ML completa—raccolta dati, labeling, training, validazione, monitoring—per classificare tipologie pagine e-commerce usando modelli CNN di computer vision. Transfer learning e architetture custom per classificazione immagini, object detection e similarity search. Integrato con Qdrant vector database per retrieval veloce."
+        "en": "Developed complete ML pipeline—data collection, labeling, training, validation, and monitoring—for classifying e-commerce page types using CNN-based computer vision models. Implemented transfer learning and custom architectures for image classification, object detection, and visual similarity search. Integrated with Qdrant vector database for fast similarity retrieval. Eliminated ~100% of manual classification work across thousands of web pages, enabling downstream SEO automation and content optimization workflows.",
+        "it": "Pipeline ML completa—raccolta dati, labeling, training, validazione, monitoring—per classificare tipologie pagine e-commerce usando modelli CNN di computer vision. Implementato transfer learning e architetture custom per classificazione immagini, object detection e similarity search visiva. Integrato con Qdrant vector database per retrieval veloce. Eliminato ~100% lavoro classificazione manuale su migliaia pagine web, abilitando automazione SEO downstream e workflow ottimizzazione contenuti."
       },
       "techStack": ["PyTorch", "Qdrant", "Transfer Learning", "ONNX"],
       "metrics": [
@@ -145,8 +145,8 @@
         "it": "Assistente HR con RAG • vector search • Supabase"
       },
       "longDescription": {
-        "en": "Multi-year HR chatbot evolution (2023→2025) enabling employees to access HR and company information in natural language. Started 2023 with rule-based NLP query system for basic HR lookups. Major 2025 upgrade: migrated to full RAG architecture with Supabase vector store and semantic search capabilities. Current features: PTO balance queries, room booking, newsletter summaries, policy lookups with vector search. Integrated with internal systems via API, guardrails, and human-in-the-loop escalation.",
-        "it": "Evoluzione chatbot HR multi-anno (2023→2025) per accesso info HR e aziendali in linguaggio naturale. Partenza 2023 con sistema query NLP rule-based per lookup HR base. Upgrade maggiore 2025: migrazione ad architettura RAG completa con Supabase vector store e semantic search. Features attuali: query ferie, prenotazioni, riassunti newsletter, lookup policy con vector search. Integrato con sistemi interni via API, guardrails ed escalation human-in-the-loop."
+        "en": "Multi-year conversational AI chatbot evolution (2023→2025) enabling employees to access HR and company information in natural language. Started 2023 with rule-based NLP query system for basic HR lookups. Major 2025 upgrade: migrated to full RAG architecture with Supabase vector store and semantic search capabilities. Current features: PTO balance queries, room booking requests, company newsletter summaries, and policy lookups with vector search. Integrated with internal systems via API, implementing guardrails and human-in-the-loop escalation for sensitive requests. Improved query accuracy by ~45% through RAG implementation and domain-specific tuning.",
+        "it": "Evoluzione chatbot AI conversazionale multi-anno (2023→2025) per accesso info HR e aziendali in linguaggio naturale. Partenza 2023 con sistema query NLP rule-based per lookup HR base. Upgrade maggiore 2025: migrazione ad architettura RAG completa con Supabase vector store e semantic search. Features attuali: query ferie, richieste prenotazioni, riassunti newsletter aziendale e lookup policy con vector search. Integrato con sistemi interni via API, implementando guardrails ed escalation human-in-the-loop per richieste sensibili. Migliorata accuratezza query di ~45% tramite implementazione RAG e tuning domain-specific."
       },
       "techStack": ["LangChain", "Supabase", "RAG", "Vector Search", "FastAPI"],
       "metrics": [
@@ -164,22 +164,22 @@
       "id": "hybrid-recsys",
       "status": "LIVE",
       "evolution": {
-        "en": "2022 (when speed was everything)",
-        "it": "2022 (quando la velocità era tutto)"
+        "en": "2022 → 2025 (when speed was everything, still is)",
+        "it": "2022 → 2025 (quando la velocità era tutto, lo è ancora)"
       },
       "title": {
         "en": "HYBRID_RECSYS",
         "it": "HYBRID_RECSYS"
       },
       "description": {
-        "en": "Sub-100ms recs • collaborative + vector search",
-        "it": "Rec sub-100ms • collaborative + vector search"
+        "en": "Sub-100ms recs • collaborative + vector search • e-commerce",
+        "it": "Rec sub-100ms • collaborative + vector search • e-commerce"
       },
       "longDescription": {
-        "en": "Built low-latency recommendation engine combining collaborative filtering with vector similarity search. Hybrid system using semantic ranking, embeddings, vector search, and knowledge-graph signals for personalized product discovery. Optimized for minimal compute overhead while maintaining sub-100ms response times.",
-        "it": "Motore raccomandazioni low-latency combinando collaborative filtering con vector similarity search. Sistema ibrido con semantic ranking, embeddings, vector search e segnali knowledge-graph per product discovery personalizzata. Ottimizzato per minimo overhead computazionale mantenendo tempi risposta sub-100ms."
+        "en": "Built low-latency recommendation engine combining collaborative filtering with vector similarity search for e-commerce product discovery. Hybrid system leveraging semantic ranking, embeddings, vector search, and knowledge-graph signals to deliver personalized recommendations. Engineered for minimal compute overhead while maintaining strict sub-100ms response time requirements for real-time user experience.",
+        "it": "Motore raccomandazioni low-latency combinando collaborative filtering con vector similarity search per product discovery e-commerce. Sistema ibrido che sfrutta semantic ranking, embeddings, vector search e segnali knowledge-graph per raccomandazioni personalizzate. Progettato per minimo overhead computazionale mantenendo requisiti rigorosi di sub-100ms per esperienza utente real-time."
       },
-      "techStack": ["Embeddings", "Custom Rankers", "Vector Search", "Collaborative Filtering"],
+      "techStack": ["Embeddings", "Semantic Ranking", "Vector Search", "Collaborative Filtering", "Knowledge Graphs"],
       "metrics": [
         {
           "label": { "en": "Response Time", "it": "Tempo Risposta" },
@@ -187,8 +187,8 @@
           "color": "lime"
         }
       ],
-      "tags": ["recommendation", "hybrid-search", "low-latency"],
-      "year": 2022,
+      "tags": ["recommendation", "hybrid-search", "low-latency", "e-commerce"],
+      "year": 2025,
       "featured": false
     }
   ]

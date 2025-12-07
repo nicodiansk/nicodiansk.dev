@@ -50,8 +50,24 @@
           "it": "Gestito delivery end-to-end di 10+ soluzioni AI, guidando efficienze di automazione e miglioramento customer experience nei domini legale, e-commerce, industriale e HR"
         },
         {
-          "en": "Architected multimodal RAG systems implementing hybrid search, knowledge graphs, and domain-specific embeddings",
-          "it": "Architettato sistemi RAG multimodali implementando hybrid search, knowledge graphs ed embeddings domain-specific"
+          "en": "Architected multimodal RAG systems across legal, industrial, and e-commerce domains, implementing hybrid search (semantic + lexical), knowledge graphs (Neo4j), domain-specific embeddings, and vector databases (Pinecone, Qdrant, Weaviate)",
+          "it": "Architettato sistemi RAG multimodali su domini legale, industriale ed e-commerce, implementando hybrid search (semantica + lessicale), knowledge graphs (Neo4j), embeddings domain-specific e vector databases (Pinecone, Qdrant, Weaviate)"
+        },
+        {
+          "en": "Designed and deployed LLM-powered AI agents automating business workflows using LangGraph, LangChain, OpenAI Function Calling, and MCP, implementing reliability layers including guardrails, fallback policies, and human-in-the-loop escalation",
+          "it": "Progettato e deployato agenti AI LLM-powered per automazione workflow business usando LangGraph, LangChain, OpenAI Function Calling e MCP, implementando layer di affidabilità inclusi guardrails, policy fallback ed escalation human-in-the-loop"
+        },
+        {
+          "en": "Architected MCP-based integrations connecting Confluence, Slack, and Jira as Single Source of Truth (SSOT), enabling AI coding assistants (Claude Code, Cursor) to access real-time project context and improving team development velocity by ~60-70%",
+          "it": "Architettato integrazioni MCP connettendo Confluence, Slack e Jira come Single Source of Truth (SSOT), abilitando assistenti AI coding (Claude Code, Cursor) ad accedere contesto progetto real-time e migliorando velocità sviluppo team di ~60-70%"
+        },
+        {
+          "en": "Developed AI-powered product feed optimization pipelines using latest OpenAI models for GEO (Generative Engine Optimization) and SEO discoverability, reducing content optimization time by ~80%",
+          "it": "Sviluppato pipeline ottimizzazione feed prodotti AI usando modelli OpenAI più recenti per GEO (Generative Engine Optimization) e SEO, riducendo tempo ottimizzazione contenuti di ~80%"
+        },
+        {
+          "en": "Developed and fine-tuned CNN-based computer vision models using transfer learning and custom architectures, integrated AI workflows into production using FastAPI microservices, Docker, and Azure AKS with monitoring pipelines tracking latency, cost, and success rates",
+          "it": "Sviluppato e fine-tuned modelli computer vision CNN usando transfer learning e architetture custom, integrato workflow AI in produzione usando microservizi FastAPI, Docker e Azure AKS con pipeline monitoring tracciamento latenza, costi e success rate"
         }
       ]
     }
