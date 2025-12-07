@@ -2,7 +2,7 @@
 // ABOUTME: Renders nodes and arrows showing technology flow with cyberpunk styling
 
 import React from 'react';
-import { ArrowRight, Database, Zap, Brain, Code2, Network } from 'lucide-react';
+import { ArrowDown, Database, Zap, Brain, Code2, Network } from 'lucide-react';
 
 export interface FlowNode {
   id: string;
@@ -28,7 +28,7 @@ const iconMap = {
   input: Code2,
   process: Zap,
   storage: Database,
-  output: ArrowRight,
+  output: Code2,
   agent: Brain,
 };
 
@@ -77,7 +77,7 @@ export function ArchitectureFlow({ nodes, connections, className = '' }: Archite
               {/* Arrow to next node */}
               {!isLastNode && nextNode && (
                 <div className="flex items-center justify-center py-2">
-                  <ArrowRight
+                  <ArrowDown
                     className={`w-6 h-6 ${arrowColorMap[nextNode.color]} animate-pulse`}
                     strokeWidth={3}
                   />
