@@ -12,18 +12,21 @@ export interface OrbitingCirclesProps extends React.HTMLAttributes<HTMLDivElemen
   radius?: number
   path?: boolean
   iconSize?: number
+  speed?: number
 }
 
 export function OrbitingCircles({
   className,
   children,
   reverse,
-  duration = 25,
-  radius = 120,
+  duration = 20,
+  radius = 160,
   path = true,
-  iconSize = 40,
+  iconSize = 30,
+  speed = 1,
   ...props
 }: OrbitingCirclesProps) {
+  const calculatedDuration = duration / speed
   return (
     <>
       {path && (
@@ -47,12 +50,10 @@ export function OrbitingCircles({
           <div
             style={
               {
-                "--duration": `${duration}s`,
-                "--radius": `${radius}px`,
+                "--duration": calculatedDuration,
+                "--radius": radius,
                 "--angle": angle,
                 "--icon-size": `${iconSize}px`,
-                top: "50%",
-                left: "50%",
               } as React.CSSProperties
             }
             className={cn(
