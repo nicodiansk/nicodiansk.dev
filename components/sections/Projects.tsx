@@ -5,7 +5,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, TrendingUp, FileText, Target, Settings, Building2 } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import projectsDataRaw from '@/data/projects.json';
 import { ProjectsData } from '@/types/data';
@@ -207,7 +207,7 @@ export default function Projects() {
                       className="mb-8"
                     >
                       <h4 className="text-cyber-lime font-bold mb-4 flex items-center gap-2 text-2xl">
-                        <span>📊</span> {t.projects.results}
+                        <TrendingUp className="w-6 h-6" /> {t.projects.results}
                       </h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {selectedProjectData.metrics.map((metric, idx) => (
@@ -263,7 +263,7 @@ export default function Projects() {
                         className="w-full flex items-center justify-between p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors"
                       >
                         <h4 className="text-cyber-magenta font-bold flex items-center gap-2">
-                          <span>📋</span> {t.projects.overview}
+                          <FileText className="w-5 h-5" /> {t.projects.overview}
                         </h4>
                         <ChevronDown className={`w-5 h-5 text-cyber-magenta transition-transform ${expandedSections.overview ? 'rotate-180' : ''}`} />
                       </button>
@@ -281,7 +281,7 @@ export default function Projects() {
                         className="w-full flex items-center justify-between p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors"
                       >
                         <h4 className="text-cyber-yellow font-bold flex items-center gap-2">
-                          <span>🎯</span> {t.projects.challenge}
+                          <Target className="w-5 h-5" /> {t.projects.challenge}
                         </h4>
                         <ChevronDown className={`w-5 h-5 text-cyber-yellow transition-transform ${expandedSections.challenge ? 'rotate-180' : ''}`} />
                       </button>
@@ -299,7 +299,7 @@ export default function Projects() {
                         className="w-full flex items-center justify-between p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors"
                       >
                         <h4 className="text-cyber-lime font-bold flex items-center gap-2">
-                          <span>⚙️</span> {t.projects.solution}
+                          <Settings className="w-5 h-5" /> {t.projects.solution}
                         </h4>
                         <ChevronDown className={`w-5 h-5 text-cyber-lime transition-transform ${expandedSections.solution ? 'rotate-180' : ''}`} />
                       </button>
@@ -317,7 +317,7 @@ export default function Projects() {
                         className="w-full flex items-center justify-between p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors"
                       >
                         <h4 className="text-cyber-cyan font-bold flex items-center gap-2">
-                          <span>🏗️</span> {t.projects.architecture}
+                          <Building2 className="w-5 h-5" /> {t.projects.architecture}
                         </h4>
                         <ChevronDown className={`w-5 h-5 text-cyber-cyan transition-transform ${expandedSections.architecture ? 'rotate-180' : ''}`} />
                       </button>

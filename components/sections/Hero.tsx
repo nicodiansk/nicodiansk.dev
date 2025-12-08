@@ -4,6 +4,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { Zap } from 'lucide-react';
 import aboutDataRaw from '@/data/about.json';
@@ -55,12 +56,18 @@ export default function Hero() {
           {/* Main hero content */}
           {showContent && (
             <div className="text-center space-y-8 animate-fade-in">
-              {/* Photo Placeholder */}
+              {/* Profile Photo */}
               <div className="flex justify-center mb-6">
                 <div className="relative w-32 h-32 md:w-40 md:h-40">
-                  <div className="w-full h-full rounded-full border-4 border-cyber-cyan bg-gray-800 flex items-center justify-center overflow-hidden">
-                    {/* Placeholder - Nicholas will add photo later */}
-                    <div className="text-6xl text-gray-600">👤</div>
+                  <div className="w-full h-full rounded-full border-4 border-cyber-cyan overflow-hidden">
+                    <Image
+                      src="/images/profile_pic.jpg"
+                      alt="Nicholas Previtali"
+                      width={160}
+                      height={160}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
                   </div>
                   {/* Animated border glow */}
                   <div className="absolute inset-0 rounded-full border-4 border-cyber-cyan opacity-50 animate-pulse" />
@@ -89,9 +96,9 @@ export default function Hero() {
               </div>
 
               <div className="space-y-2 text-xl md:text-2xl">
-                <p className="text-cyber-magenta">&gt;_ {t.hero.title}</p>
-                <p className="text-cyber-lime">&gt;_ {t.hero.subtitle}</p>
-                <p className="text-cyber-yellow">&gt;_ {t.hero.subtitle2}</p>
+                <p className="text-cyber-magenta">&gt;_ HEAD OF AI BUSINESS UNIT</p>
+                <p className="text-cyber-lime">&gt;_ GENERATIVE AI ARCHITECT</p>
+                <p className="text-cyber-yellow">&gt;_ MULTI-AGENT SYSTEMS ENGINEER</p>
               </div>
 
               <div className="pt-8">
