@@ -33,6 +33,7 @@ export default function RootLayout({
           enableMatrixRain={false}
           enableParticles={false}
           enableScanlines={false}
+          enableMeshGradient={true}
         />
         <LanguageProvider>
           <Header />

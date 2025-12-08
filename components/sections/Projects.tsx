@@ -68,9 +68,18 @@ export default function Projects() {
 
           {/* Projects grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredProjects.map((project) => (
-              <div
+            {filteredProjects.map((project, index) => (
+              <motion.div
                 key={project.id}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: [0.25, 0.4, 0.25, 1]
+                }}
+                whileHover={{ scale: 1.02, y: -4 }}
                 className="relative border border-gray-800 hover:border-cyber-cyan transition-all duration-500 p-6 bg-gray-900 cursor-pointer group rounded-lg overflow-hidden"
                 onClick={() => setSelectedProject(project.id)}
               >
@@ -128,7 +137,7 @@ export default function Projects() {
                     ))}
                   </div>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
 
