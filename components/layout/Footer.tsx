@@ -64,8 +64,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-black border-t-2 border-cyber-cyan relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,240,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,240,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]" />
 
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
