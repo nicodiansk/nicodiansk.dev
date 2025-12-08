@@ -54,7 +54,19 @@ export default function Hero() {
 
           {/* Main hero content */}
           {showContent && (
-            <div className="text-center space-y-6 animate-fade-in">
+            <div className="text-center space-y-8 animate-fade-in">
+              {/* Photo Placeholder */}
+              <div className="flex justify-center mb-6">
+                <div className="relative w-32 h-32 md:w-40 md:h-40">
+                  <div className="w-full h-full rounded-full border-4 border-cyber-cyan bg-gray-800 flex items-center justify-center overflow-hidden">
+                    {/* Placeholder - Nicholas will add photo later */}
+                    <div className="text-6xl text-gray-600">👤</div>
+                  </div>
+                  {/* Animated border glow */}
+                  <div className="absolute inset-0 rounded-full border-4 border-cyber-cyan opacity-50 animate-pulse" />
+                </div>
+              </div>
+
               <h1 className="text-5xl md:text-7xl font-bold">
                 <GlitchText
                   text={aboutData.name.toUpperCase()}
@@ -62,6 +74,19 @@ export default function Hero() {
                   intensity="medium"
                 />
               </h1>
+
+              {/* Key Metrics */}
+              <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base">
+                <div className="px-4 py-2 border border-cyber-magenta text-cyber-magenta rounded-md bg-cyber-magenta/10">
+                  <span className="font-bold">Head of AI</span>
+                </div>
+                <div className="px-4 py-2 border border-cyber-lime text-cyber-lime rounded-md bg-cyber-lime/10">
+                  <span className="font-bold">4+ Years GenAI</span>
+                </div>
+                <div className="px-4 py-2 border border-cyber-yellow text-cyber-yellow rounded-md bg-cyber-yellow/10">
+                  <span className="font-bold">6 Production Systems</span>
+                </div>
+              </div>
 
               <div className="space-y-2 text-xl md:text-2xl">
                 <p className="text-cyber-magenta">&gt;_ {t.hero.title}</p>

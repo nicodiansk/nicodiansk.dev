@@ -136,6 +136,33 @@
     }
   }
 
+  /* Subtle cyberpunk enhancements */
+  .neon-glow-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .neon-glow-hover:hover {
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+
+  .scanline-subtle {
+    position: relative;
+  }
+
+  .scanline-subtle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 240, 255, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
   /* Animated mesh gradient backgrounds */
   .animate-mesh-1 {
     animation: mesh-float-1 20s ease-in-out infinite;

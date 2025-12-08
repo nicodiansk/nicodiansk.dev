@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BackgroundEffects from "@/components/layout/BackgroundEffects";
+import BackToTop from "@/components/ui/BackToTop";
 import "./globals.css";
 
 const shareTechMono = Share_Tech_Mono({
@@ -35,6 +36,7 @@ export default function RootLayout({
           enableScanlines={false}
           enableMeshGradient={true}
         />
+        <BackToTop />
         <LanguageProvider>
           <Header />
           {children}
