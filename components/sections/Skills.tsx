@@ -4,6 +4,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { Brain, Eye, Server, Database } from 'lucide-react';
 import skillsDataRaw from '@/data/skills.json';
@@ -34,7 +35,7 @@ export default function Skills() {
   }, [activeCategory]);
 
   return (
-    <section id="skills" className="min-h-screen py-20 bg-gradient-to-b from-cyber-dark to-black">
+    <section id="skills" className="min-h-screen py-20 bg-gradient-to-b from-cyber-dark to-black snap-start">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
@@ -72,12 +73,19 @@ export default function Skills() {
 
           {/* Skills grid */}
           {category && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {category.skills.map((skill, index) => (
-                <div
+                <motion.div
                   key={skill.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
                   className="border border-gray-800 p-6 hover:border-cyber-cyan/50 transition-all duration-300 bg-black/50"
-                  style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {/* Skill name and level */}
                   <div className="flex items-center justify-between mb-3">
@@ -99,7 +107,7 @@ export default function Skills() {
 
                   {/* Skill details */}
                   <p className="text-gray-500 text-sm">{skill.details[language]}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}

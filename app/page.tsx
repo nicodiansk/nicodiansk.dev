@@ -10,7 +10,7 @@ import Contact from '@/components/sections/Contact';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen scroll-smooth snap-y snap-mandatory overflow-y-scroll">
       <ErrorBoundary>
         <Hero />
       </ErrorBoundary>

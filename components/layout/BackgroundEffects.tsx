@@ -5,6 +5,7 @@
 
 import dynamic from 'next/dynamic';
 import Scanline from '@/components/effects/Scanline';
+import AnimatedMeshGradient from '@/components/effects/AnimatedMeshGradient';
 
 // Dynamically import heavy components for better initial load
 const MatrixRain = dynamic(() => import('@/components/effects/MatrixRain'), {
@@ -21,6 +22,7 @@ interface BackgroundEffectsProps {
   enableMatrixRain?: boolean;
   enableScanlines?: boolean;
   enableParticles?: boolean;
+  enableMeshGradient?: boolean;
   matrixDensity?: number;
   matrixSpeed?: number;
   particleCount?: number;
@@ -30,12 +32,15 @@ export default function BackgroundEffects({
   enableMatrixRain = true,
   enableScanlines = true,
   enableParticles = true,
+  enableMeshGradient = false,
   matrixDensity = 0.3,
   matrixSpeed = 2,
   particleCount = 40,
 }: BackgroundEffectsProps) {
   return (
     <>
+      {enableMeshGradient && <AnimatedMeshGradient />}
+
       {enableMatrixRain && (
         <MatrixRain
           density={matrixDensity}

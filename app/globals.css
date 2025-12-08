@@ -13,6 +13,47 @@
 @layer base {
   body {
     @apply bg-cyber-dark text-white;
+    position: relative;
+  }
+
+  /* Hide scrollbar for all browsers */
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  *::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+  }
+
+  /* Subtle grainy gradient background - 2025 design trend */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse at top, rgba(0, 240, 255, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, rgba(255, 0, 255, 0.02) 0%, transparent 50%);
+    opacity: 0.6;
+  }
+
+  /* Grain/noise texture overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.15;
   }
 }
 
@@ -47,6 +88,143 @@
   @keyframes progress-fill {
     from {
       width: 0;
+    }
+  }
+
+  /* Custom scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(13, 17, 23, 0.4);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--cyber-cyan);
+    border-radius: 4px;
+    opacity: 0.5;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--cyber-cyan);
+    opacity: 0.8;
+  }
+
+  /* Firefox scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--cyber-cyan) rgba(13, 17, 23, 0.4);
+  }
+
+  /* Orbiting animation for tech stack visualization */
+  .animate-orbit {
+    animation: orbit calc(var(--duration) * 1s) linear infinite;
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(calc(var(--angle) * 1deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc(var(--angle) * -1deg));
+    }
+    100% {
+      transform: rotate(calc(var(--angle) * 1deg + 360deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
+
+  /* Subtle cyberpunk enhancements */
+  .neon-glow-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .neon-glow-hover:hover {
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+
+  .scanline-subtle {
+    position: relative;
+  }
+
+  .scanline-subtle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 240, 255, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Animated mesh gradient backgrounds */
+  .animate-mesh-1 {
+    animation: mesh-float-1 20s ease-in-out infinite;
+  }
+
+  .animate-mesh-2 {
+    animation: mesh-float-2 25s ease-in-out infinite;
+  }
+
+  .animate-mesh-3 {
+    animation: mesh-float-3 30s ease-in-out infinite;
+  }
+
+  .animate-mesh-4 {
+    animation: mesh-float-4 22s ease-in-out infinite;
+  }
+
+  @keyframes mesh-float-1 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  @keyframes mesh-float-2 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(-40px, 30px) scale(0.95);
+    }
+    66% {
+      transform: translate(20px, -25px) scale(1.05);
+    }
+  }
+
+  @keyframes mesh-float-3 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(25px, 35px) scale(1.08);
+    }
+    66% {
+      transform: translate(-30px, -20px) scale(0.92);
+    }
+  }
+
+  @keyframes mesh-float-4 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(-25px, -30px) scale(0.97);
+    }
+    66% {
+      transform: translate(35px, 25px) scale(1.03);
     }
   }
 }

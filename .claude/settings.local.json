@@ -13,7 +13,15 @@
       "Bash(npm install:*)",
       "Bash(gh api:*)",
       "Bash(gh run list:*)",
-      "WebFetch(domain:magicui.design)"
+      "WebFetch(domain:magicui.design)",
+      "Bash(del nul)",
+      "Bash(gh pr list:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)",
+      "Bash(timeout:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr view:*)"
     ],
     "deny": [],
     "ask": []

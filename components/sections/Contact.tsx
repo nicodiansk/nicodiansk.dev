@@ -47,9 +47,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="min-h-screen py-20 relative flex items-center">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,240,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,240,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+    <section id="contact" className="min-h-screen py-20 relative flex items-center snap-start">
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}

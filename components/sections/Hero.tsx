@@ -4,6 +4,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { Zap } from 'lucide-react';
 import aboutDataRaw from '@/data/about.json';
@@ -18,15 +19,13 @@ export default function Hero() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Show hero content after terminal boot sequence completes (approximately 6 seconds)
-    const timer = setTimeout(() => setShowContent(true), 6000);
+    // Show hero content after terminal boot sequence completes (approximately 3 seconds)
+    const timer = setTimeout(() => setShowContent(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,240,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,240,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden snap-start">
 
       <div className="container mx-auto px-4 py-16 relative z-10">
         {/* Terminal boot sequence */}
@@ -34,7 +33,7 @@ export default function Hero() {
           {!showContent && (
             <div className="flex justify-center mb-12">
               <Terminal className="w-full max-w-2xl">
-                <TypingAnimation duration={40} className="text-cyber-cyan">
+                <TypingAnimation duration={20} className="text-cyber-cyan">
                   {t.hero.boot.initializing}
                 </TypingAnimation>
                 <AnimatedSpan className="text-gray-400">
@@ -56,7 +55,25 @@ export default function Hero() {
 
           {/* Main hero content */}
           {showContent && (
-            <div className="text-center space-y-6 animate-fade-in">
+            <div className="text-center space-y-8 animate-fade-in">
+              {/* Profile Photo */}
+              <div className="flex justify-center mb-6">
+                <div className="relative w-32 h-32 md:w-40 md:h-40">
+                  <div className="w-full h-full rounded-full border-4 border-cyber-cyan overflow-hidden">
+                    <Image
+                      src="/images/profile_pic.jpg"
+                      alt="Nicholas Previtali"
+                      width={160}
+                      height={160}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
+                  {/* Animated border glow */}
+                  <div className="absolute inset-0 rounded-full border-4 border-cyber-cyan opacity-50 animate-pulse" />
+                </div>
+              </div>
+
               <h1 className="text-5xl md:text-7xl font-bold">
                 <GlitchText
                   text={aboutData.name.toUpperCase()}
@@ -65,10 +82,23 @@ export default function Hero() {
                 />
               </h1>
 
+              {/* Key Metrics */}
+              <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base">
+                <div className="px-4 py-2 border border-cyber-magenta text-cyber-magenta rounded-md bg-cyber-magenta/10">
+                  <span className="font-bold">Head of AI</span>
+                </div>
+                <div className="px-4 py-2 border border-cyber-lime text-cyber-lime rounded-md bg-cyber-lime/10">
+                  <span className="font-bold">4+ Years GenAI</span>
+                </div>
+                <div className="px-4 py-2 border border-cyber-yellow text-cyber-yellow rounded-md bg-cyber-yellow/10">
+                  <span className="font-bold">6 Production Systems</span>
+                </div>
+              </div>
+
               <div className="space-y-2 text-xl md:text-2xl">
-                <p className="text-cyber-magenta">&gt;_ {t.hero.title}</p>
-                <p className="text-cyber-lime">&gt;_ {t.hero.subtitle}</p>
-                <p className="text-cyber-yellow">&gt;_ {t.hero.subtitle2}</p>
+                <p className="text-cyber-magenta">&gt;_ HEAD OF AI BUSINESS UNIT</p>
+                <p className="text-cyber-lime">&gt;_ GENERATIVE AI ARCHITECT</p>
+                <p className="text-cyber-yellow">&gt;_ MULTI-AGENT SYSTEMS ENGINEER</p>
               </div>
 
               <div className="pt-8">
