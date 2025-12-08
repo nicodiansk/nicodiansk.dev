@@ -23,6 +23,7 @@ Then do the following:
 5. **Create PR** (if significant work completed):
    - Push branch to remote
    - Create PR with summary of changes using `gh pr create`
+   - **Automatically trigger Claude review**: Add comment `@claude please review this PR against the implementation plan and coding standards` using `gh pr comment`
    - Include link in the next-session prompt
 
 6. **Commit**: Stage and commit archive changes with message "chore: archive session docs"

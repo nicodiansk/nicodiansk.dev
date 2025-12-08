@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cyber-cyan: #00F0FF;
+  --cyber-magenta: #FF00FF;
+  --cyber-lime: #39FF14;
+  --cyber-yellow: #FFE800;
+  --cyber-dark: #0D1117;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-dark text-white;
+  }
+}
+
+@layer utilities {
+  .text-shadow-neon {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+
+  .glow-cyber-cyan {
+    box-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-cyan);
+  }
+
+  .glow-cyber-magenta {
+    box-shadow: 0 0 10px var(--cyber-magenta), 0 0 20px var(--cyber-magenta);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes progress-fill {
+    from {
+      width: 0;
+    }
+  }
+
+  /* Orbiting animation for tech stack visualization */
+  .animate-orbit {
+    animation: orbit calc(var(--duration) * 1s) linear infinite;
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(calc(var(--angle) * 1deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc(var(--angle) * -1deg));
+    }
+    100% {
+      transform: rotate(calc(var(--angle) * 1deg + 360deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
+}

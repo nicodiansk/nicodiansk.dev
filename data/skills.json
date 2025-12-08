@@ -1,0 +1,213 @@
+{
+  "categories": [
+    {
+      "id": "llms-genai",
+      "title": {
+        "en": "LLMs & Generative AI",
+        "it": "LLM & AI Generativa"
+      },
+      "icon": "brain",
+      "color": "cyan",
+      "skills": [
+        {
+          "name": "OpenAI",
+          "level": 95,
+          "details": { "en": "GPT-4, GPT-4o, o1, o3", "it": "GPT-4, GPT-4o, o1, o3" }
+        },
+        {
+          "name": "Claude",
+          "level": 95,
+          "details": { "en": "Anthropic Claude API, Sonnet, Opus", "it": "Anthropic Claude API, Sonnet, Opus" }
+        },
+        {
+          "name": "Gemini",
+          "level": 90,
+          "details": { "en": "Google Gemini Pro, Flash", "it": "Google Gemini Pro, Flash" }
+        },
+        {
+          "name": "LangChain",
+          "level": 95,
+          "details": { "en": "Chains, Agents, Tools", "it": "Chains, Agents, Tools" }
+        },
+        {
+          "name": "LangGraph",
+          "level": 95,
+          "details": { "en": "Multi-Agent Orchestration", "it": "Orchestrazione Multi-Agente" }
+        },
+        {
+          "name": "MCP",
+          "level": 90,
+          "details": { "en": "Model Context Protocol", "it": "Model Context Protocol" }
+        },
+        {
+          "name": "RAG",
+          "level": 95,
+          "details": { "en": "Hybrid Search, Knowledge Graphs", "it": "Hybrid Search, Knowledge Graphs" }
+        },
+        {
+          "name": "Prompt Engineering",
+          "level": 95,
+          "details": { "en": "Advanced prompting, few-shot, CoT", "it": "Prompting avanzato, few-shot, CoT" }
+        },
+        {
+          "name": "Function Calling",
+          "level": 90,
+          "details": { "en": "Tool use, structured outputs", "it": "Tool use, output strutturati" }
+        },
+        {
+          "name": "GEO & SEO AI",
+          "level": 85,
+          "details": { "en": "Generative Engine Optimization", "it": "Generative Engine Optimization" }
+        }
+      ]
+    },
+    {
+      "id": "ml-vision",
+      "title": {
+        "en": "ML & Computer Vision",
+        "it": "ML & Computer Vision"
+      },
+      "icon": "eye",
+      "color": "magenta",
+      "skills": [
+        {
+          "name": "PyTorch",
+          "level": 90,
+          "details": { "en": "CNNs, Transfer Learning", "it": "CNN, Transfer Learning" }
+        },
+        {
+          "name": "TensorFlow",
+          "level": 85,
+          "details": { "en": "Keras, model training", "it": "Keras, training modelli" }
+        },
+        {
+          "name": "Computer Vision",
+          "level": 90,
+          "details": { "en": "Image classification, object detection", "it": "Classificazione immagini, object detection" }
+        },
+        {
+          "name": "NLP",
+          "level": 90,
+          "details": { "en": "Embeddings, semantic search", "it": "Embeddings, semantic search" }
+        },
+        {
+          "name": "Transfer Learning",
+          "level": 90,
+          "details": { "en": "Fine-tuning, feature extraction", "it": "Fine-tuning, feature extraction" }
+        },
+        {
+          "name": "Similarity Search",
+          "level": 90,
+          "details": { "en": "Vector similarity, image similarity", "it": "Similarity vettoriale, similarity immagini" }
+        },
+        {
+          "name": "Recommendation Systems",
+          "level": 85,
+          "details": { "en": "Collaborative filtering, hybrid systems", "it": "Collaborative filtering, sistemi ibridi" }
+        },
+        {
+          "name": "ONNX",
+          "level": 80,
+          "details": { "en": "Model optimization, inference", "it": "Ottimizzazione modelli, inferenza" }
+        }
+      ]
+    },
+    {
+      "id": "infra-mlops",
+      "title": {
+        "en": "Infrastructure & MLOps",
+        "it": "Infrastruttura & MLOps"
+      },
+      "icon": "server",
+      "color": "lime",
+      "skills": [
+        {
+          "name": "Python",
+          "level": 95,
+          "details": { "en": "FastAPI, async, typing", "it": "FastAPI, async, typing" }
+        },
+        {
+          "name": "FastAPI",
+          "level": 95,
+          "details": { "en": "Microservices, REST APIs", "it": "Microservizi, REST API" }
+        },
+        {
+          "name": "Docker",
+          "level": 90,
+          "details": { "en": "Containerization, multi-stage builds", "it": "Containerizzazione, multi-stage builds" }
+        },
+        {
+          "name": "Kubernetes",
+          "level": 85,
+          "details": { "en": "Azure AKS, deployments", "it": "Azure AKS, deployment" }
+        },
+        {
+          "name": "Azure",
+          "level": 85,
+          "details": { "en": "AKS, Cloud Services", "it": "AKS, Cloud Services" }
+        },
+        {
+          "name": "CI/CD",
+          "level": 85,
+          "details": { "en": "Pipelines, Git workflows", "it": "Pipeline, Git workflows" }
+        },
+        {
+          "name": "LLMOps",
+          "level": 90,
+          "details": { "en": "Observability, monitoring", "it": "Osservabilità, monitoring" }
+        },
+        {
+          "name": "Load Balancing",
+          "level": 85,
+          "details": { "en": "Caching, distributed inference", "it": "Caching, inferenza distribuita" }
+        }
+      ]
+    },
+    {
+      "id": "vector-dbs",
+      "title": {
+        "en": "Vector Databases",
+        "it": "Database Vettoriali"
+      },
+      "icon": "database",
+      "color": "yellow",
+      "skills": [
+        {
+          "name": "Pinecone",
+          "level": 95,
+          "details": { "en": "Serverless, hybrid search", "it": "Serverless, hybrid search" }
+        },
+        {
+          "name": "Qdrant",
+          "level": 90,
+          "details": { "en": "Self-hosted, filtering", "it": "Self-hosted, filtering" }
+        },
+        {
+          "name": "Weaviate",
+          "level": 85,
+          "details": { "en": "GraphQL, vector search", "it": "GraphQL, vector search" }
+        },
+        {
+          "name": "Supabase",
+          "level": 80,
+          "details": { "en": "pgvector, PostgreSQL", "it": "pgvector, PostgreSQL" }
+        },
+        {
+          "name": "Embeddings",
+          "level": 95,
+          "details": { "en": "OpenAI, Cohere, custom", "it": "OpenAI, Cohere, custom" }
+        },
+        {
+          "name": "Hybrid Search",
+          "level": 95,
+          "details": { "en": "Semantic + lexical, reranking", "it": "Semantica + lessicale, reranking" }
+        },
+        {
+          "name": "Knowledge Graphs",
+          "level": 85,
+          "details": { "en": "Neo4j, graph databases", "it": "Neo4j, graph databases" }
+        }
+      ]
+    }
+  ]
+}
