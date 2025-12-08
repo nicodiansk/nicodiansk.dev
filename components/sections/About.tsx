@@ -13,9 +13,7 @@ export default function About() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="about" className="min-h-screen py-20 relative">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,0,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+    <section id="about" className="min-h-screen py-20 relative snap-start">
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
