@@ -29,7 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${shareTechMono.variable} font-mono antialiased bg-cyber-dark text-white`}>
-        <BackgroundEffects />
+        <BackgroundEffects
+          enableMatrixRain={false}
+          enableParticles={false}
+          enableScanlines={false}
+        />
         <LanguageProvider>
           <Header />
           {children}

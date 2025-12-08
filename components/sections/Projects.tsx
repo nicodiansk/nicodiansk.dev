@@ -71,7 +71,7 @@ export default function Projects() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="relative border border-gray-800 hover:border-cyber-cyan transition-all duration-500 p-6 bg-gray-900/95 backdrop-blur cursor-pointer group rounded-lg overflow-hidden"
+                className="relative border border-gray-800 hover:border-cyber-cyan transition-all duration-500 p-6 bg-gray-900 cursor-pointer group rounded-lg overflow-hidden"
                 onClick={() => setSelectedProject(project.id)}
               >
                 {/* Gradient border effect on hover */}
