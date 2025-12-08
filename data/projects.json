@@ -1,6 +1,163 @@
 {
   "projects": [
     {
+      "id": "hybrid-recsys",
+      "status": "LIVE",
+      "evolution": {
+        "en": "2022 → 2025 (when speed was everything, still is)",
+        "it": "2022 → 2025 (quando la velocità era tutto, lo è ancora)"
+      },
+      "title": {
+        "en": "HYBRID_RECSYS",
+        "it": "HYBRID_RECSYS"
+      },
+      "description": {
+        "en": "Sub-100ms recs • collaborative + vector search • e-commerce",
+        "it": "Rec sub-100ms • collaborative + vector search • e-commerce"
+      },
+      "longDescription": {
+        "en": "Built low-latency recommendation engine combining collaborative filtering with vector similarity search for e-commerce product discovery. Hybrid system leveraging semantic ranking, embeddings, vector search, and knowledge-graph signals to deliver personalized recommendations. Engineered for minimal compute overhead while maintaining strict sub-100ms response time requirements for real-time user experience.",
+        "it": "Motore raccomandazioni low-latency combinando collaborative filtering con vector similarity search per product discovery e-commerce. Sistema ibrido che sfrutta semantic ranking, embeddings, vector search e segnali knowledge-graph per raccomandazioni personalizzate. Progettato per minimo overhead computazionale mantenendo requisiti rigorosi di sub-100ms per esperienza utente real-time."
+      },
+      "overview": {
+        "en": "Low-latency recommendation engine delivering sub-100ms response times. Combines collaborative filtering with vector similarity for personalized e-commerce discovery.",
+        "it": "Motore raccomandazioni low-latency con tempi risposta sub-100ms. Combina collaborative filtering con similarity vettoriale per discovery e-commerce personalizzata."
+      },
+      "challenge": {
+        "en": "E-commerce platforms needed real-time product recommendations without increasing infrastructure costs. Traditional collaborative filtering was too slow (<100ms requirement), while pure vector search missed collaborative signals from user behavior.",
+        "it": "Piattaforme e-commerce necessitavano raccomandazioni prodotti real-time senza aumentare costi infrastruttura. Collaborative filtering tradizionale era troppo lento (requisito <100ms), mentre vector search puro perdeva segnali collaborativi da comportamento utenti."
+      },
+      "solution": {
+        "en": "Built low-latency hybrid recommendation engine combining collaborative filtering with vector similarity search. System leverages semantic ranking, embeddings, vector search, and knowledge-graph signals for personalized product discovery. Engineered for minimal compute overhead while maintaining strict sub-100ms response times for real-time user experience.",
+        "it": "Costruito motore raccomandazioni ibrido low-latency combinando collaborative filtering con vector similarity search. Sistema sfrutta semantic ranking, embeddings, vector search e segnali knowledge-graph per product discovery personalizzata. Progettato per minimo overhead computazionale mantenendo tempi risposta rigorosi sub-100ms per esperienza utente real-time."
+      },
+      "primaryTech": [
+        "Embeddings",
+        "Semantic Ranking",
+        "Vector Search",
+        "Collaborative Filtering",
+        "Knowledge Graphs",
+        "Python"
+      ],
+      "architecture": [
+        {
+          "id": "user-behavior",
+          "label": {
+            "en": "User Behavior & Product Data",
+            "it": "Comportamento Utente & Dati Prodotti"
+          },
+          "tech": "Click Streams • Purchase History • Catalog",
+          "type": "input",
+          "color": "cyan"
+        },
+        {
+          "id": "data-storage",
+          "label": {
+            "en": "Event Storage & Aggregation",
+            "it": "Storage Eventi & Aggregazione"
+          },
+          "tech": "PostgreSQL • User Profiles • Behavior Logs",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "collaborative-filtering",
+          "label": {
+            "en": "Item-Based Collaborative Filtering",
+            "it": "Collaborative Filtering Item-Based"
+          },
+          "tech": "Item-Item Similarity Matrix • Redis Cache",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "embeddings-generation",
+          "label": {
+            "en": "Product Embeddings (Pre-computed)",
+            "it": "Embeddings Prodotti (Pre-computati)"
+          },
+          "tech": "Semantic Vectors • Nightly Updates",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
+          "id": "knowledge-graph",
+          "label": {
+            "en": "Knowledge Graph Context",
+            "it": "Contesto Knowledge Graph"
+          },
+          "tech": "Product Relations • Category Hierarchies",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "vector-search",
+          "label": {
+            "en": "Fast Vector Search (HNSW)",
+            "it": "Ricerca Vettoriale Veloce (HNSW)"
+          },
+          "tech": "Qdrant • HNSW Index • <10ms Lookup",
+          "type": "process",
+          "color": "lime"
+        },
+        {
+          "id": "hybrid-scoring",
+          "label": {
+            "en": "Learned Hybrid Scoring",
+            "it": "Scoring Ibrido Appreso"
+          },
+          "tech": "Weighted Ensemble • Collab+Semantic+Graph+Pop",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "multi-tier-cache",
+          "label": {
+            "en": "Multi-Tier Recommendation Cache",
+            "it": "Cache Raccomandazioni Multi-Livello"
+          },
+          "tech": "Redis L1/L2 • User/Category/Trending",
+          "type": "storage",
+          "color": "blue"
+        },
+        {
+          "id": "recommendations",
+          "label": {
+            "en": "Real-Time Recs with A/B Testing",
+            "it": "Raccomandazioni Real-Time con A/B Testing"
+          },
+          "tech": "Personalized Results • <100ms • Bayesian A/B",
+          "type": "output",
+          "color": "cyan"
+        }
+      ],
+      "techStack": [
+        "Embeddings",
+        "Semantic Ranking",
+        "Vector Search",
+        "Collaborative Filtering",
+        "Knowledge Graphs"
+      ],
+      "metrics": [
+        {
+          "label": {
+            "en": "Response Time",
+            "it": "Tempo Risposta"
+          },
+          "value": "<100ms",
+          "color": "lime"
+        }
+      ],
+      "tags": [
+        "recommendation",
+        "hybrid-search",
+        "low-latency",
+        "e-commerce"
+      ],
+      "year": 2025,
+      "featured": false
+    },
+    {
       "id": "dev-velocity-mcp",
       "status": "LIVE",
       "evolution": {
@@ -31,7 +188,14 @@
         "en": "Architected MCP-based integration establishing Confluence, Slack, and Jira as Single Source of Truth (SSOT). Designed custom AI agents with single-scope responsibilities using advanced prompt engineering. Orchestrated multi-model cooperation (Claude + Gemini) enabling real-time documentation access within coding assistants (Claude Code, Cursor).",
         "it": "Architettato integrazione MCP stabilendo Confluence, Slack e Jira come Single Source of Truth (SSOT). Progettati agenti AI custom con responsabilità specifiche usando prompt engineering avanzato. Orchestrata cooperazione multi-modello (Claude + Gemini) abilitando accesso documentazione real-time in assistenti coding (Claude Code, Cursor)."
       },
-      "primaryTech": ["Claude", "Gemini", "MCP", "LangGraph", "LangChain", "Jira"],
+      "primaryTech": [
+        "Claude",
+        "Gemini",
+        "MCP",
+        "LangGraph",
+        "LangChain",
+        "Jira"
+      ],
       "architecture": [
         {
           "id": "input-sources",
@@ -39,39 +203,69 @@
             "en": "Documentation Sources",
             "it": "Fonti Documentazione"
           },
-          "tech": "Confluence • Slack • Jira",
+          "tech": "Confluence • Slack • Jira APIs",
           "type": "input",
           "color": "cyan"
         },
         {
-          "id": "mcp-integration",
+          "id": "mcp-servers",
           "label": {
-            "en": "MCP Server Integration",
-            "it": "Integrazione MCP Server"
+            "en": "MCP Server Layer",
+            "it": "Layer MCP Server"
           },
-          "tech": "Model Context Protocol",
+          "tech": "MCP Confluence • MCP Slack • MCP Jira",
           "type": "process",
           "color": "magenta"
         },
         {
+          "id": "auth-layer",
+          "label": {
+            "en": "Authentication & Secret Management",
+            "it": "Autenticazione & Gestione Secrets"
+          },
+          "tech": "OAuth 2.0 • AWS Secrets Manager",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
+          "id": "supervisor",
+          "label": {
+            "en": "LangGraph Supervisor Orchestration",
+            "it": "Orchestrazione Supervisor LangGraph"
+          },
+          "tech": "LangGraph Supervisor • Agent Routing",
+          "type": "process",
+          "color": "lime"
+        },
+        {
           "id": "specialized-agents",
           "label": {
-            "en": "Specialized AI Agents",
-            "it": "Agenti AI Specializzati"
+            "en": "Specialized LangGraph Agents",
+            "it": "Agenti LangGraph Specializzati"
           },
-          "tech": "Doc Ingestion • Code Review • Context Building",
+          "tech": "Doc Ingestion • Context Building • DB Prompts",
           "type": "agent",
           "color": "yellow"
         },
         {
-          "id": "orchestration",
+          "id": "multi-model",
           "label": {
-            "en": "Multi-Model Orchestration",
-            "it": "Orchestrazione Multi-Modello"
+            "en": "Multi-Model Coordination",
+            "it": "Coordinazione Multi-Modello"
           },
-          "tech": "LangGraph • Claude • Gemini",
+          "tech": "GPT/Claude (Planning/Code) • Gemini (Docs/Context)",
           "type": "process",
-          "color": "lime"
+          "color": "magenta"
+        },
+        {
+          "id": "context-management",
+          "label": {
+            "en": "Context Management & Persistence",
+            "it": "Gestione Contesto & Persistenza"
+          },
+          "tech": "Recursive Docs • Plans/Epics • Session Wrapper",
+          "type": "storage",
+          "color": "blue"
         },
         {
           "id": "context-delivery",
@@ -79,20 +273,33 @@
             "en": "Unified Context Delivery",
             "it": "Delivery Contesto Unificato"
           },
-          "tech": "Claude Code • Cursor",
+          "tech": "Claude Code • Cursor • Real-Time Access",
           "type": "output",
           "color": "cyan"
         }
       ],
-      "techStack": ["Claude", "Gemini", "LangGraph", "MCP", "LangChain"],
+      "techStack": [
+        "Claude",
+        "Gemini",
+        "LangGraph",
+        "MCP",
+        "LangChain"
+      ],
       "metrics": [
         {
-          "label": { "en": "Team Velocity", "it": "Velocità Team" },
+          "label": {
+            "en": "Team Velocity",
+            "it": "Velocità Team"
+          },
           "value": "+60-70%",
           "color": "lime"
         }
       ],
-      "tags": ["multi-agent", "mcp", "orchestration"],
+      "tags": [
+        "multi-agent",
+        "mcp",
+        "orchestration"
+      ],
       "year": 2024,
       "featured": true
     },
@@ -127,57 +334,94 @@
         "en": "Built end-to-end AI pipeline using latest OpenAI models (GPT-4, GPT-4o) for automatic product enhancement. System generates SEO-optimized descriptions, comprehensive FAQs, JSON-LD schema markup, and adapts tone-of-voice across multiple languages while maintaining brand consistency.",
         "it": "Costruita pipeline AI end-to-end usando modelli OpenAI più recenti (GPT-4, GPT-4o) per enhancement automatico prodotti. Sistema genera descrizioni SEO-ottimizzate, FAQ complete, markup schema JSON-LD e adatta tono-di-voce su più lingue mantenendo consistenza brand."
       },
-      "primaryTech": ["OpenAI", "GPT-4", "FastAPI", "Knowledge Graphs", "NLP", "Python"],
+      "primaryTech": [
+        "OpenAI",
+        "GPT-4",
+        "FastAPI",
+        "Knowledge Graphs",
+        "NLP",
+        "Python"
+      ],
       "architecture": [
         {
-          "id": "product-catalog",
+          "id": "product-database",
           "label": {
-            "en": "Product Catalog Data",
-            "it": "Dati Catalogo Prodotti"
+            "en": "Product Catalog Database",
+            "it": "Database Catalogo Prodotti"
           },
-          "tech": "SKU Metadata • Product Attributes",
+          "tech": "SKU Metadata • Attributes • Reviews",
           "type": "input",
           "color": "cyan"
         },
         {
-          "id": "content-generation",
+          "id": "data-harmonization",
           "label": {
-            "en": "AI Content Generation",
-            "it": "Generazione Contenuti AI"
+            "en": "Data Harmonization & Cleaning",
+            "it": "Armonizzazione Dati & Pulizia"
           },
-          "tech": "GPT-4 • GPT-4o",
-          "type": "agent",
-          "color": "magenta"
-        },
-        {
-          "id": "structured-data",
-          "label": {
-            "en": "Structured Data Creation",
-            "it": "Creazione Dati Strutturati"
-          },
-          "tech": "JSON-LD Schema Markup",
+          "tech": "Empty Field Handling • Categorization",
           "type": "process",
-          "color": "yellow"
+          "color": "magenta"
         },
         {
           "id": "knowledge-graph",
           "label": {
-            "en": "Product Relationship Graph",
-            "it": "Grafo Relazioni Prodotti"
+            "en": "Neo4j Product Knowledge Graph",
+            "it": "Knowledge Graph Prodotti Neo4j"
           },
-          "tech": "Knowledge Graphs • NLP",
+          "tech": "Complementary Products • Categories • Attributes",
           "type": "storage",
           "color": "blue"
         },
         {
-          "id": "multilingual-adaptation",
+          "id": "sequential-generation",
           "label": {
-            "en": "Multilingual Tone Adaptation",
-            "it": "Adattamento Tono Multilingua"
+            "en": "Sequential AI Content Generation",
+            "it": "Generazione Contenuti AI Sequenziale"
           },
-          "tech": "GPT-4 • Brand Voice Guidelines",
+          "tech": "GPT-4: Descriptions → FAQs → JSON-LD",
+          "type": "agent",
+          "color": "yellow"
+        },
+        {
+          "id": "brand-voice",
+          "label": {
+            "en": "Brand Voice Fine-Tuning",
+            "it": "Fine-Tuning Voce Brand"
+          },
+          "tech": "Parametrized Prompts • Tone Consistency",
           "type": "process",
           "color": "lime"
+        },
+        {
+          "id": "multilingual",
+          "label": {
+            "en": "Multilingual Translation",
+            "it": "Traduzione Multilingua"
+          },
+          "tech": "Translation APIs • IT/EN/ES/FR",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "llm-judge",
+          "label": {
+            "en": "LLM-as-Judge Quality Validation",
+            "it": "Validazione Qualità LLM-as-Judge"
+          },
+          "tech": "Draft Priority • Missing Info Detection",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
+          "id": "draft-storage",
+          "label": {
+            "en": "Draft Storage & Human Validation",
+            "it": "Storage Draft & Validazione Umana"
+          },
+          "tech": "Database • Human-in-the-Loop Review",
+          "type": "storage",
+          "color": "blue"
         },
         {
           "id": "seo-package",
@@ -185,20 +429,32 @@
             "en": "SEO-Optimized Content Package",
             "it": "Pacchetto Contenuti SEO"
           },
-          "tech": "Descriptions • FAQs • Schema Markup",
+          "tech": "Descriptions • FAQs • JSON-LD • Multilingual",
           "type": "output",
           "color": "cyan"
         }
       ],
-      "techStack": ["OpenAI", "FastAPI", "Knowledge Graphs", "NLP"],
+      "techStack": [
+        "OpenAI",
+        "FastAPI",
+        "Knowledge Graphs",
+        "NLP"
+      ],
       "metrics": [
         {
-          "label": { "en": "Time Saved", "it": "Tempo Risparmiato" },
+          "label": {
+            "en": "Time Saved",
+            "it": "Tempo Risparmiato"
+          },
           "value": "80%",
           "color": "cyan"
         }
       ],
-      "tags": ["seo", "geo", "e-commerce"],
+      "tags": [
+        "seo",
+        "geo",
+        "e-commerce"
+      ],
       "year": 2024,
       "featured": true
     },
@@ -233,7 +489,14 @@
         "en": "Architected multi-year RAG platform evolution (2023→2025) implementing hybrid search (semantic + lexical) with Neo4j knowledge graphs. System tracks legal entity relationships, cross-citation networks, and precedent chains using domain-specific embeddings and vector databases (Pinecone, Qdrant). Achieved 91% recall@10 and 89% answer relevance validated by legal experts.",
         "it": "Architettata evoluzione piattaforma RAG multi-anno (2023→2025) implementando hybrid search (semantica + lessicale) con knowledge graphs Neo4j. Sistema traccia relazioni entità legali, reti cross-citation e catene precedenti usando embeddings domain-specific e vector databases (Pinecone, Qdrant). Raggiunto 91% recall@10 e 89% rilevanza risposte validato da esperti legali."
       },
-      "primaryTech": ["LangChain", "Neo4j", "Pinecone", "GPT-4", "Hybrid Search", "Qdrant"],
+      "primaryTech": [
+        "LangChain",
+        "Neo4j",
+        "Pinecone",
+        "GPT-4",
+        "Hybrid Search",
+        "Qdrant"
+      ],
       "architecture": [
         {
           "id": "legal-docs",
@@ -241,19 +504,29 @@
             "en": "Legal Document Corpus",
             "it": "Corpus Documenti Legali"
           },
-          "tech": "100K+ PDF Documents",
+          "tech": "100K+ Italian PDF Documents",
           "type": "input",
           "color": "cyan"
         },
         {
-          "id": "preprocessing",
+          "id": "pdf-extraction",
           "label": {
-            "en": "Document Preprocessing",
-            "it": "Preprocessing Documenti"
+            "en": "Custom PyPDF Text Extraction",
+            "it": "Estrazione Testo PyPDF Custom"
           },
-          "tech": "Text Extraction • Chunking • Entity Recognition",
+          "tech": "PyPDF • Document Structure Parsing",
           "type": "process",
           "color": "magenta"
+        },
+        {
+          "id": "chunking-ner",
+          "label": {
+            "en": "Semantic Chunking & Legal NER",
+            "it": "Chunking Semantico & NER Legale"
+          },
+          "tech": "Semantic Chunking • spaCy Legal NER",
+          "type": "process",
+          "color": "yellow"
         },
         {
           "id": "embeddings",
@@ -263,45 +536,65 @@
           },
           "tech": "OpenAI Embeddings • Legal Context",
           "type": "process",
-          "color": "yellow"
+          "color": "lime"
         },
         {
-          "id": "vector-db",
+          "id": "pinecone-hybrid",
           "label": {
-            "en": "Vector Database Storage",
-            "it": "Storage Database Vettoriale"
+            "en": "Pinecone Hybrid Vector Storage",
+            "it": "Storage Vettoriale Ibrido Pinecone"
           },
-          "tech": "Pinecone • Qdrant",
+          "tech": "Pinecone Hybrid Search • Semantic + Lexical",
           "type": "storage",
           "color": "blue"
         },
         {
-          "id": "knowledge-graph",
+          "id": "neo4j-graph",
           "label": {
-            "en": "Legal Knowledge Graph",
-            "it": "Knowledge Graph Legale"
+            "en": "Neo4j Legal Knowledge Graph",
+            "it": "Knowledge Graph Legale Neo4j"
           },
-          "tech": "Neo4j • Entity Relations • Cross-Citations",
+          "tech": "LLM Cross-Citation Extraction • Precedent Chains",
           "type": "storage",
           "color": "blue"
         },
         {
-          "id": "hybrid-search",
+          "id": "query-understanding",
           "label": {
-            "en": "Hybrid Search Orchestration",
-            "it": "Orchestrazione Hybrid Search"
+            "en": "Query Understanding & Filters",
+            "it": "Comprensione Query & Filtri"
           },
-          "tech": "Semantic + Lexical Search • LangChain",
+          "tech": "Intent Detection • Category/Year Filters",
+          "type": "process",
+          "color": "magenta"
+        },
+        {
+          "id": "hybrid-rrf",
+          "label": {
+            "en": "Hybrid Search with RRF Fusion",
+            "it": "Hybrid Search con Fusione RRF"
+          },
+          "tech": "Pinecone + Neo4j Parallel • RRF Ranking",
           "type": "process",
           "color": "lime"
         },
         {
+          "id": "llm-grader",
+          "label": {
+            "en": "LLM Grader Re-ranking",
+            "it": "Re-ranking LLM Grader"
+          },
+          "tech": "GPT-4 Document Relevance Scoring",
+          "type": "process",
+          "color": "yellow"
+        },
+        {
           "id": "legal-reasoning",
           "label": {
-            "en": "Legal Reasoning Agent",
-            "it": "Agente Reasoning Legale"
+            "en": "GPT-4 Legal Reasoning Agent",
+            "it": "Agente Reasoning Legale GPT-4"
           },
-          "tech": "GPT-4 • Precedent Analysis",
+          "tech": "Precedent Analysis • Context Assembly",
           "type": "agent",
           "color": "magenta"
         },
@@ -311,25 +604,42 @@
             "en": "Context-Aware Legal Response",
             "it": "Risposta Legale Context-Aware"
           },
-          "tech": "Citations • Precedents • 91% Recall@10",
+          "tech": "Citations • Precedents • 91% Recall • LLM+Human Eval",
           "type": "output",
           "color": "cyan"
         }
       ],
-      "techStack": ["LangChain", "Neo4j", "Pinecone", "GPT-4", "Hybrid Search"],
+      "techStack": [
+        "LangChain",
+        "Neo4j",
+        "Pinecone",
+        "GPT-4",
+        "Hybrid Search"
+      ],
       "metrics": [
         {
-          "label": { "en": "Retrieval Accuracy", "it": "Accuratezza Retrieval" },
+          "label": {
+            "en": "Retrieval Accuracy",
+            "it": "Accuratezza Retrieval"
+          },
           "value": "91%",
           "color": "yellow"
         },
         {
-          "label": { "en": "Answer Relevance", "it": "Rilevanza Risposte" },
+          "label": {
+            "en": "Answer Relevance",
+            "it": "Rilevanza Risposte"
+          },
           "value": "89%",
           "color": "magenta"
         }
       ],
-      "tags": ["rag", "legal", "neo4j", "knowledge-graph"],
+      "tags": [
+        "rag",
+        "legal",
+        "neo4j",
+        "knowledge-graph"
+      ],
       "year": 2023,
       "featured": true
     },
@@ -364,7 +674,14 @@
         "en": "Developed complete ML pipeline—data collection, labeling, training, validation, monitoring—using CNN-based computer vision models. Implemented transfer learning and custom architectures for image classification, object detection, and visual similarity search. Integrated with Qdrant vector database for fast retrieval, enabling downstream SEO automation.",
         "it": "Sviluppata pipeline ML completa—raccolta dati, labeling, training, validazione, monitoring—usando modelli computer vision CNN. Implementato transfer learning e architetture custom per classificazione immagini, object detection e similarity search visiva. Integrato con Qdrant vector database per retrieval veloce, abilitando automazione SEO downstream."
       },
-      "primaryTech": ["PyTorch", "Qdrant", "Transfer Learning", "ONNX", "Computer Vision", "Python"],
+      "primaryTech": [
+        "PyTorch",
+        "Qdrant",
+        "Transfer Learning",
+        "ONNX",
+        "Computer Vision",
+        "Python"
+      ],
       "architecture": [
         {
           "id": "image-input",
@@ -437,15 +754,27 @@
           "color": "cyan"
         }
       ],
-      "techStack": ["PyTorch", "Qdrant", "Transfer Learning", "ONNX"],
+      "techStack": [
+        "PyTorch",
+        "Qdrant",
+        "Transfer Learning",
+        "ONNX"
+      ],
       "metrics": [
         {
-          "label": { "en": "Full Automation", "it": "Automazione Completa" },
+          "label": {
+            "en": "Full Automation",
+            "it": "Automazione Completa"
+          },
           "value": "100%",
           "color": "magenta"
         }
       ],
-      "tags": ["computer-vision", "cnn", "e-commerce"],
+      "tags": [
+        "computer-vision",
+        "cnn",
+        "e-commerce"
+      ],
       "year": 2023,
       "featured": false
     },
@@ -480,7 +809,14 @@
         "en": "Built multi-year chatbot evolution (2023→2025) migrating from rule-based NLP to full RAG architecture with Supabase vector store and semantic search. System handles PTO queries, room bookings, newsletter summaries, and policy lookups. Integrated with internal APIs implementing guardrails and human-in-the-loop escalation for sensitive requests.",
         "it": "Costruita evoluzione chatbot multi-anno (2023→2025) migrando da NLP rule-based ad architettura RAG completa con Supabase vector store e semantic search. Sistema gestisce query ferie, prenotazioni sale, riassunti newsletter e lookup policy. Integrato con API interne implementando guardrails ed escalation human-in-the-loop per richieste sensibili."
       },
-      "primaryTech": ["LangChain", "Supabase", "RAG", "Vector Search", "FastAPI", "NLP"],
+      "primaryTech": [
+        "LangChain",
+        "Supabase",
+        "RAG",
+        "Vector Search",
+        "FastAPI",
+        "NLP"
+      ],
       "architecture": [
         {
           "id": "employee-query",
@@ -553,132 +889,30 @@
           "color": "cyan"
         }
       ],
-      "techStack": ["LangChain", "Supabase", "RAG", "Vector Search", "FastAPI"],
+      "techStack": [
+        "LangChain",
+        "Supabase",
+        "RAG",
+        "Vector Search",
+        "FastAPI"
+      ],
       "metrics": [
         {
-          "label": { "en": "Query Accuracy", "it": "Accuratezza Query" },
+          "label": {
+            "en": "Query Accuracy",
+            "it": "Accuratezza Query"
+          },
           "value": "+45%",
           "color": "cyan"
         }
       ],
-      "tags": ["rag", "chatbot", "hr-automation", "vector-search"],
+      "tags": [
+        "rag",
+        "chatbot",
+        "hr-automation",
+        "vector-search"
+      ],
       "year": 2023,
-      "featured": false
-    },
-    {
-      "id": "hybrid-recsys",
-      "status": "LIVE",
-      "evolution": {
-        "en": "2022 → 2025 (when speed was everything, still is)",
-        "it": "2022 → 2025 (quando la velocità era tutto, lo è ancora)"
-      },
-      "title": {
-        "en": "HYBRID_RECSYS",
-        "it": "HYBRID_RECSYS"
-      },
-      "description": {
-        "en": "Sub-100ms recs • collaborative + vector search • e-commerce",
-        "it": "Rec sub-100ms • collaborative + vector search • e-commerce"
-      },
-      "longDescription": {
-        "en": "Built low-latency recommendation engine combining collaborative filtering with vector similarity search for e-commerce product discovery. Hybrid system leveraging semantic ranking, embeddings, vector search, and knowledge-graph signals to deliver personalized recommendations. Engineered for minimal compute overhead while maintaining strict sub-100ms response time requirements for real-time user experience.",
-        "it": "Motore raccomandazioni low-latency combinando collaborative filtering con vector similarity search per product discovery e-commerce. Sistema ibrido che sfrutta semantic ranking, embeddings, vector search e segnali knowledge-graph per raccomandazioni personalizzate. Progettato per minimo overhead computazionale mantenendo requisiti rigorosi di sub-100ms per esperienza utente real-time."
-      },
-      "overview": {
-        "en": "Low-latency recommendation engine delivering sub-100ms response times. Combines collaborative filtering with vector similarity for personalized e-commerce discovery.",
-        "it": "Motore raccomandazioni low-latency con tempi risposta sub-100ms. Combina collaborative filtering con similarity vettoriale per discovery e-commerce personalizzata."
-      },
-      "challenge": {
-        "en": "E-commerce platforms needed real-time product recommendations without increasing infrastructure costs. Traditional collaborative filtering was too slow (<100ms requirement), while pure vector search missed collaborative signals from user behavior.",
-        "it": "Piattaforme e-commerce necessitavano raccomandazioni prodotti real-time senza aumentare costi infrastruttura. Collaborative filtering tradizionale era troppo lento (requisito <100ms), mentre vector search puro perdeva segnali collaborativi da comportamento utenti."
-      },
-      "solution": {
-        "en": "Built low-latency hybrid recommendation engine combining collaborative filtering with vector similarity search. System leverages semantic ranking, embeddings, vector search, and knowledge-graph signals for personalized product discovery. Engineered for minimal compute overhead while maintaining strict sub-100ms response times for real-time user experience.",
-        "it": "Costruito motore raccomandazioni ibrido low-latency combinando collaborative filtering con vector similarity search. Sistema sfrutta semantic ranking, embeddings, vector search e segnali knowledge-graph per product discovery personalizzata. Progettato per minimo overhead computazionale mantenendo tempi risposta rigorosi sub-100ms per esperienza utente real-time."
-      },
-      "primaryTech": ["Embeddings", "Semantic Ranking", "Vector Search", "Collaborative Filtering", "Knowledge Graphs", "Python"],
-      "architecture": [
-        {
-          "id": "user-behavior",
-          "label": {
-            "en": "User Behavior & Product Data",
-            "it": "Comportamento Utente & Dati Prodotti"
-          },
-          "tech": "Click Streams • Purchase History • Catalog",
-          "type": "input",
-          "color": "cyan"
-        },
-        {
-          "id": "collaborative-signals",
-          "label": {
-            "en": "Collaborative Filtering Signals",
-            "it": "Segnali Collaborative Filtering"
-          },
-          "tech": "User-Item Matrix • Co-occurrence Patterns",
-          "type": "process",
-          "color": "magenta"
-        },
-        {
-          "id": "embeddings-generation",
-          "label": {
-            "en": "Product Embeddings Generation",
-            "it": "Generazione Embeddings Prodotti"
-          },
-          "tech": "Semantic Vectors • Content Features",
-          "type": "process",
-          "color": "yellow"
-        },
-        {
-          "id": "knowledge-context",
-          "label": {
-            "en": "Knowledge Graph Context",
-            "it": "Contesto Knowledge Graph"
-          },
-          "tech": "Product Relations • Category Hierarchies",
-          "type": "storage",
-          "color": "blue"
-        },
-        {
-          "id": "vector-search",
-          "label": {
-            "en": "Fast Vector Search",
-            "it": "Ricerca Vettoriale Veloce"
-          },
-          "tech": "Semantic Similarity • Low-Latency Index",
-          "type": "process",
-          "color": "lime"
-        },
-        {
-          "id": "hybrid-scoring",
-          "label": {
-            "en": "Hybrid Scoring Algorithm",
-            "it": "Algoritmo Scoring Ibrido"
-          },
-          "tech": "Collaborative + Semantic + Graph Signals",
-          "type": "process",
-          "color": "magenta"
-        },
-        {
-          "id": "recommendations",
-          "label": {
-            "en": "Real-Time Recommendations",
-            "it": "Raccomandazioni Real-Time"
-          },
-          "tech": "Personalized Results • <100ms Response",
-          "type": "output",
-          "color": "cyan"
-        }
-      ],
-      "techStack": ["Embeddings", "Semantic Ranking", "Vector Search", "Collaborative Filtering", "Knowledge Graphs"],
-      "metrics": [
-        {
-          "label": { "en": "Response Time", "it": "Tempo Risposta" },
-          "value": "<100ms",
-          "color": "lime"
-        }
-      ],
-      "tags": ["recommendation", "hybrid-search", "low-latency", "e-commerce"],
-      "year": 2025,
       "featured": false
     }
   ]
