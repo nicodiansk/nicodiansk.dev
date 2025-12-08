@@ -34,7 +34,7 @@ export default function Skills() {
   }, [activeCategory]);
 
   return (
-    <section id="skills" className="min-h-screen py-20 bg-gradient-to-b from-cyber-dark to-black">
+    <section id="skills" className="min-h-screen py-20 bg-gradient-to-b from-cyber-dark to-black snap-start">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}

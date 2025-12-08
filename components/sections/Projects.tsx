@@ -23,8 +23,20 @@ export default function Projects() {
 
   const selectedProjectData = projectsData.projects.find(p => p.id === selectedProject);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
+
   return (
-    <section id="projects" className="min-h-screen py-20 bg-cyber-dark">
+    <section id="projects" className="min-h-screen py-20 bg-cyber-dark snap-start">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
@@ -85,7 +97,7 @@ export default function Projects() {
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-400 mb-4 text-sm">
+                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                   {project.description[language]}
                 </p>
 
@@ -94,7 +106,7 @@ export default function Projects() {
                   {project.techStack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-2 py-1 border border-gray-700 text-gray-400 rounded-md bg-cyber-dark/80 hover:border-gray-500 transition-colors duration-200"
+                      className="text-xs px-2 py-1 border border-gray-600 text-gray-300 rounded-md bg-cyber-dark/80 hover:border-gray-400 transition-colors duration-200"
                     >
                       {tech}
                     </span>
@@ -106,7 +118,7 @@ export default function Projects() {
                   <div className="space-y-2">
                     {project.metrics.map((metric, idx) => (
                       <div key={idx} className="flex items-center justify-between text-sm">
-                        <span className="text-gray-500">{metric.label[language]}</span>
+                        <span className="text-gray-400">{metric.label[language]}</span>
                         <span className={`font-bold ${textColorClasses[metric.color]}`}>
                           {metric.value}
                         </span>
@@ -131,7 +143,7 @@ export default function Projects() {
               }}
             >
               <div
-                className="bg-cyber-dark border-2 border-cyber-cyan max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 rounded-xl shadow-2xl shadow-cyber-cyan/20"
+                className="bg-cyber-dark border-2 border-cyber-cyan max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 rounded-xl shadow-2xl shadow-cyber-cyan/20 custom-scrollbar"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-start justify-between mb-6">

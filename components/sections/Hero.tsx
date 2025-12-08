@@ -18,13 +18,13 @@ export default function Hero() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Show hero content after terminal boot sequence completes (approximately 6 seconds)
-    const timer = setTimeout(() => setShowContent(true), 6000);
+    // Show hero content after terminal boot sequence completes (approximately 3 seconds)
+    const timer = setTimeout(() => setShowContent(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden snap-start">
       {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,240,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,240,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
 
@@ -34,7 +34,7 @@ export default function Hero() {
           {!showContent && (
             <div className="flex justify-center mb-12">
               <Terminal className="w-full max-w-2xl">
-                <TypingAnimation duration={40} className="text-cyber-cyan">
+                <TypingAnimation duration={20} className="text-cyber-cyan">
                   {t.hero.boot.initializing}
                 </TypingAnimation>
                 <AnimatedSpan className="text-gray-400">
