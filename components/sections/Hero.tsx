@@ -13,6 +13,7 @@ import GlitchText from '@/components/effects/GlitchText';
 import { Terminal, TypingAnimation, AnimatedSpan } from '@/components/ui/terminal';
 
 const aboutData = aboutDataRaw as AboutData;
+const basePath = process.env.NODE_ENV === 'production' ? '/nicodiansk.dev' : '';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -61,7 +62,7 @@ export default function Hero() {
                 <div className="relative w-32 h-32 md:w-40 md:h-40">
                   <div className="w-full h-full rounded-full border-4 border-cyber-cyan overflow-hidden">
                     <Image
-                      src="/images/profile_pic.jpg"
+                      src={`${basePath}/images/profile_pic.jpg`}
                       alt="Nicholas Previtali"
                       width={160}
                       height={160}
