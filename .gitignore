@@ -38,5 +38,4 @@ next-env.d.ts
 # Claude and documentation
 CLAUDE.md
 .claude/
-docs/
-public/docs/
+/docs/
