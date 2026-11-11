@@ -46,7 +46,8 @@ createServer((req, res) => {
   if (file !== root && !file.startsWith(root + sep)) return res.writeHead(403).end();
   if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
   if (!existsSync(file)) file = join(root, '404.html');
-  res.writeHead(existsSync(file) ? (file.endsWith('404.html') && !url.endsWith('404.html') ? 404 : 200) : 404, {
+  const notFound = !existsSync(file) || (file.endsWith('404.html') && !url.endsWith('404.html'));
+  res.writeHead(notFound ? 404 : 200, {
     'Content-Type': types[extname(file)] || 'application/octet-stream',
   });
   createReadStream(file).pipe(res);

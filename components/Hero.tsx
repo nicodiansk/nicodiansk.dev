@@ -21,7 +21,8 @@ function Piece({ className, style, delay, from = '-14deg', to = '0deg' }: { clas
 function Portrait() {
   const [animated, setAnimated] = useState(false);
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || conn?.saveData) return;
     const swap = () => {
       const img = new Image();
       img.onload = () => setAnimated(true);
@@ -33,6 +34,7 @@ function Portrait() {
   }, []);
 
   return (
+    // Plain <img>: static export uses unoptimized images, and next/image can't swap to an animated WebP cleanly.
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={asset(animated ? '/images/nicholas-loop.webp' : profile.photo)}
