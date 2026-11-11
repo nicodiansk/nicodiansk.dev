@@ -41,7 +41,7 @@ export const ui = {
   },
   stats: [
     { value: '5', label: { en: 'years in AI', it: 'anni in AI' } },
-    { value: '10+', label: { en: 'projects live or in rollout', it: 'progetti live o in rilascio' } },
+    { value: '10+', label: { en: 'projects delivered or in rollout', it: 'progetti consegnati o in rilascio' } },
     { value: '12K', label: { en: 'employees on one AI assistant', it: 'dipendenti su un solo assistente AI' } },
     { value: '8', label: { en: 'industries', it: 'settori' } },
   ],
