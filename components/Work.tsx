@@ -5,7 +5,7 @@ import { ArrowUpRight, Plus, X } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { projects, ui, type Project } from '@/data/content';
 import { useLang } from './LanguageProvider';
-import { Asterisk, Eyebrow, Reveal, Scribble, Sparkle, GlitchWord } from './primitives';
+import { Asterisk, Eyebrow, Reveal, Scribble, Sparkle } from './primitives';
 import { accentBg, accentBorder, accentText, cn, tornClip } from '@/lib/utils';
 
 const tilt = ['-rotate-1', 'rotate-[0.7deg]', '-rotate-[0.4deg]', 'rotate-1'];
@@ -142,8 +142,8 @@ export default function Work() {
         <div>
           <Eyebrow glyph="▶">{t(ui.work.eyebrow)}</Eyebrow>
           <h2 className="display mt-5 text-[clamp(2.6rem,7vw,5.5rem)]">
-            <span className="block text-paper"><GlitchWord index={1}>{t(ui.work.title[0])}</GlitchWord></span>
-            <span className="block text-teal"><GlitchWord index={2}>{t(ui.work.title[1])}</GlitchWord></span>
+            <span className="block text-paper">{t(ui.work.title[0])}</span>
+            <span className="block text-teal">{t(ui.work.title[1])}</span>
           </h2>
         </div>
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper/60">

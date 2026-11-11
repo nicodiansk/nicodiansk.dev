@@ -26,68 +26,67 @@ export const ui = {
     cv: { en: 'Download CV', it: 'Scarica CV' },
   },
   hero: {
-    eyebrow: { en: 'Ship in prod, not in demos.', it: 'In produzione, non in demo.' },
+    eyebrow: { en: 'AI engineer · Bergamo, Italy', it: 'AI engineer · Bergamo' },
     lines: [
-      { text: { en: 'AI that', it: 'AI che' }, accent: 'cream' as Accent },
-      { text: { en: 'ships.', it: 'va live.' }, accent: 'teal' as Accent },
-      { text: { en: 'Not just', it: 'Non solo' }, accent: 'pink' as Accent },
-      { text: { en: 'demos.', it: 'demo.' }, accent: 'pink' as Accent },
+      { text: { en: 'Building AI', it: 'Costruisco AI' }, accent: 'cream' as Accent },
+      { text: { en: 'that works', it: 'che funziona' }, accent: 'teal' as Accent },
+      { text: { en: 'in production.', it: 'in produzione.' }, accent: 'pink' as Accent },
     ],
     intro: {
-      en: 'Head of AI at S.I. 2001. I architect and ship production RAG, multi-agent systems and LLM evaluation pipelines for Fortune Global 500 clients.',
-      it: 'Head of AI in S.I. 2001. Progetto e porto in produzione sistemi RAG, multi-agente e pipeline di valutazione LLM per clienti Fortune Global 500.',
+      en: 'I lead the AI unit at S.I. 2001. Together with a small team I design and build RAG, multi-agent and LLM evaluation systems for companies in legal, retail, e-commerce and HR.',
+      it: 'Guido la unit AI di S.I. 2001. Con un piccolo team progetto e sviluppo sistemi RAG, multi-agente e di valutazione LLM per aziende nel legale, retail, e-commerce e HR.',
     },
     ctaWork: { en: 'See the work', it: 'Guarda i progetti' },
     ctaCv: { en: 'Download CV', it: 'Scarica il CV' },
   },
   stats: [
     { value: '5', label: { en: 'years in AI', it: 'anni in AI' } },
-    { value: '10+', label: { en: 'solutions shipped', it: 'soluzioni in prod' } },
-    { value: '5+', label: { en: 'engineers led', it: 'ingegneri nel team' } },
+    { value: '10+', label: { en: 'projects in production', it: 'progetti in produzione' } },
+    { value: '5+', label: { en: 'people in the team', it: 'persone nel team' } },
     { value: '91%', label: { en: 'legal RAG recall@10', it: 'recall@10 RAG legale' } },
   ],
   whatIDo: {
     eyebrow: { en: 'What I do', it: 'Cosa faccio' },
     title: [
-      { en: 'Small team.', it: 'Team piccolo.' },
-      { en: 'Big systems.', it: 'Sistemi grandi.' },
+      { en: 'From prototype', it: 'Dal prototipo' },
+      { en: 'to production.', it: 'alla produzione.' },
     ],
     sub: {
-      en: 'From whiteboard to production: strategy, architecture, delivery and the client in the room.',
-      it: 'Dalla lavagna alla produzione: strategia, architettura, delivery e il cliente al tavolo.',
+      en: 'Most of my work is about the step after the demo: retrieval that holds up on real documents, agents with clear boundaries, and numbers that show whether it works.',
+      it: 'Gran parte del mio lavoro è il passo dopo la demo: retrieval che regge su documenti veri, agenti con confini chiari e numeri che dicono se funziona.',
     },
   },
   work: {
     eyebrow: { en: '// selected work', it: '// progetti scelti' },
     title: [
-      { en: 'Built for real.', it: 'Costruiti sul serio.' },
-      { en: 'Running in prod.', it: 'Girano in prod.' },
+      { en: 'Selected work', it: 'Progetti scelti' },
+      { en: '2021 – today.', it: '2021 – oggi.' },
     ],
     open: { en: 'Read the case', it: 'Leggi il caso' },
     close: { en: 'Close', it: 'Chiudi' },
     challenge: { en: 'The problem', it: 'Il problema' },
-    solution: { en: 'What I built', it: 'Cosa ho costruito' },
+    solution: { en: 'What we built', it: 'Cosa abbiamo costruito' },
     stack: { en: 'Stack', it: 'Stack' },
   },
   experience: {
     eyebrow: { en: 'Experience', it: 'Esperienza' },
     title: [
-      { en: 'First AI hire.', it: 'Primo assunto AI.' },
-      { en: 'Now running the unit.', it: 'Ora guido la unit.' },
+      { en: 'Where I work', it: 'Dove lavoro' },
+      { en: 'S.I. 2001, since 2021.', it: 'S.I. 2001, dal 2021.' },
     ],
   },
   stack: {
-    eyebrow: { en: 'The toolbox', it: 'La cassetta degli attrezzi' },
+    eyebrow: { en: 'Stack', it: 'Stack' },
     title: [
-      { en: 'Tools, not hype.', it: 'Strumenti, non hype.' },
-      { en: 'Measured, not vibes.', it: 'Misurati, non a sensazione.' },
+      { en: 'What I use', it: 'Cosa uso' },
+      { en: 'day to day.', it: 'ogni giorno.' },
     ],
   },
   about: {
-    eyebrow: { en: 'Beyond the job', it: 'Oltre il lavoro' },
+    eyebrow: { en: 'About', it: 'Chi sono' },
     title: [
-      { en: 'Research, open source', it: 'Ricerca, open source' },
-      { en: '& the paper trail.', it: '& i titoli.' },
+      { en: 'Studies, research', it: 'Studi, ricerca' },
+      { en: '& open source.', it: '& open source.' },
     ],
     education: { en: 'Education', it: 'Formazione' },
     openSource: { en: 'Open source', it: 'Open source' },
@@ -96,19 +95,19 @@ export const ui = {
     thesis: { en: 'Thesis', it: 'Tesi' },
   },
   contact: {
-    eyebrow: { en: "Don't be a stranger", it: 'Fatti sentire' },
+    eyebrow: { en: 'Contact', it: 'Contatti' },
     lines: [
-      { text: { en: 'Hard problem?', it: 'Problema tosto?' }, accent: 'cream' as Accent },
-      { text: { en: "Let's ship", it: 'Portiamolo' }, accent: 'pink' as Accent },
-      { text: { en: 'it.', it: 'in prod.' }, accent: 'teal' as Accent },
+      { text: { en: 'Working on', it: 'Stai lavorando' }, accent: 'cream' as Accent },
+      { text: { en: 'something similar?', it: 'a qualcosa di simile?' }, accent: 'pink' as Accent },
+      { text: { en: "Let's talk.", it: 'Parliamone.' }, accent: 'teal' as Accent },
     ],
     cta: { en: 'Write me', it: 'Scrivimi' },
-    note: { en: 'Based in Bergamo. Working everywhere.', it: 'Base a Bergamo. Lavoro ovunque.' },
+    note: { en: 'Based in Bergamo, Italy.', it: 'Base a Bergamo.' },
     navigate: { en: 'Navigate', it: 'Naviga' },
     connect: { en: 'Connect', it: 'Contatti' },
     rights: {
-      en: 'Built in public, shipped in prod.',
-      it: 'Costruito in pubblico, rilasciato in prod.',
+      en: 'Made in Bergamo.',
+      it: 'Fatto a Bergamo.',
     },
   },
 };
@@ -116,8 +115,8 @@ export const ui = {
 export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }[] = [
   {
     num: '01',
-    tag: { en: 'Architect', it: 'Architettura' },
-    title: { en: 'RAG that actually retrieves.', it: 'RAG che recupera davvero.' },
+    tag: { en: 'Retrieval', it: 'Retrieval' },
+    title: { en: 'Retrieval on real documents.', it: 'Retrieval su documenti veri.' },
     body: {
       en: 'Hybrid retrieval (dense + BM25, RRF), reranking and LLM-built knowledge graphs on specialised corpora.',
       it: 'Retrieval ibrido (dense + BM25, RRF), reranking e knowledge graph costruiti da LLM su corpora specialistici.',
@@ -126,7 +125,7 @@ export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }
   },
   {
     num: '02',
-    tag: { en: 'Orchestrate', it: 'Orchestrazione' },
+    tag: { en: 'Agents', it: 'Agenti' },
     title: { en: 'Agents with one job each.', it: 'Agenti con un solo compito.' },
     body: {
       en: 'Multi-agent platforms on LangGraph, LangChain and MCP. Single-scope agents, clear hand-offs, multi-model.',
@@ -136,8 +135,8 @@ export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }
   },
   {
     num: '03',
-    tag: { en: 'Evaluate', it: 'Valutazione' },
-    title: { en: 'Numbers, not vibes.', it: 'Numeri, non sensazioni.' },
+    tag: { en: 'Evaluation', it: 'Valutazione' },
+    title: { en: 'Measure before shipping.', it: 'Misurare prima di rilasciare.' },
     body: {
       en: 'RAGAS, recall@k, MRR, nDCG, LLM-as-judge and golden sets built with domain experts. Regression-tested.',
       it: 'RAGAS, recall@k, MRR, nDCG, LLM-as-judge e golden set con esperti di dominio. Con test di regressione.',
@@ -146,8 +145,8 @@ export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }
   },
   {
     num: '04',
-    tag: { en: 'Harden', it: 'Affidabilità' },
-    title: { en: 'Guardrails all the way down.', it: 'Guardrail ovunque.' },
+    tag: { en: 'Reliability', it: 'Affidabilità' },
+    title: { en: 'Guardrails and fallbacks.', it: 'Guardrail e fallback.' },
     body: {
       en: 'Fallback policies, tool-call constraints, structured outputs, human-in-the-loop, Langfuse tracing of cost and hallucinations.',
       it: 'Fallback, vincoli sui tool call, output strutturati, human-in-the-loop, tracing Langfuse di costi e allucinazioni.',
@@ -503,8 +502,8 @@ export const experience: {
     company: 'S.I. 2001 SpA · Bergamo',
     period: { en: 'Apr 2021 – Mar 2022', it: 'Apr 2021 – Mar 2022' },
     intro: {
-      en: 'First AI hire. Computer vision models and the infrastructure to run them.',
-      it: 'Primo assunto AI. Modelli di computer vision e l’infrastruttura per farli girare.',
+      en: 'Joined as the company’s first AI engineer. Computer vision models and the infrastructure to run them.',
+      it: 'Entrato come primo AI engineer dell’azienda. Modelli di computer vision e l’infrastruttura per farli girare.',
     },
     points: [
       { en: 'Classification, object detection and similarity search with transfer learning.', it: 'Classificazione, object detection e similarity search con transfer learning.' },

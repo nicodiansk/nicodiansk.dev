@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import { ArrowDown, Download } from 'lucide-react';
 import { profile, ui } from '@/data/content';
 import { useLang } from './LanguageProvider';
@@ -17,27 +17,12 @@ function Piece({ className, style, delay, from = '-14deg', to = '0deg' }: { clas
   );
 }
 
-/** Still JPG for a fast first paint; swaps to the animated glitch loop once the page has loaded. */
 function Portrait() {
-  const [animated, setAnimated] = useState(false);
-  useEffect(() => {
-    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || conn?.saveData) return;
-    const swap = () => {
-      const img = new Image();
-      img.onload = () => setAnimated(true);
-      img.src = asset('/images/nicholas-loop.webp');
-    };
-    if (document.readyState === 'complete') swap();
-    else window.addEventListener('load', swap, { once: true });
-    return () => window.removeEventListener('load', swap);
-  }, []);
-
   return (
-    // Plain <img>: static export uses unoptimized images, and next/image can't swap to an animated WebP cleanly.
+    // Plain <img>: the static export uses unoptimized images anyway.
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={asset(animated ? '/images/nicholas-loop.webp' : profile.photo)}
+      src={asset(profile.photo)}
       alt="Nicholas Previtali"
       width={640}
       height={640}
@@ -91,7 +76,7 @@ export default function Hero() {
     <section id="top" className="relative mx-auto grid min-h-[100svh] max-w-7xl items-center gap-10 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:px-12">
       <div className="relative z-10">
         <p className="drop-in mb-6 font-mono text-xs uppercase tracking-[0.22em] text-teal sm:text-sm">{t(ui.hero.eyebrow)}</p>
-        <Headline as="h1" lines={ui.hero.lines} cursor entrance className="text-[clamp(3rem,8.4vw,6.6rem)]" />
+        <Headline as="h1" lines={ui.hero.lines} entrance className="text-[clamp(2.2rem,4.4vw,4.1rem)]" />
         <p className="drop-in mt-8 max-w-xl text-[15px] leading-relaxed text-paper/85 sm:text-lg" style={{ animationDelay: '700ms' }}>
           {t(ui.hero.intro)}
         </p>

@@ -39,7 +39,7 @@ export function Headline({
           className={cn('block', accentText[line.accent], entrance && 'drop-in')}
           style={entrance ? { animationDelay: `${120 + i * 130}ms` } : undefined}
         >
-          <GlitchWord index={i}>{t(line.text)}</GlitchWord>
+          {t(line.text)}
           {cursor && i === lines.length - 1 && <Cursor />}
         </span>
       ))}
@@ -47,18 +47,6 @@ export function Headline({
   );
 }
 
-/** Wraps text in a rare RGB-split glitch; index staggers the timing so lines never fire together. */
-export function GlitchWord({ children, index = 0 }: { children: ReactNode; index?: number }) {
-  const durations = [17, 19, 23, 21, 27];
-  return (
-    <span
-      className="glitch-word"
-      style={{ '--glitch-dur': `${durations[index % durations.length]}s`, '--glitch-delay': `${-index * 3.7}s` } as CSSProperties}
-    >
-      {children}
-    </span>
-  );
-}
 
 export function Cursor() {
   return (

@@ -2,7 +2,7 @@
 
 import { stack, ui } from '@/data/content';
 import { useLang } from './LanguageProvider';
-import { Asterisk, Eyebrow, Reveal, GlitchWord } from './primitives';
+import { Asterisk, Eyebrow, Reveal } from './primitives';
 import { accentBorder, accentText, cn, tornClip } from '@/lib/utils';
 
 const chipTilt = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2', 'rotate-0', '-rotate-[1.5deg]'];
@@ -19,8 +19,8 @@ export default function Stack() {
         <Reveal>
           <Eyebrow glyph="◆">{t(ui.stack.eyebrow)}</Eyebrow>
           <h2 className="display mt-5 text-[clamp(2.6rem,7vw,5.5rem)]">
-            <span className="block text-paper"><GlitchWord index={1}>{t(ui.stack.title[0])}</GlitchWord></span>
-            <span className="block text-pink"><GlitchWord index={2}>{t(ui.stack.title[1])}</GlitchWord></span>
+            <span className="block text-paper">{t(ui.stack.title[0])}</span>
+            <span className="block text-pink">{t(ui.stack.title[1])}</span>
           </h2>
         </Reveal>
 

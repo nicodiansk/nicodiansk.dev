@@ -44,10 +44,7 @@ Mention `@claude` in a PR comment to ask Claude for changes.
 ## Motion
 
 Inspired by stop-motion zines: collage pieces pop in and “boil” (an SVG turbulence filter re-seeded ~7×/s while the hero is
-on screen), headlines glitch with an RGB split on staggered 17–27s timers, the cursor blinks irregularly, and the portrait
-swaps to an animated glitch loop after page load. Everything respects `prefers-reduced-motion`.
-
-Regenerate the portrait loop after changing the photo: `python3 scripts/make-portrait-loop.py` (needs Pillow).
+on screen), doodles jitter between poses and the cursor blinks irregularly. Everything respects `prefers-reduced-motion`.
 
 ## Structure
 
@@ -57,7 +54,7 @@ components/     Nav, Hero, Marquee, Pillars, Work (+ case dialog), Experience, S
                 primitives.tsx (Eyebrow, Headline, Reveal, doodles, SVG filters)
                 LanguageProvider.tsx (EN/IT toggle, persisted)
 data/content.ts all text
-public/         images/nicholas.jpg (+ nicholas-loop.webp), docs/Nicholas_Previtali_CV.pdf
-scripts/        preview.mjs (local prod preview), make-portrait-loop.py, build-cv.mjs + cv/cv.html (public CV),
+public/         images/nicholas.jpg, og.jpg, docs/Nicholas_Previtali_CV.pdf
+scripts/        preview.mjs (local prod preview), build-cv.mjs + cv/cv.html (public CV),
                 build-og.mjs + og/og.html (social preview card → public/og.jpg, `npm run og`)
 ```

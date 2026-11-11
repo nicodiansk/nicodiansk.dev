@@ -141,37 +141,6 @@ dialog.case[open] {
 
 /* ——— Motion kit (stop-motion / riso zine) ——— */
 
-/* Rare RGB-split glitch on display words; each line gets its own --glitch-dur so they never sync */
-@keyframes word-glitch {
-  0%,
-  92% {
-    text-shadow: none;
-    transform: none;
-  }
-  92.3% {
-    text-shadow: 4px 0 #ef4f7a, -4px 0 #26b7aa;
-    transform: translateX(-3px) skewX(-4deg);
-  }
-  92.7% {
-    text-shadow: -6px 0 #ef4f7a, 5px 0 #26b7aa;
-    transform: translateX(4px) skewX(3deg);
-  }
-  93.1% {
-    text-shadow: 3px 0 #f6bd33, -3px 0 #26b7aa;
-    transform: translateX(-1px);
-  }
-  93.5%,
-  100% {
-    text-shadow: none;
-    transform: none;
-  }
-}
-.glitch-word {
-  display: inline-block;
-  animation: word-glitch var(--glitch-dur, 19s) steps(1) infinite;
-  animation-delay: var(--glitch-delay, 0s);
-}
-
 /* Irregular, “human” cursor blink */
 @keyframes blink-real {
   0%, 6.6% { opacity: 1; }

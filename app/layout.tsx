@@ -8,11 +8,11 @@ import { LanguageProvider } from '@/components/LanguageProvider';
 import { RoughFilters } from '@/components/primitives';
 
 const description =
-  'AI Engineering Lead and Head of AI at S.I. 2001. Production RAG, multi-agent systems and LLM evaluation for Fortune Global 500 clients.';
+  'Head of AI at S.I. 2001 in Bergamo. RAG, multi-agent systems and LLM evaluation, built for production.';
 
 // Public URL of the deployed site (GitHub Pages). Social cards need absolute URLs.
 const siteUrl = 'https://nicodiansk.github.io/nicodiansk.dev';
-const shareTitle = 'Nicholas Previtali — AI that ships. Not just demos.';
+const shareTitle = 'Nicholas Previtali — AI engineer';
 // Rebuild with `npm run og` (scripts/og/og.html).
 const ogImage = { url: `${siteUrl}/og.jpg`, width: 1200, height: 630, alt: 'Nicholas Previtali — AI Engineering Lead' };
 

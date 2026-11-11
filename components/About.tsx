@@ -3,7 +3,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import { education, languages, research, thesis, ui } from '@/data/content';
 import { useLang } from './LanguageProvider';
-import { Cross, Dots, Eyebrow, Reveal, Scribble, GlitchWord } from './primitives';
+import { Cross, Dots, Eyebrow, Reveal, Scribble } from './primitives';
 import { tornClip } from '@/lib/utils';
 
 export default function About() {
@@ -13,8 +13,8 @@ export default function About() {
       <Reveal>
         <Eyebrow glyph="●">{t(ui.about.eyebrow)}</Eyebrow>
         <h2 className="display mt-5 text-[clamp(2.6rem,7vw,5.5rem)]">
-          <span className="block text-paper"><GlitchWord index={1}>{t(ui.about.title[0])}</GlitchWord></span>
-          <span className="block text-teal"><GlitchWord index={2}>{t(ui.about.title[1])}</GlitchWord></span>
+          <span className="block text-paper">{t(ui.about.title[0])}</span>
+          <span className="block text-teal">{t(ui.about.title[1])}</span>
         </h2>
       </Reveal>
 
