@@ -138,3 +138,136 @@ dialog.case[open] {
     transform: none;
   }
 }
+
+/* ——— Motion kit (stop-motion / riso zine) ——— */
+
+/* Rare RGB-split glitch on display words; each line gets its own --glitch-dur so they never sync */
+@keyframes word-glitch {
+  0%,
+  92% {
+    text-shadow: none;
+    transform: none;
+  }
+  92.3% {
+    text-shadow: 4px 0 #ef4f7a, -4px 0 #26b7aa;
+    transform: translateX(-3px) skewX(-4deg);
+  }
+  92.7% {
+    text-shadow: -6px 0 #ef4f7a, 5px 0 #26b7aa;
+    transform: translateX(4px) skewX(3deg);
+  }
+  93.1% {
+    text-shadow: 3px 0 #f6bd33, -3px 0 #26b7aa;
+    transform: translateX(-1px);
+  }
+  93.5%,
+  100% {
+    text-shadow: none;
+    transform: none;
+  }
+}
+.glitch-word {
+  display: inline-block;
+  animation: word-glitch var(--glitch-dur, 19s) steps(1) infinite;
+  animation-delay: var(--glitch-delay, 0s);
+}
+
+/* Irregular, “human” cursor blink */
+@keyframes blink-real {
+  0%, 6.6% { opacity: 1; }
+  6.7%, 13.2% { opacity: 0; }
+  13.3%, 19.8% { opacity: 1; }
+  19.9%, 26.4% { opacity: 0; }
+  26.5%, 39.6% { opacity: 1; }
+  39.7%, 46% { opacity: 0; }
+  46.1%, 72% { opacity: 1; }
+  72.1%, 74% { opacity: 0; }
+  74.1%, 76% { opacity: 1; }
+  76.1%, 78% { opacity: 0; }
+  78.1%, 91.3% { opacity: 1; }
+  91.4%, 97% { opacity: 0; }
+  97.1%, 100% { opacity: 1; }
+}
+.cursor-blink {
+  animation: blink-real 7s steps(1) infinite;
+}
+
+/* Hand-drawn “line boil”: tiny jumps between 3 poses, like stop-motion doodles */
+@keyframes boil {
+  0% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+  33% { transform: translate(1px, -1px) rotate(calc(var(--r, 0deg) - 3deg)); }
+  66% { transform: translate(-1px, 1px) rotate(calc(var(--r, 0deg) + 2deg)); }
+  100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+}
+.boil {
+  animation: boil 0.5s steps(1) infinite;
+}
+
+@keyframes spin-step {
+  to { transform: rotate(360deg); }
+}
+.spin-step {
+  animation: spin-step 6s steps(12) infinite;
+}
+
+/* Stop-motion entrance for hero lines and collage pieces */
+@keyframes drop-in {
+  0% { opacity: 0; transform: translateY(40%) rotate(-4deg); }
+  60% { opacity: 1; transform: translateY(-6%) rotate(1deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.6) rotate(var(--from, -12deg)); }
+  70% { opacity: 1; transform: scale(1.05) rotate(var(--to, 0deg)); }
+  100% { opacity: 1; transform: scale(1) rotate(var(--to, 0deg)); }
+}
+.drop-in {
+  opacity: 0;
+  animation: drop-in 0.6s steps(6) forwards;
+}
+.pop-in {
+  opacity: 0;
+  animation: pop-in 0.7s steps(7) forwards;
+}
+
+/* Icon micro-interactions on buttons */
+@keyframes wiggle {
+  0% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(1px, -1px) rotate(-10deg); }
+  50% { transform: translate(-1px, 1px) rotate(8deg); }
+  75% { transform: translate(1px, 0) rotate(-5deg); }
+  100% { transform: none; }
+}
+@keyframes star-spin {
+  0% { transform: rotate(0); }
+  60% { transform: rotate(144deg) scale(1.25); }
+  100% { transform: rotate(0) scale(1); }
+}
+.btn-sticker:hover .icon-wiggle,
+.btn-ghost:hover .icon-wiggle,
+a:hover > .icon-wiggle {
+  animation: wiggle 0.42s steps(3);
+}
+.btn-sticker:hover .icon-star,
+a:hover .icon-star {
+  animation: star-spin 0.6s ease;
+}
+
+/* Pulsing “live” dot */
+@keyframes live-pulse {
+  0% { box-shadow: 0 0 0 0 currentColor; }
+  70% { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+  animation: live-pulse 1.4s ease-out infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}

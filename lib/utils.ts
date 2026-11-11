@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /** Prefix public assets with the GitHub Pages base path in production. */
-export const basePath = process.env.NODE_ENV === 'production' ? '/nicodiansk.dev' : '';
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 export const asset = (path: string) => `${basePath}${path}`;
 
 export const accentText: Record<Accent, string> = {

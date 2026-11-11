@@ -84,7 +84,7 @@ export default function Nav() {
         <div className="hidden items-center gap-4 md:flex">
           <LangToggle />
           <a href={asset(profile.cv)} download className="btn-sticker !px-4 !py-2 !text-xs">
-            {t(ui.nav.cv)} <Star className="h-3.5 w-3.5 fill-ink" />
+            {t(ui.nav.cv)} <Star className="icon-star h-3.5 w-3.5 fill-ink" />
           </a>
         </div>
 
@@ -112,7 +112,7 @@ export default function Nav() {
           <div className="mt-8 flex items-center gap-4">
             <LangToggle />
             <a href={asset(profile.cv)} download className="btn-sticker !px-4 !py-2 !text-xs">
-              {t(ui.nav.cv)} <Star className="h-3.5 w-3.5 fill-ink" />
+              {t(ui.nav.cv)} <Star className="icon-star h-3.5 w-3.5 fill-ink" />
             </a>
           </div>
         </div>

@@ -21,18 +21,25 @@ export function Headline({
   as: Tag = 'h2',
   className,
   cursor = false,
+  entrance = false,
 }: {
   lines: { text: L; accent: Accent }[];
   as?: 'h1' | 'h2';
   className?: string;
   cursor?: boolean;
+  /** stop-motion drop-in on load (hero only) */
+  entrance?: boolean;
 }) {
   const { t } = useLang();
   return (
     <Tag className={cn('display', className)}>
       {lines.map((line, i) => (
-        <span key={i} className={cn('block', accentText[line.accent])}>
-          {t(line.text)}
+        <span
+          key={i}
+          className={cn('block', accentText[line.accent], entrance && 'drop-in')}
+          style={entrance ? { animationDelay: `${120 + i * 130}ms` } : undefined}
+        >
+          <GlitchWord index={i}>{t(line.text)}</GlitchWord>
           {cursor && i === lines.length - 1 && <Cursor />}
         </span>
       ))}
@@ -40,9 +47,22 @@ export function Headline({
   );
 }
 
+/** Wraps text in a rare RGB-split glitch; index staggers the timing so lines never fire together. */
+export function GlitchWord({ children, index = 0 }: { children: ReactNode; index?: number }) {
+  const durations = [17, 19, 23, 21, 27];
+  return (
+    <span
+      className="glitch-word"
+      style={{ '--glitch-dur': `${durations[index % durations.length]}s`, '--glitch-delay': `${-index * 3.7}s` } as CSSProperties}
+    >
+      {children}
+    </span>
+  );
+}
+
 export function Cursor() {
   return (
-    <span aria-hidden className="ml-[0.06em] inline-block animate-blink text-pink">
+    <span aria-hidden className="cursor-blink ml-[0.06em] inline-block text-pink">
       _
     </span>
   );
@@ -138,8 +158,22 @@ export function Dots({ className }: { className?: string }) {
   );
 }
 
-/** SVG filter that roughens edges → torn paper / brush look. Mount once. */
+/**
+ * SVG filters that roughen edges → torn paper / brush look. Mount once.
+ * `#boil` re-seeds its noise ~7×/s so shapes using it jitter like hand-drawn stop-motion.
+ */
 export function RoughFilters() {
+  const boilRef = useRef<SVGFETurbulenceElement>(null);
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let seed = 0;
+    const id = window.setInterval(() => {
+      if (document.hidden || window.scrollY > window.innerHeight * 1.2) return; // only while the hero is on screen
+      seed = (seed + 1) % 4;
+      boilRef.current?.setAttribute('seed', String(seed + 11));
+    }, 140);
+    return () => window.clearInterval(id);
+  }, []);
   return (
     <svg width="0" height="0" className="absolute" aria-hidden>
       <defs>
@@ -150,6 +184,10 @@ export function RoughFilters() {
         <filter id="rough-strong">
           <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="5" seed="8" />
           <feDisplacementMap in="SourceGraphic" scale="34" />
+        </filter>
+        <filter id="boil">
+          <feTurbulence ref={boilRef} type="fractalNoise" baseFrequency="0.03" numOctaves="4" seed="11" />
+          <feDisplacementMap in="SourceGraphic" scale="18" />
         </filter>
       </defs>
     </svg>

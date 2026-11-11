@@ -34,7 +34,7 @@ export default function Contact() {
           <Headline lines={ui.contact.lines} cursor className="mt-5 text-[clamp(2.6rem,7vw,5.6rem)]" />
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <a href={`mailto:${profile.email}`} className="btn-sticker">
-              <Mail className="h-4 w-4" /> {t(ui.contact.cta)}
+              <Mail className="icon-wiggle h-4 w-4" /> {t(ui.contact.cta)}
             </a>
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-paper/50">{t(ui.contact.note)}</span>
           </div>

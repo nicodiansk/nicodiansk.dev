@@ -2,7 +2,7 @@
 
 import { pillars, ui } from '@/data/content';
 import { useLang } from './LanguageProvider';
-import { Eyebrow, Reveal } from './primitives';
+import { Eyebrow, Reveal, GlitchWord } from './primitives';
 import { accentBorder, accentText, cn, tornClip } from '@/lib/utils';
 
 const tilt = ['-rotate-[1.2deg]', 'rotate-[0.8deg]', '-rotate-[0.6deg]', 'rotate-[1.6deg]'];
@@ -14,8 +14,8 @@ export default function Pillars() {
       <Reveal>
         <Eyebrow>{t(ui.whatIDo.eyebrow)}</Eyebrow>
         <h2 className="display mt-5 text-[clamp(2.6rem,7vw,5.5rem)]">
-          <span className="block text-paper">{t(ui.whatIDo.title[0])}</span>
-          <span className="block text-pink">{t(ui.whatIDo.title[1])}</span>
+          <span className="block text-paper"><GlitchWord index={1}>{t(ui.whatIDo.title[0])}</GlitchWord></span>
+          <span className="block text-pink"><GlitchWord index={2}>{t(ui.whatIDo.title[1])}</GlitchWord></span>
         </h2>
         <p className="mt-6 max-w-xl text-paper/75">{t(ui.whatIDo.sub)}</p>
       </Reveal>

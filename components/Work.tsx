@@ -5,7 +5,7 @@ import { ArrowUpRight, Plus, X } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { projects, ui, type Project } from '@/data/content';
 import { useLang } from './LanguageProvider';
-import { Asterisk, Eyebrow, Reveal, Scribble, Sparkle } from './primitives';
+import { Asterisk, Eyebrow, Reveal, Scribble, Sparkle, GlitchWord } from './primitives';
 import { accentBg, accentBorder, accentText, cn, tornClip } from '@/lib/utils';
 
 const tilt = ['-rotate-1', 'rotate-[0.7deg]', '-rotate-[0.4deg]', 'rotate-1'];
@@ -23,7 +23,7 @@ function Poster({ p, i }: { p: Project; i: number }) {
         className="absolute -bottom-[15%] -left-[10%] h-[55%] w-[80%] rounded-full bg-ink/90"
         style={{ filter: 'url(#rough-strong)' }}
       />
-      <Doodle className="absolute right-5 top-14 h-12 w-12 text-ink/80" />
+      <Doodle className="boil absolute right-5 top-14 h-12 w-12 text-ink/80 [animation-play-state:paused] group-hover:[animation-play-state:running]" />
 
       <span className="absolute left-3 top-3 rounded-sm bg-ink px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-paper">
         <span className={accentText[p.accent]}>●</span> {t(p.tag)}
@@ -95,10 +95,10 @@ function CaseDialog({ project, onClose }: { project: Project | null; onClose: ()
             ))}
           </div>
 
-          <h4 className="eyebrow mt-10 text-pink">// {t(ui.work.challenge)}</h4>
+          <h4 className="eyebrow mt-10 text-pink">{'// '}{t(ui.work.challenge)}</h4>
           <p className="mt-3 font-sans leading-relaxed text-paper/80">{t(project.challenge)}</p>
 
-          <h4 className="eyebrow mt-8 text-teal">// {t(ui.work.solution)}</h4>
+          <h4 className="eyebrow mt-8 text-teal">{'// '}{t(ui.work.solution)}</h4>
           <ul className="mt-3 space-y-3 font-sans leading-relaxed text-paper/85">
             {project.solution.map((s, i) => (
               <li key={i} className="flex gap-3">
@@ -108,7 +108,7 @@ function CaseDialog({ project, onClose }: { project: Project | null; onClose: ()
             ))}
           </ul>
 
-          <h4 className="eyebrow mt-8 text-mustard">// {t(ui.work.stack)}</h4>
+          <h4 className="eyebrow mt-8 text-mustard">{'// '}{t(ui.work.stack)}</h4>
           <div className="mt-3 flex flex-wrap gap-2">
             {project.stack.map((s) => (
               <span key={s} className="chip border-paper/25 text-paper/80">
@@ -138,8 +138,8 @@ export default function Work() {
         <div>
           <Eyebrow glyph="▶">{t(ui.work.eyebrow)}</Eyebrow>
           <h2 className="display mt-5 text-[clamp(2.6rem,7vw,5.5rem)]">
-            <span className="block text-paper">{t(ui.work.title[0])}</span>
-            <span className="block text-teal">{t(ui.work.title[1])}</span>
+            <span className="block text-paper"><GlitchWord index={1}>{t(ui.work.title[0])}</GlitchWord></span>
+            <span className="block text-teal"><GlitchWord index={2}>{t(ui.work.title[1])}</GlitchWord></span>
           </h2>
         </div>
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper/50">
@@ -159,12 +159,13 @@ export default function Work() {
               aria-haspopup="dialog"
             >
               <Poster p={p} i={i} />
-              <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-paper/50">
-                {t(p.status)} <span className="px-1">·</span> {t(p.client)}
+              <div className="mt-4 flex flex-wrap items-center gap-x-2 font-mono text-[11px] uppercase tracking-[0.16em] text-paper/50">
+                <span className={cn('live-dot', accentText[p.accent])} aria-hidden />
+                {t(p.status)} <span>·</span> {t(p.client)}
               </div>
               <h3 className="display mt-2 text-xl leading-[1.05] text-paper transition-colors group-hover:text-pink">{t(p.title)}</h3>
               <span className="mt-3 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.16em] text-teal">
-                {t(ui.work.open)} <ArrowUpRight className="h-3.5 w-3.5" />
+                {t(ui.work.open)} <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </button>
           </Reveal>

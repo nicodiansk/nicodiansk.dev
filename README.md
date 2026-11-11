@@ -25,9 +25,28 @@ The downloadable CV is `public/docs/Nicholas_Previtali_CV.pdf`. Keep the two in 
 
 ```bash
 npm install
-npm run dev     # http://localhost:3000
-npm run build   # static export in ./out (basePath /nicodiansk.dev in production)
+npm run dev        # dev server with hot reload → http://localhost:3000
+npm run preview    # production build served at the root → http://localhost:4173
+npm run lint       # ESLint (flat config, next/core-web-vitals + typescript)
+npm run typecheck  # tsc --noEmit
+npm run check      # lint + typecheck + build (same as CI)
+npm run build      # static export in ./out, basePath /nicodiansk.dev
 ```
+
+`PAGES_BASE_PATH` overrides the base path (`npm run preview` sets it to empty).
+
+## Workflow
+
+`feature branch → PR to master → CI (lint, typecheck, build) + Claude code review → merge → GitHub Pages deploy`.
+Mention `@claude` in a PR comment to ask Claude for changes.
+
+## Motion
+
+Inspired by stop-motion zines: collage pieces pop in and “boil” (an SVG turbulence filter re-seeded ~7×/s while the hero is
+on screen), headlines glitch with an RGB split on staggered 17–27s timers, the cursor blinks irregularly, and the portrait
+swaps to an animated glitch loop after page load. Everything respects `prefers-reduced-motion`.
+
+Regenerate the portrait loop after changing the photo: `python3 scripts/make-portrait-loop.py` (needs Pillow).
 
 ## Structure
 
@@ -37,5 +56,6 @@ components/     Nav, Hero, Marquee, Pillars, Work (+ case dialog), Experience, S
                 primitives.tsx (Eyebrow, Headline, Reveal, doodles, SVG filters)
                 LanguageProvider.tsx (EN/IT toggle, persisted)
 data/content.ts all text
-public/         images/nicholas.jpg, docs/Nicholas_Previtali_CV.pdf
+public/         images/nicholas.jpg (+ nicholas-loop.webp), docs/Nicholas_Previtali_CV.pdf
+scripts/        preview.mjs (local prod preview), make-portrait-loop.py
 ```

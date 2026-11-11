@@ -2,7 +2,7 @@
 
 import { experience, ui } from '@/data/content';
 import { useLang } from './LanguageProvider';
-import { Eyebrow, Reveal, Sparkle } from './primitives';
+import { Eyebrow, Reveal, Sparkle, GlitchWord } from './primitives';
 import { accentBg, accentText, cn } from '@/lib/utils';
 
 export default function Experience() {
@@ -13,8 +13,8 @@ export default function Experience() {
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <Eyebrow glyph="✦">{t(ui.experience.eyebrow)}</Eyebrow>
           <h2 className="display mt-5 text-[clamp(2.6rem,6vw,4.8rem)]">
-            <span className="block text-paper">{t(ui.experience.title[0])}</span>
-            <span className="block text-mustard">{t(ui.experience.title[1])}</span>
+            <span className="block text-paper"><GlitchWord index={1}>{t(ui.experience.title[0])}</GlitchWord></span>
+            <span className="block text-mustard"><GlitchWord index={2}>{t(ui.experience.title[1])}</GlitchWord></span>
           </h2>
           <div className="mt-10 hidden items-center gap-4 lg:flex">
             <Sparkle className="h-10 w-10 animate-wobble text-pink" />

@@ -1,39 +1,50 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useSyncExternalStore, type ReactNode } from 'react';
 import type { L, Lang } from '@/data/content';
 
-type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (text: L) => string };
+/* Tiny external store: server/hydration render is always EN, the client then switches to the stored or browser language. */
+const listeners = new Set<() => void>();
+let current: Lang | null = null;
 
+function readInitial(): Lang {
+  try {
+    const stored = localStorage.getItem('lang');
+    if (stored === 'en' || stored === 'it') return stored;
+  } catch {}
+  return navigator.language?.toLowerCase().startsWith('it') ? 'it' : 'en';
+}
+
+const subscribe = (cb: () => void) => {
+  listeners.add(cb);
+  return () => {
+    listeners.delete(cb);
+  };
+};
+const getSnapshot = (): Lang => (current ??= readInitial());
+const getServerSnapshot = (): Lang => 'en';
+
+function writeLang(l: Lang) {
+  current = l;
+  try {
+    localStorage.setItem('lang', l);
+  } catch {}
+  listeners.forEach((cb) => cb());
+}
+
+type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (text: L) => string };
 const LanguageContext = createContext<Ctx | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Always render EN first so static HTML and hydration match; then pick up the stored/browser choice.
-  const [lang, setLangState] = useState<Lang>('en');
-
-  useEffect(() => {
-    let initial: Lang = navigator.language?.toLowerCase().startsWith('it') ? 'it' : 'en';
-    try {
-      const stored = localStorage.getItem('lang');
-      if (stored === 'en' || stored === 'it') initial = stored;
-    } catch {}
-    setLangState(initial);
-  }, []);
+  const lang = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    try {
-      localStorage.setItem('lang', l);
-    } catch {}
-  }, []);
-
   const t = useCallback((text: L) => text[lang], [lang]);
 
-  return <LanguageContext.Provider value={{ lang, setLang, t }}>{children}</LanguageContext.Provider>;
+  return <LanguageContext.Provider value={{ lang, setLang: writeLang, t }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLang() {
