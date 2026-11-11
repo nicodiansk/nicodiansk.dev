@@ -58,5 +58,6 @@ components/     Nav, Hero, Marquee, Pillars, Work (+ case dialog), Experience, S
                 LanguageProvider.tsx (EN/IT toggle, persisted)
 data/content.ts all text
 public/         images/nicholas.jpg (+ nicholas-loop.webp), docs/Nicholas_Previtali_CV.pdf
-scripts/        preview.mjs (local prod preview), make-portrait-loop.py, build-cv.mjs + cv/cv.html (public CV)
+scripts/        preview.mjs (local prod preview), make-portrait-loop.py, build-cv.mjs + cv/cv.html (public CV),
+                build-og.mjs + og/og.html (social preview card → public/og.jpg, `npm run og`)
 ```
