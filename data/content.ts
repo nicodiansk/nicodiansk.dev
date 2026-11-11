@@ -1,5 +1,5 @@
 // ABOUTME: Single source of truth for all portfolio copy, bilingual (EN/IT).
-// ABOUTME: Content mirrors the CV in public/docs — update both together.
+// ABOUTME: Content mirrors the public CV (scripts/cv/cv.html). Only verified numbers: update both together.
 
 export type Lang = 'en' | 'it';
 export type L = { en: string; it: string };
@@ -33,17 +33,17 @@ export const ui = {
       { text: { en: 'in production.', it: 'in produzione.' }, accent: 'pink' as Accent },
     ],
     intro: {
-      en: 'I lead the AI unit at S.I. 2001. Together with a small team I design and build RAG, multi-agent and LLM evaluation systems for companies in legal, retail, e-commerce and HR.',
-      it: 'Guido la unit AI di S.I. 2001. Con un piccolo team progetto e sviluppo sistemi RAG, multi-agente e di valutazione LLM per aziende nel legale, retail, e-commerce e HR.',
+      en: 'I lead the AI unit at S.I. 2001. Together with a small team I design and build RAG, multi-agent and LLM evaluation systems for companies in HR, retail, financial services, industry, legal and e-commerce.',
+      it: 'Guido la unit AI di S.I. 2001. Con un piccolo team progetto e sviluppo sistemi RAG, multi-agente e di valutazione LLM per aziende di HR, retail, servizi finanziari, industria, legale ed e-commerce.',
     },
     ctaWork: { en: 'See the work', it: 'Guarda i progetti' },
     ctaCv: { en: 'Download CV', it: 'Scarica il CV' },
   },
   stats: [
     { value: '5', label: { en: 'years in AI', it: 'anni in AI' } },
-    { value: '10+', label: { en: 'projects in production', it: 'progetti in produzione' } },
-    { value: '5+', label: { en: 'people in the team', it: 'persone nel team' } },
-    { value: '91%', label: { en: 'legal RAG recall@10', it: 'recall@10 RAG legale' } },
+    { value: '10+', label: { en: 'projects live or in rollout', it: 'progetti live o in rilascio' } },
+    { value: '12K', label: { en: 'employees on one AI assistant', it: 'dipendenti su un solo assistente AI' } },
+    { value: '8', label: { en: 'industries', it: 'settori' } },
   ],
   whatIDo: {
     eyebrow: { en: 'What I do', it: 'Cosa faccio' },
@@ -66,6 +66,7 @@ export const ui = {
     close: { en: 'Close', it: 'Chiudi' },
     challenge: { en: 'The problem', it: 'Il problema' },
     solution: { en: 'What we built', it: 'Cosa abbiamo costruito' },
+    role: { en: 'My role', it: 'Il mio ruolo' },
     stack: { en: 'Stack', it: 'Stack' },
   },
   experience: {
@@ -118,8 +119,8 @@ export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }
     tag: { en: 'Retrieval', it: 'Retrieval' },
     title: { en: 'Retrieval on real documents.', it: 'Retrieval su documenti veri.' },
     body: {
-      en: 'Hybrid retrieval (dense + BM25, RRF), reranking and LLM-built knowledge graphs on specialised corpora.',
-      it: 'Retrieval ibrido (dense + BM25, RRF), reranking e knowledge graph costruiti da LLM su corpora specialistici.',
+      en: 'Hybrid search (full-text + vectors, RRF), LLM reranking and page-level citations on long technical and business documents.',
+      it: 'Ricerca ibrida (full-text + vettori, RRF), reranking con LLM e citazioni a livello di pagina su documenti tecnici e aziendali lunghi.',
     },
     accent: 'pink',
   },
@@ -138,8 +139,8 @@ export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }
     tag: { en: 'Evaluation', it: 'Valutazione' },
     title: { en: 'Measure before shipping.', it: 'Misurare prima di rilasciare.' },
     body: {
-      en: 'RAGAS, recall@k, MRR, nDCG, LLM-as-judge and golden sets built with domain experts. Regression-tested.',
-      it: 'RAGAS, recall@k, MRR, nDCG, LLM-as-judge e golden set con esperti di dominio. Con test di regressione.',
+      en: 'Test query sets, top-1 accuracy, faithfulness judges and before/after comparisons on the same data. Numbers before claims.',
+      it: 'Set di query di test, accuratezza top-1, giudici di faithfulness e confronti prima/dopo sugli stessi dati. Prima i numeri, poi le affermazioni.',
     },
     accent: 'mustard',
   },
@@ -148,8 +149,8 @@ export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }
     tag: { en: 'Reliability', it: 'Affidabilità' },
     title: { en: 'Guardrails and fallbacks.', it: 'Guardrail e fallback.' },
     body: {
-      en: 'Fallback policies, tool-call constraints, structured outputs, human-in-the-loop, Langfuse tracing of cost and hallucinations.',
-      it: 'Fallback, vincoli sui tool call, output strutturati, human-in-the-loop, tracing Langfuse di costi e allucinazioni.',
+      en: 'Anonymisers before every model call, fallbacks, structured outputs, tool-call constraints and Langfuse tracing of cost and quality.',
+      it: 'Anonimizzatori prima di ogni chiamata al modello, fallback, output strutturati, vincoli sui tool call e tracing Langfuse di costi e qualità.',
     },
     accent: 'cream',
   },
@@ -158,258 +159,512 @@ export const pillars: { num: string; tag: L; title: L; body: L; accent: Accent }
 export type Project = {
   id: string;
   tag: L;
-  status: L;
+  /** Shown only when the state is confirmed. */
+  status?: L;
+  period: string;
   client: L;
   title: L;
   summary: L;
   challenge: L;
   solution: L[];
-  metrics: { value: string; label: L }[];
+  /** Only verified numbers. metrics[0] is the poster headline. */
+  metrics: { value: string; label: L; detail?: L }[];
+  role: L;
   stack: string[];
   accent: Accent;
   link?: string;
 };
 
+// Clients are anonymised on purpose. Every metric below comes from an evaluation report or test in the project repo.
 export const projects: Project[] = [
-  {
-    id: 'legal-rag',
-    tag: { en: 'Legal RAG', it: 'RAG legale' },
-    status: { en: 'Live', it: 'Live' },
-    client: { en: '5 law firms', it: '5 studi legali' },
-    title: {
-      en: '100K legal documents. One grounded answer.',
-      it: '100K documenti legali. Una risposta fondata.',
-    },
-    summary: {
-      en: 'RAG platform over ~100K Italian rulings, regulations and statutes, with cross-citation handling via a vector store + LLM-built knowledge graph.',
-      it: 'Piattaforma RAG su ~100K sentenze, regolamenti e norme italiane, con gestione delle citazioni incrociate tramite vector store + knowledge graph costruito da LLM.',
-    },
-    challenge: {
-      en: 'Legal answers live across documents that cite each other. Plain vector search misses the chain of citations, and a wrong answer is not an option.',
-      it: 'Le risposte legali stanno in documenti che si citano a vicenda. La sola ricerca vettoriale perde la catena di citazioni, e una risposta sbagliata non è un’opzione.',
-    },
-    solution: [
-      {
-        en: 'Hybrid retrieval combining the vector store with an LLM-constructed knowledge graph of cross-citations.',
-        it: 'Retrieval ibrido che combina vector store e knowledge graph delle citazioni costruito da LLM.',
-      },
-      {
-        en: 'Evaluation with LLM-as-judge plus validation by legal experts: 91% recall@10, 89% answer relevance.',
-        it: 'Valutazione con LLM-as-judge e validazione di esperti legali: 91% recall@10, 89% answer relevance.',
-      },
-      {
-        en: 'Automated legal document generation pipeline on top of the retrieval layer.',
-        it: 'Pipeline di generazione automatica di documenti legali sopra il layer di retrieval.',
-      },
-    ],
-    metrics: [
-      { value: '91%', label: { en: 'recall@10', it: 'recall@10' } },
-      { value: '89%', label: { en: 'answer relevance', it: 'answer relevance' } },
-      { value: '~100K', label: { en: 'documents', it: 'documenti' } },
-    ],
-    stack: ['Hybrid Search', 'Knowledge Graph', 'LLM-as-Judge', 'Docling', 'Azure OpenAI'],
-    accent: 'pink',
-  },
-  {
-    id: 'retail-planogram',
-    tag: { en: 'Multi-agent', it: 'Multi-agente' },
-    status: { en: 'Deploying', it: 'In rilascio' },
-    client: { en: 'Fortune Global 500 IT group · retail', it: 'Gruppo IT Fortune Global 500 · retail' },
-    title: {
-      en: 'Eight agents. One shelf.',
-      it: 'Otto agenti. Uno scaffale.',
-    },
-    summary: {
-      en: '8-agent platform for retail planogram optimisation: analysis, product placement, shelf optimisation and reporting, each owned by a dedicated agent.',
-      it: 'Piattaforma a 8 agenti per l’ottimizzazione dei planogrammi retail: analisi, posizionamento prodotti, ottimizzazione scaffali e reportistica, ognuno con un agente dedicato.',
-    },
-    challenge: {
-      en: 'Planograms mix spatial rules, commercial constraints and domain jargon that general-purpose LLMs get wrong.',
-      it: 'I planogrammi mescolano regole spaziali, vincoli commerciali e gergo di dominio che gli LLM generalisti sbagliano.',
-    },
-    solution: [
-      {
-        en: 'Each agent owns one domain responsibility, orchestrated as a multi-agent graph.',
-        it: 'Ogni agente ha una sola responsabilità di dominio, orchestrati come grafo multi-agente.',
-      },
-      {
-        en: 'RAG grounded on a fine-tuned LLM for planogram domain comprehension.',
-        it: 'RAG basato su un LLM fine-tuned per la comprensione del dominio planogrammi.',
-      },
-      {
-        en: 'Full RAG evaluation pipeline, deployed on Azure.',
-        it: 'Pipeline completa di valutazione RAG, deploy su Azure.',
-      },
-    ],
-    metrics: [
-      { value: '8', label: { en: 'specialised agents', it: 'agenti specializzati' } },
-      { value: 'FT', label: { en: 'domain-tuned LLM', it: 'LLM fine-tuned' } },
-    ],
-    stack: ['LangGraph', 'Fine-tuning', 'RAG', 'RAGAS', 'Azure'],
-    accent: 'teal',
-  },
   {
     id: 'hr-assistant',
     tag: { en: 'HR assistant', it: 'Assistente HR' },
     status: { en: 'Live', it: 'Live' },
-    client: { en: 'International digital agency', it: 'Agenzia digitale internazionale' },
+    period: '2023 – 2026',
+    client: { en: 'European data & AI consultancy', it: 'Società europea di consulenza data & AI' },
     title: {
-      en: '7,000 questions a day. Five languages.',
-      it: '7.000 domande al giorno. Cinque lingue.',
+      en: 'The HR assistant 12,000 employees ask first, in five languages.',
+      it: 'L’assistente HR che 12.000 dipendenti interrogano per primo, in cinque lingue.',
     },
     summary: {
-      en: 'Multilingual HR assistant (IT, EN, ES, FR, DE) covering 150+ topics, from PTO and room booking to company policies and newsletters.',
-      it: 'Assistente HR multilingua (IT, EN, ES, FR, DE) su 150+ temi, da ferie e prenotazione sale a policy aziendali e newsletter.',
+      en: 'The AI layer of an employee HR platform used by 12,000 people worldwide: it routes every question to the right HR topic, answers from company documents and keeps the conversation context.',
+      it: 'Lo strato AI di una piattaforma HR usata da 12.000 persone nel mondo: instrada ogni domanda al topic HR giusto, risponde dai documenti aziendali e mantiene il contesto della conversazione.',
     },
     challenge: {
-      en: 'Thousands of employees across countries asking the same HR questions, scattered across apps and intranet pages. Built to scale group-wide.',
-      it: 'Migliaia di dipendenti in più paesi con le stesse domande HR, sparse tra app e pagine intranet. Pensato per scalare a tutto il gruppo.',
+      en: 'Topic classification relied on the LLM alone. It needed a hybrid search that respects per-group permissions and stays in sync with the topic catalogue.',
+      it: 'La classificazione sui topic si basava solo sull’LLM. Serviva una ricerca ibrida che rispettasse i permessi per gruppo e restasse allineata al catalogo dei topic.',
     },
     solution: [
       {
-        en: 'Hybrid search (semantic + keyword) with retroactive fine-tuning driven by tester feedback.',
-        it: 'Ricerca ibrida (semantica + keyword) con fine-tuning retroattivo guidato dal feedback dei tester.',
+        en: 'Hybrid search in Postgres/pgvector: per-language full-text and vectors fused with RRF, an LLM reranker, and a deterministic filter on the topics each user may see.',
+        it: 'Ricerca ibrida in Postgres/pgvector: full-text per lingua e vettori fusi con RRF, un reranker LLM e un filtro deterministico sui topic visibili a ogni utente.',
       },
       {
-        en: 'Topic routing: queries map to pre-configured topics that deep-link to the right app or web page.',
-        it: 'Routing per topic: le domande vengono mappate su topic preconfigurati che portano alla pagina o app giusta.',
+        en: 'Topic catalogue kept in sync through webhooks (bulk operations, cascading deletes) plus a full re-alignment endpoint.',
+        it: 'Catalogo dei topic sincronizzato via webhook (operazioni bulk, cancellazioni a cascata) e un endpoint di riallineamento completo.',
+      },
+      {
+        en: 'Document RAG with a reranker and a faithfulness judge that blocks unsupported claims; conversation memory with LangGraph and a Postgres checkpointer.',
+        it: 'RAG sui documenti con reranker e un giudice di faithfulness che blocca le affermazioni non supportate; memoria conversazionale con LangGraph e checkpointer Postgres.',
+      },
+      {
+        en: 'One image for several client deployments (Kustomize, Azure DevOps, AKS), traced with Langfuse.',
+        it: 'Una sola immagine per più installazioni cliente (Kustomize, Azure DevOps, AKS), con tracing Langfuse.',
       },
     ],
     metrics: [
-      { value: '~7K', label: { en: 'requests / day', it: 'richieste / giorno' } },
-      { value: '150+', label: { en: 'HR topics', it: 'topic HR' } },
+      { value: '12K', label: { en: 'employees worldwide', it: 'dipendenti nel mondo' } },
+      { value: '97%', label: { en: 'required facts in RAG answers', it: 'fatti richiesti nelle risposte RAG' }, detail: { en: 'internal evaluation', it: 'valutazione interna' } },
       { value: '5', label: { en: 'languages', it: 'lingue' } },
     ],
-    stack: ['Hybrid Search', 'Topic Routing', 'Fine-tuning', 'Azure OpenAI'],
-    accent: 'mustard',
-  },
-  {
-    id: 'geo-seo',
-    tag: { en: 'GEO / SEO', it: 'GEO / SEO' },
-    status: { en: 'Live', it: 'Live' },
-    client: { en: 'Beauty & fashion e-commerce', it: 'E-commerce beauty & fashion' },
-    title: {
-      en: 'Product pages that LLMs can find.',
-      it: 'Schede prodotto che gli LLM trovano.',
+    role: {
+      en: 'Architecture and most of the development, releases and operations. The client’s team owns the platform backend.',
+      it: 'Architettura e gran parte dello sviluppo, rilasci e operations. Il backend della piattaforma è del team del cliente.',
     },
-    summary: {
-      en: 'Automated product descriptions, FAQs, JSON-LD structured data and tone-of-voice adaptation in up to 6 languages, optimised for search and generative engines.',
-      it: 'Descrizioni prodotto, FAQ, dati strutturati JSON-LD e adattamento del tone of voice in fino a 6 lingue, ottimizzati per motori di ricerca e generativi.',
-    },
-    challenge: {
-      en: 'Thousands of SKUs, multiple languages, one brand voice, and shoppers who increasingly ask an LLM instead of Google.',
-      it: 'Migliaia di SKU, più lingue, una sola voce di brand, e clienti che chiedono sempre più a un LLM invece che a Google.',
-    },
-    solution: [
-      {
-        en: 'Generation pipeline for descriptions, FAQs and JSON-LD with brand tone-of-voice per language.',
-        it: 'Pipeline di generazione per descrizioni, FAQ e JSON-LD con tone of voice del brand per lingua.',
-      },
-      {
-        en: 'Discoverability validated via Google Search Console and GPT shopping-domain prompt testing.',
-        it: 'Visibilità validata con Google Search Console e test di prompt nel dominio GPT shopping.',
-      },
-    ],
-    metrics: [
-      { value: '~80%', label: { en: 'less optimisation time', it: 'tempo di ottimizzazione in meno' } },
-      { value: '6', label: { en: 'languages', it: 'lingue' } },
-    ],
-    stack: ['LLM Generation', 'JSON-LD', 'Structured Outputs', 'Search Console'],
+    stack: ['FastAPI', 'LangGraph', 'Azure OpenAI', 'pgvector', 'Langfuse', 'AKS'],
     accent: 'pink',
   },
   {
-    id: 'charity-recsys',
-    tag: { en: 'RecSys + RAG', it: 'RecSys + RAG' },
+    id: 'call-analysis',
+    tag: { en: 'Call analysis', it: 'Analisi chiamate' },
     status: { en: 'Live', it: 'Live' },
-    client: { en: 'Charity sector · multi-tenant', it: 'Settore charity · multi-tenant' },
+    period: '2025 – 2026',
+    client: { en: 'International credit insurer · sales team', it: 'Assicuratore del credito internazionale · team commerciale' },
     title: {
-      en: 'Recommendations in under 100ms.',
-      it: 'Raccomandazioni sotto i 100ms.',
+      en: 'Sales calls transcribed, scored and turned into coaching.',
+      it: 'Chiamate di vendita trascritte, valutate e trasformate in coaching.',
     },
     summary: {
-      en: 'Multi-tenant platform where non-profits discover relevant projects through personalised recommendations and a conversational RAG interface.',
-      it: 'Piattaforma multi-tenant in cui le non-profit scoprono progetti rilevanti con raccomandazioni personalizzate e un’interfaccia RAG conversazionale.',
+      en: 'A nightly pipeline picks up sales call recordings, transcribes them, extracts customer objections, scores each call on the campaign grid and writes coaching for the sellers. A tutor chatbot sits on top.',
+      it: 'Una pipeline notturna prende le registrazioni delle chiamate di vendita, le trascrive, estrae le obiezioni dei clienti, valuta ogni chiamata sulla griglia della campagna e scrive il coaching per i venditori. Sopra c’è un chatbot tutor.',
     },
     challenge: {
-      en: 'Personalised recommendations on a non-profit budget: no room for heavyweight serving infrastructure.',
-      it: 'Raccomandazioni personalizzate con budget da non-profit: niente spazio per infrastrutture di serving pesanti.',
+      en: 'The sales team had no systematic way to review calls, collect customer objections or coach sellers.',
+      it: 'Il team commerciale non aveva un modo sistematico per rivedere le chiamate, raccogliere le obiezioni dei clienti e fare coaching ai venditori.',
     },
     solution: [
       {
-        en: 'Two-tower-inspired architecture served straight from a vector DB instead of dedicated serving infra.',
-        it: 'Architettura ispirata al two-tower servita direttamente da un vector DB invece che da infrastruttura dedicata.',
+        en: 'Recordings from the CRM every night → EU speech-to-text with language detection → speaker identification → objection extraction → scoring per campaign → coaching.',
+        it: 'Registrazioni dal CRM ogni notte → trascrizione in UE con riconoscimento della lingua → identificazione dei parlanti → estrazione delle obiezioni → valutazione per campagna → coaching.',
       },
       {
-        en: 'Recommendations evolve dynamically with user behaviour patterns.',
-        it: 'Le raccomandazioni evolvono dinamicamente con i pattern di comportamento degli utenti.',
+        en: 'Catalogue of objections and strengths, deduplicated with embeddings plus an LLM judge; transcripts indexed for vector search.',
+        it: 'Catalogo di obiezioni e punti di forza, deduplicato con embedding e un giudice LLM; trascrizioni indicizzate per la ricerca vettoriale.',
+      },
+      {
+        en: 'Per-campaign prompts refined against the scoring grid with before/after comparisons; prompt changes shipped as database migrations.',
+        it: 'Prompt per campagna affinati sulla griglia di valutazione con confronti prima/dopo; le modifiche ai prompt vanno in produzione come migrazioni del database.',
+      },
+      {
+        en: 'LangGraph tutor chatbot for the sellers.',
+        it: 'Chatbot tutor in LangGraph per i venditori.',
       },
     ],
     metrics: [
-      { value: '<100ms', label: { en: 'response time', it: 'tempo di risposta' } },
-      { value: 'N', label: { en: 'tenants, one stack', it: 'tenant, uno stack' } },
+      { value: '25%→0%', label: { en: 'coaching aimed at the wrong speaker', it: 'coaching rivolto al parlante sbagliato' }, detail: { en: 'same 12 calls, before and after', it: 'stesse 12 chiamate, prima e dopo' } },
+      { value: '12%→0%', label: { en: 'polluted catalogue entries', it: 'voci inquinate nel catalogo' }, detail: { en: 'same 12 calls, before and after', it: 'stesse 12 chiamate, prima e dopo' } },
     ],
-    stack: ['Two-Tower', 'Vector DB', 'RAG', 'FastAPI'],
+    role: {
+      en: 'Architecture and development of the AI service. The web app and .NET backend are built by the rest of the team.',
+      it: 'Architettura e sviluppo del servizio AI. Web app e backend .NET sono del resto del team.',
+    },
+    stack: ['FastAPI', 'LangGraph', 'Azure OpenAI', 'AssemblyAI', 'pgvector', 'Azure Container Apps'],
     accent: 'teal',
   },
   {
-    id: 'mcp-platform',
-    tag: { en: 'Dev productivity', it: 'Produttività dev' },
-    status: { en: 'Daily use', it: 'Uso quotidiano' },
-    client: { en: 'Internal · ~15 developers', it: 'Interno · ~15 sviluppatori' },
+    id: 'planogram-agents',
+    tag: { en: 'Multi-agent', it: 'Multi-agente' },
+    status: { en: 'In rollout', it: 'In rilascio' },
+    period: '2025 – 2026',
+    client: { en: 'Global system integrator · retail category management', it: 'System integrator globale · category management retail' },
     title: {
-      en: 'One source of truth for AI coding.',
-      it: 'Una sola fonte di verità per il coding AI.',
+      en: 'Five agents and an optimiser behind one planogram assistant.',
+      it: 'Cinque agenti e un ottimizzatore dietro un assistente per planogrammi.',
     },
     summary: {
-      en: 'MCP-based platform that turns Confluence, Slack and Jira into the shared context layer for AI coding assistants.',
-      it: 'Piattaforma basata su MCP che trasforma Confluence, Slack e Jira nel layer di contesto condiviso per gli assistenti di coding AI.',
+      en: 'An AI assistant that became the main interface of a category-management product: category managers edit and question planograms in plain language.',
+      it: 'Un assistente AI diventato l’interfaccia principale di un prodotto di category management: i category manager modificano e interrogano i planogrammi in linguaggio naturale.',
     },
     challenge: {
-      en: 'Coding assistants are only as good as their context, and the context was scattered across three tools.',
-      it: 'Gli assistenti di coding valgono quanto il loro contesto, e il contesto era sparso su tre strumenti.',
+      en: 'Category managers had to change and understand planograms through technical tools. The assistant, planned as a later add-on, became the main way in.',
+      it: 'I category manager dovevano modificare e capire i planogrammi con strumenti tecnici. L’assistente, previsto come add-on futuro, è diventato l’accesso principale.',
     },
     solution: [
       {
-        en: 'Single-scope agents for code review, documentation ingestion and context building.',
-        it: 'Agenti mono-scopo per code review, ingestion della documentazione e costruzione del contesto.',
+        en: 'LangGraph supervisor with five specialist agents (editor, insight analyst, rules checker, explainer, goal agent) and handoff tools. It replaced a dedicated intent classifier.',
+        it: 'Supervisor LangGraph con cinque agenti specialisti (editor, analista, verifica regole, spiegazione, obiettivi) e tool di handoff. Ha sostituito un classificatore di intenti dedicato.',
       },
       {
-        en: 'Multi-model cooperation between Claude and Gemini.',
-        it: 'Cooperazione multi-modello tra Claude e Gemini.',
+        en: '“No data, no opinion”: the LLM interprets and routes, while KPIs, rules and optimisation come only from the authoritative services.',
+        it: '“No data, no opinion”: l’LLM interpreta e instrada, mentre KPI, regole e ottimizzazione arrivano solo dai servizi autoritativi.',
+      },
+      {
+        en: 'Session and long-term memory on PostgreSQL/pgvector, progressive summaries, agent interrupt and resume, SSE streaming.',
+        it: 'Memoria di sessione e a lungo termine su PostgreSQL/pgvector, riassunti progressivi, interruzione e ripresa degli agenti, streaming SSE.',
+      },
+      {
+        en: 'Contributions to the OR-Tools CP-SAT optimiser (four phases, async jobs, explainability).',
+        it: 'Contributi all’ottimizzatore OR-Tools CP-SAT (quattro fasi, job asincroni, explainability).',
       },
     ],
     metrics: [
-      { value: '~15', label: { en: 'devs, every day', it: 'dev, ogni giorno' } },
-      { value: '3', label: { en: 'sources unified', it: 'fonti unificate' } },
+      { value: '5', label: { en: 'specialist agents', it: 'agenti specialisti' } },
+      { value: '27', label: { en: 'tools', it: 'tool' } },
     ],
-    stack: ['MCP', 'Claude', 'Gemini', 'Confluence', 'Slack', 'Jira'],
+    role: {
+      en: 'Architecture and development of the LLM orchestrator, plus contributions to the optimisation service. Core services and UI are built by the partner’s team.',
+      it: 'Architettura e sviluppo dell’orchestratore LLM, più contributi al servizio di ottimizzazione. Servizi core e UI sono del team del partner.',
+    },
+    stack: ['LangGraph', 'FastAPI', 'Azure OpenAI', 'pgvector', 'OR-Tools', 'AKS'],
     accent: 'mustard',
+  },
+  {
+    id: 'team-platform',
+    tag: { en: 'New product', it: 'Nuovo prodotto' },
+    status: { en: 'In development', it: 'In sviluppo' },
+    period: '2026',
+    client: { en: 'Software teams · PMs, engineers, developers', it: 'Team software · PM, ingegneri, sviluppatori' },
+    title: {
+      en: 'One workspace where PMs, engineers and AI ship together.',
+      it: 'Un unico spazio dove PM, ingegneri e AI rilasciano insieme.',
+    },
+    summary: {
+      en: 'A process platform for software teams that brings together what is usually split across Notion, Trello, Jira and GitHub: shared documentation, tasks, plans and code reviews, with Claude as the engine.',
+      it: 'Una piattaforma di processo per i team software che riunisce quello che di solito è diviso tra Notion, Trello, Jira e GitHub: documentazione condivisa, task, pianificazione e code review, con Claude come motore.',
+    },
+    challenge: {
+      en: 'Work is scattered across docs, boards, trackers and repositories. Context gets lost between PMs, engineers and developers, and checks, plans and reviews depend on who has time.',
+      it: 'Il lavoro è sparso tra documenti, board, tracker e repository. Il contesto si perde tra PM, ingegneri e sviluppatori, e controlli, piani e review dipendono da chi ha tempo.',
+    },
+    solution: [
+      {
+        en: 'A shared knowledge base that PMs, engineers, developers and the AI all work from.',
+        it: 'Una base documentale condivisa da cui lavorano PM, ingegneri, sviluppatori e l’AI.',
+      },
+      {
+        en: 'Claude as the engine: it checks tasks against requirements, keeps Gantt plans current and pre-reviews pull and merge requests.',
+        it: 'Claude come motore: verifica i task rispetto ai requisiti, tiene aggiornati i Gantt e fa una prima review di pull e merge request.',
+      },
+      {
+        en: 'GitHub and GitLab tracking linked to tasks, so progress comes from the code instead of status meetings.',
+        it: 'Tracciamento GitHub e GitLab collegato ai task, così l’avanzamento arriva dal codice e non dalle riunioni di stato.',
+      },
+      {
+        en: 'Turbocharge underneath: one standard, verifiable way of working, with solid tests and reviews on every change.',
+        it: 'Turbocharge alla base: un unico standard di lavoro verificabile, con test solidi e review su ogni modifica.',
+      },
+    ],
+    metrics: [{ value: '4→1', label: { en: 'docs, boards, tracker and Git in one place', it: 'documenti, board, tracker e Git in un posto solo' } }],
+    role: {
+      en: 'Product design and architecture, leading development with the team.',
+      it: 'Design del prodotto e architettura, guidando lo sviluppo con il team.',
+    },
+    stack: ['Claude', 'MCP', 'Claude Code', 'Turbocharge', 'GitHub', 'GitLab'],
+    accent: 'pink',
+  },
+  {
+    id: 'privacy-first-hr',
+    tag: { en: 'Privacy by design', it: 'Privacy by design' },
+    status: { en: 'In rollout', it: 'In rilascio' },
+    period: '2026',
+    client: { en: 'Supermarket chain, Northern Italy', it: 'Catena di supermercati del Nord Italia' },
+    title: {
+      en: 'An employee assistant that remembers nothing.',
+      it: 'Un assistente per i dipendenti che non ricorda nulla.',
+    },
+    summary: {
+      en: 'An employee assistant deployed under a cyber-security clearance that rules out memory, document RAG, stored questions and personal data sent to the models.',
+      it: 'Un assistente per i dipendenti installato con un nulla osta di cyber security che esclude memoria, RAG sui documenti, domande salvate e dati personali inviati ai modelli.',
+    },
+    challenge: {
+      en: 'The client could adopt the assistant only within a security clearance that forbade conversation memory, RAG, storing questions and sending personal data to the models.',
+      it: 'Il cliente poteva adottare l’assistente solo con un nulla osta che vietava memoria, RAG, salvataggio delle domande e dati personali verso i modelli.',
+    },
+    solution: [
+      {
+        en: 'Dedicated configuration: no memory, no RAG, no cache, metadata-only logs.',
+        it: 'Configurazione dedicata: niente memoria, niente RAG, niente cache, log con soli metadati.',
+      },
+      {
+        en: 'In-pod anonymiser (names, emails, phone numbers, tax codes, IBANs, cards, ID documents) before any embedding or model call.',
+        it: 'Anonimizzatore nel pod (nomi, email, telefoni, codici fiscali, IBAN, carte, documenti) prima di ogni embedding o chiamata al modello.',
+      },
+      {
+        en: 'Measured what happens if the question text never reaches the database: top-1 accuracy 70.4% against 70.6%, so full-text search could go without a measurable loss.',
+        it: 'Misurato cosa succede se il testo della domanda non arriva mai al database: accuratezza top-1 70,4% contro 70,6%, quindi la ricerca full-text si è potuta togliere senza perdite misurabili.',
+      },
+      {
+        en: 'Runs inside the client’s cluster (ClusterIP only, no ingress, default-deny network policies), with the model in a dedicated tenant.',
+        it: 'Gira nel cluster del cliente (solo ClusterIP, nessun ingress, network policy default deny), con il modello in un tenant dedicato.',
+      },
+    ],
+    metrics: [
+      { value: '70.4%', label: { en: 'top-1 accuracy, no query text in the DB', it: 'accuratezza top-1, nessun testo nel DB' }, detail: { en: '70.6% with the query text', it: '70,6% con il testo della domanda' } },
+    ],
+    role: {
+      en: 'Architecture, the architecture/cost/data-residency document for the client, code changes for the security conditions, release pipeline.',
+      it: 'Architettura, documento di architettura/costi/residenza dei dati per il cliente, adattamento del codice alle condizioni di sicurezza, pipeline di rilascio.',
+    },
+    stack: ['FastAPI', 'Azure OpenAI', 'PostgreSQL', 'Kubernetes', 'Entra Workload ID'],
+    accent: 'teal',
+  },
+  {
+    id: 'technical-rag',
+    tag: { en: 'Technical RAG', it: 'RAG tecnico' },
+    status: { en: 'In rollout', it: 'In rilascio' },
+    period: '2024 – 2026',
+    client: { en: 'Industrial valve company · training platform', it: 'Azienda di valvole industriali · piattaforma di formazione' },
+    title: {
+      en: 'Answers from 700-page standards, with the page cited.',
+      it: 'Risposte da norme di 700 pagine, con la pagina citata.',
+    },
+    summary: {
+      en: 'Question answering over long technical manuals and standards, with every answer citing the document and the page.',
+      it: 'Domande e risposte su manuali tecnici e norme molto lunghi, con ogni risposta che cita documento e pagina.',
+    },
+    challenge: {
+      en: 'Reliable answers, with page citations, over very long manuals and standards full of tables.',
+      it: 'Risposte affidabili, con la citazione della pagina, su manuali e norme molto lunghi e pieni di tabelle.',
+    },
+    solution: [
+      {
+        en: 'LangGraph flow with a relevance filter, retrieval, grading, a corrective-RAG loop and a hallucination check; citations point to the absolute page.',
+        it: 'Flusso LangGraph con filtro di pertinenza, retrieval, grading, ciclo di corrective RAG e controllo delle allucinazioni; le citazioni puntano alla pagina assoluta.',
+      },
+      {
+        en: 'Parsing with Azure Document Intelligence in page blocks, re-joining tables split across pages.',
+        it: 'Parsing con Azure Document Intelligence a blocchi di pagine, ricomponendo le tabelle spezzate tra pagine.',
+      },
+      {
+        en: 'Routing across three model sizes by cost; migration from Pinecone to Azure AI Search; Postgres memory.',
+        it: 'Instradamento su tre taglie di modello in base al costo; migrazione da Pinecone ad Azure AI Search; memoria su Postgres.',
+      },
+    ],
+    metrics: [
+      { value: '708', label: { en: 'pages in a single standard', it: 'pagine in una sola norma' }, detail: { en: 're-ingested in one run, 667 MB peak memory', it: 'reingerite in un’unica esecuzione, picco di 667 MB' } },
+      { value: '3', label: { en: 'model sizes routed by cost', it: 'taglie di modello per costo' } },
+    ],
+    role: { en: 'Most of the development.', it: 'Gran parte dello sviluppo.' },
+    stack: ['LangGraph', 'Azure OpenAI', 'Azure AI Search', 'Document Intelligence', 'PostgreSQL'],
+    accent: 'mustard',
+  },
+  {
+    id: 'structured-data',
+    tag: { en: 'GEO / SEO', it: 'GEO / SEO' },
+    period: '2025 – 2026',
+    client: {
+      en: 'E-commerce brands, a digital agency, a credit insurer',
+      it: 'Brand e-commerce, un’agenzia digitale, un assicuratore del credito',
+    },
+    title: {
+      en: 'Product and company data that search and AI engines can read.',
+      it: 'Dati di prodotti e aziende leggibili da motori di ricerca e AI.',
+    },
+    summary: {
+      en: 'Three projects on structured data for search and answer engines: a multi-tenant Shopify app, a WooCommerce backend for an agency, and a corrected JSON-LD identity for an insurer’s website.',
+      it: 'Tre progetti sui dati strutturati per motori di ricerca e answer engine: un’app Shopify multi-tenant, un backend WooCommerce per un’agenzia e l’identità JSON-LD corretta per il sito di un assicuratore.',
+    },
+    challenge: {
+      en: 'Product pages and company sites had missing, wrong or conflicting structured data, so search engines and AI assistants misread them.',
+      it: 'Schede prodotto e siti aziendali avevano dati strutturati assenti, sbagliati o in conflitto, e motori di ricerca e assistenti AI li leggevano male.',
+    },
+    solution: [
+      {
+        en: 'Multi-tenant Shopify app that generates JSON-LD, FAQs and structured data per product (FastAPI, Next.js, encrypted credentials, Firecrawl).',
+        it: 'App Shopify multi-tenant che genera JSON-LD, FAQ e dati strutturati per prodotto (FastAPI, Next.js, credenziali cifrate, Firecrawl).',
+      },
+      {
+        en: 'WooCommerce pipeline: parse → classify → detect conflicts between plugins → JSON-LD from Pydantic models → validation → immutable versions, with before/after reports.',
+        it: 'Pipeline WooCommerce: parsing → classificazione → rilevamento dei conflitti tra plugin → JSON-LD da modelli Pydantic → validazione → versioni immutabili, con report prima/dopo.',
+      },
+      {
+        en: 'Organization JSON-LD validated against Google Search Central, an implementation brief for the client’s IT, and an audit of the firewall logs for AI crawlers.',
+        it: 'JSON-LD Organization validato su Google Search Central, un brief di implementazione per l’IT del cliente e un audit dei log del firewall sui crawler AI.',
+      },
+    ],
+    metrics: [{ value: '3', label: { en: 'clients · JSON-LD', it: 'clienti · JSON-LD' } }],
+    role: {
+      en: 'Lead developer on the two platforms; technical specialist on the insurer’s website.',
+      it: 'Sviluppatore principale sulle due piattaforme; specialista tecnico sul sito dell’assicuratore.',
+    },
+    stack: ['FastAPI', 'Next.js', 'Pydantic', 'extruct', 'schema.org', 'Shopify', 'WooCommerce'],
+    accent: 'pink',
+  },
+  {
+    id: 'legal-rag',
+    tag: { en: 'Legal RAG', it: 'RAG legale' },
+    status: { en: 'Delivered', it: 'Consegnato' },
+    period: '2024 – 2025',
+    client: { en: 'Several Italian law firms', it: 'Diversi studi legali italiani' },
+    title: {
+      en: 'Search the firm’s documents, draft the minutes.',
+      it: 'Cercare nei documenti dello studio, redigere i verbali.',
+    },
+    summary: {
+      en: 'A platform used by several law firms: a chatbot over each firm’s document base, and a module that drafts corporate minutes and deeds from DOCX templates.',
+      it: 'Una piattaforma usata da diversi studi legali: un chatbot sulla base documentale di ogni studio e un modulo che redige verbali e atti societari da template DOCX.',
+    },
+    challenge: {
+      en: 'Firms wanted to query their own documents in plain language, and minutes and corporate deeds were filled in by hand from templates.',
+      it: 'Gli studi volevano interrogare i propri documenti in linguaggio naturale, e verbali e atti societari venivano compilati a mano dai template.',
+    },
+    solution: [
+      {
+        en: 'RAG chatbot on documents indexed in Pinecone, with conversation memory and question rephrasing.',
+        it: 'Chatbot RAG su documenti indicizzati in Pinecone, con memoria conversazionale e riformulazione della domanda.',
+      },
+      {
+        en: 'Document generation: minutes and deeds from DOCX templates, fed by notes, existing texts and company data (balance sheet, directors, VAT number).',
+        it: 'Generazione documentale: verbali e atti da template DOCX, alimentati da appunti, testi esistenti e dati aziendali (bilancio, amministratori, P. IVA).',
+      },
+      {
+        en: 'Parsing with Unstructured and Tesseract; scheduled scrapers.',
+        it: 'Parsing con Unstructured e Tesseract; scraper programmati.',
+      },
+    ],
+    metrics: [
+      { value: '300K+', label: { en: 'documents managed, and growing', it: 'documenti gestiti, in crescita' } },
+      { value: '2', label: { en: 'modules: chat and document drafting', it: 'moduli: chat e redazione documenti' } },
+    ],
+    role: {
+      en: 'Part of a ten-person team: prompts and topic chains for the RAG, AI review, demo templates.',
+      it: 'In un team di dieci persone: prompt e catene per topic del RAG, revisione AI, template demo.',
+    },
+    stack: ['LangChain', 'LangGraph', 'Pinecone', 'Azure OpenAI', 'Unstructured'],
+    accent: 'teal',
+  },
+  {
+    id: 'nonprofit-recsys',
+    tag: { en: 'RecSys + RAG', it: 'RecSys + RAG' },
+    period: '2024 – 2025',
+    client: { en: 'Italian platform linking companies and non-profits', it: 'Piattaforma italiana che collega aziende e non profit' },
+    title: {
+      en: 'Matching companies with social projects.',
+      it: 'Abbinare aziende e progetti sociali.',
+    },
+    summary: {
+      en: 'Recommendations and two chatbots that help companies find the social projects that suit them.',
+      it: 'Raccomandazioni e due chatbot che aiutano le aziende a trovare i progetti sociali adatti a loro.',
+    },
+    challenge: {
+      en: 'Companies had to find the most suitable social projects among the many published by non-profits.',
+      it: 'Le aziende dovevano trovare i progetti sociali più adatti tra i tanti pubblicati dalle non profit.',
+    },
+    solution: [
+      {
+        en: 'Recommendations on Pinecone that track user preferences, with novelty and diversity corrections.',
+        it: 'Raccomandazioni su Pinecone che tengono traccia delle preferenze, con correzioni di novità e diversità.',
+      },
+      {
+        en: 'Two LangGraph chatbots (public, and private per company) with retrieval, ranking and generation, SQL memory and streaming.',
+        it: 'Due chatbot LangGraph (pubblico e privato per azienda) con retrieval, ranking e generazione, memoria SQL e streaming.',
+      },
+      {
+        en: 'APIs for companies, projects and documents (PDF, text, FAQs).',
+        it: 'API per aziende, progetti e documenti (PDF, testo, FAQ).',
+      },
+    ],
+    metrics: [{ value: '2', label: { en: 'LangGraph chatbots', it: 'chatbot LangGraph' } }],
+    role: { en: 'Co-developer in a three-person team.', it: 'Co-sviluppatore in un team di tre persone.' },
+    stack: ['FastAPI', 'LangGraph', 'Pinecone', 'Azure OpenAI', 'SQL Server'],
+    accent: 'mustard',
+  },
+  {
+    id: 'ad-intelligence',
+    tag: { en: 'Competitive intel', it: 'Competitive intel' },
+    status: { en: 'Live demo', it: 'Demo live' },
+    period: '2025 – 2026',
+    client: { en: 'Marketing agency', it: 'Agenzia di marketing' },
+    title: {
+      en: 'Competitors’ ad campaigns, collected and scored.',
+      it: 'Le campagne dei concorrenti, raccolte e valutate.',
+    },
+    summary: {
+      en: 'Collects competitors’ sponsored campaigns from public ad libraries, captures them and scores each creative with a vision model on the agency’s own six-dimension method.',
+      it: 'Raccoglie le campagne sponsorizzate dei concorrenti dalle librerie pubbliche degli annunci, le cattura e valuta ogni creatività con un modello vision sul metodo a sei dimensioni dell’agenzia.',
+    },
+    challenge: {
+      en: 'Reviewing competitors’ Google and Meta campaigns by hand took too long.',
+      it: 'Analizzare a mano le campagne dei concorrenti su Google e Meta richiedeva troppo tempo.',
+    },
+    solution: [
+      {
+        en: 'Crawling of Google Ads Transparency Center and Meta Ad Library (SerpAPI, Firecrawl), screenshots and URL deduplication.',
+        it: 'Crawling di Google Ads Transparency Center e Meta Ad Library (SerpAPI, Firecrawl), screenshot e deduplica degli URL.',
+      },
+      {
+        en: 'Scoring on six dimensions with a vision LLM; versioned prompt sets.',
+        it: 'Valutazione su sei dimensioni con un LLM vision; set di prompt versionati.',
+      },
+      {
+        en: 'Next.js dashboard with filters and counts computed in the database.',
+        it: 'Dashboard Next.js con filtri e conteggi calcolati nel database.',
+      },
+    ],
+    metrics: [{ value: '6', label: { en: 'scoring dimensions per creative', it: 'dimensioni di valutazione per creatività' } }],
+    role: { en: 'Sole developer, full stack.', it: 'Unico sviluppatore, full stack.' },
+    stack: ['FastAPI', 'Next.js', 'Supabase', 'Azure OpenAI', 'SerpAPI', 'Firecrawl'],
+    accent: 'pink',
+  },
+  {
+    id: 'fashion-search',
+    tag: { en: 'Visual search', it: 'Ricerca visiva' },
+    period: '2024 – 2026',
+    client: { en: 'Fashion e-commerce', it: 'E-commerce di moda' },
+    title: {
+      en: 'Search the catalogue with words or with a photo.',
+      it: 'Cercare nel catalogo con le parole o con una foto.',
+    },
+    summary: {
+      en: 'Product search in natural Italian and by photo for a fashion catalogue.',
+      it: 'Ricerca prodotti in italiano naturale e per foto su un catalogo di moda.',
+    },
+    challenge: {
+      en: 'Shoppers wanted to describe what they were looking for in their own words, or show a picture of it.',
+      it: 'I clienti volevano descrivere quello che cercavano con parole loro, o mostrarne una foto.',
+    },
+    solution: [
+      {
+        en: 'Text search with NLTK, TF-IDF and cosine similarity, fused with RRF, plus a price filter.',
+        it: 'Ricerca testuale con NLTK, TF-IDF e similarità coseno, fusa con RRF, più un filtro sul prezzo.',
+      },
+      {
+        en: 'Image search: Segformer segments the garments, Fashion-CLIP embeds them.',
+        it: 'Ricerca per immagine: Segformer segmenta i capi, Fashion-CLIP ne calcola gli embedding.',
+      },
+    ],
+    metrics: [{ value: '2', label: { en: 'ways to search: text and photo', it: 'modi di cercare: testo e foto' } }],
+    role: { en: 'Developer in a five-person team.', it: 'Sviluppatore in un team di cinque persone.' },
+    stack: ['FastAPI', 'scikit-learn', 'Segformer', 'Fashion-CLIP'],
+    accent: 'teal',
   },
   {
     id: 'turbocharge',
     tag: { en: 'Open source', it: 'Open source' },
     status: { en: 'Published', it: 'Pubblicato' },
+    period: '2025 – 2026',
     client: { en: 'Claude Code plugin', it: 'Plugin per Claude Code' },
     title: {
       en: 'Brainstorm → plan → build → review.',
       it: 'Brainstorm → plan → build → review.',
     },
     summary: {
-      en: 'Turbocharge: an open-source Claude Code plugin for test-driven, AI-assisted development. 10 skills, 6 agents, 2 hooks.',
-      it: 'Turbocharge: plugin open source per Claude Code per uno sviluppo AI-assisted guidato dai test. 10 skill, 6 agenti, 2 hook.',
+      en: 'Turbocharge: an open-source Claude Code plugin for test-driven, AI-assisted development, listed in Anthropic’s plugin directory.',
+      it: 'Turbocharge: un plugin open source per Claude Code per uno sviluppo AI-assisted guidato dai test, presente nella directory dei plugin di Anthropic.',
     },
     challenge: {
-      en: 'AI coding without process drifts: skipped tests, lost context, reviews that never happen.',
-      it: 'Il coding con l’AI senza processo deriva: test saltati, contesto perso, review che non arrivano mai.',
+      en: 'Claude Code setups drift: duplicated agents, conflicting rules, skipped tests, reviews that never happen.',
+      it: 'Le configurazioni di Claude Code si sporcano: agenti duplicati, regole in conflitto, test saltati, review che non arrivano mai.',
     },
     solution: [
       {
-        en: 'A full pipeline of skills, subagents and hooks that enforces TDD and review chains.',
-        it: 'Una pipeline completa di skill, subagenti e hook che impone TDD e catene di review.',
+        en: 'One pipeline: brainstorm → story → plan → build → review → ship, with a TDD builder, a task reviewer and a final reviewer.',
+        it: 'Una sola pipeline: brainstorm → story → plan → build → review → ship, con un builder TDD, un reviewer per task e un reviewer finale.',
       },
       {
-        en: 'Used in day-to-day delivery work, published for anyone to take.',
-        it: 'Usato nel lavoro di delivery quotidiano, pubblicato per chiunque.',
+        en: 'Session wrap-up for continuity between sessions; an eval suite that compares runs with and without the plugin.',
+        it: 'Chiusura di sessione per la continuità tra sessioni; una suite di eval che confronta esecuzioni con e senza plugin.',
       },
     ],
     metrics: [
@@ -417,44 +672,10 @@ export const projects: Project[] = [
       { value: '6', label: { en: 'agents', it: 'agenti' } },
       { value: '2', label: { en: 'hooks', it: 'hook' } },
     ],
+    role: { en: 'Sole author.', it: 'Unico autore.' },
     stack: ['Claude Code', 'Skills', 'Subagents', 'Hooks'],
-    accent: 'pink',
+    accent: 'mustard',
     link: 'https://github.com/nicodiansk/turbocharge',
-  },
-  {
-    id: 'cnn-classifier',
-    tag: { en: 'Computer vision', it: 'Computer vision' },
-    status: { en: 'Live', it: 'Live' },
-    client: { en: 'E-commerce SEO', it: 'SEO e-commerce' },
-    title: {
-      en: 'Zero manual page labelling.',
-      it: 'Zero classificazione manuale.',
-    },
-    summary: {
-      en: 'CNN web-page classifier with a full ML pipeline: data collection, labelling, training, validation and monitoring.',
-      it: 'Classificatore CNN di pagine web con pipeline ML completa: raccolta dati, labelling, training, validazione e monitoraggio.',
-    },
-    challenge: {
-      en: 'Thousands of pages classified by hand before any SEO automation could even start.',
-      it: 'Migliaia di pagine classificate a mano prima che qualsiasi automazione SEO potesse partire.',
-    },
-    solution: [
-      {
-        en: 'Transfer-learning CNN served via FastAPI on Azure AKS.',
-        it: 'CNN con transfer learning servita via FastAPI su Azure AKS.',
-      },
-      {
-        en: 'Removed 100% of manual classification, unlocking downstream SEO automation.',
-        it: 'Eliminato il 100% della classificazione manuale, sbloccando l’automazione SEO a valle.',
-      },
-    ],
-    metrics: [
-      { value: '98%', label: { en: 'accuracy', it: 'accuratezza' } },
-      { value: '0.95', label: { en: 'F1 score', it: 'F1 score' } },
-      { value: '100%', label: { en: 'manual work removed', it: 'lavoro manuale eliminato' } },
-    ],
-    stack: ['PyTorch', 'CNN', 'Transfer Learning', 'FastAPI', 'Azure AKS'],
-    accent: 'teal',
   },
 ];
 
@@ -475,10 +696,11 @@ export const experience: {
       it: 'Guido la divisione AI end-to-end: strategia, architettura, delivery e gestione clienti su più progetti enterprise in parallelo.',
     },
     points: [
-      { en: 'Legal RAG for 5 law firms (~100K docs, 91% recall@10).', it: 'RAG legale per 5 studi (~100K documenti, 91% recall@10).' },
-      { en: '8-agent planogram platform for a Fortune Global 500 IT group.', it: 'Piattaforma a 8 agenti sui planogrammi per un gruppo IT Fortune Global 500.' },
-      { en: 'Multilingual HR assistant for an international agency (~7,000 requests/day).', it: 'Assistente HR multilingua per un’agenzia internazionale (~7.000 richieste/giorno).' },
-      { en: 'GEO/SEO, recommendation and MCP developer platforms.', it: 'Piattaforme GEO/SEO, di raccomandazione e MCP per sviluppatori.' },
+      { en: 'HR assistant used by 12,000 employees worldwide, in five languages.', it: 'Assistente HR usato da 12.000 dipendenti nel mondo, in cinque lingue.' },
+      { en: 'Multi-agent planogram assistant for a global system integrator.', it: 'Assistente multi-agente per planogrammi per un system integrator globale.' },
+      { en: 'Sales-call analysis and coaching for an international credit insurer.', it: 'Analisi delle chiamate di vendita e coaching per un assicuratore del credito internazionale.' },
+      { en: 'New in 2026: an AI-driven process platform for software teams, built on Claude and Turbocharge.', it: 'Novità 2026: una piattaforma di processo AI per i team software, basata su Claude e Turbocharge.' },
+      { en: 'Technical RAG, recommenders, GEO/SEO structured data, competitive intelligence.', it: 'RAG tecnico, sistemi di raccomandazione, dati strutturati GEO/SEO, competitive intelligence.' },
     ],
     accent: 'pink',
   },

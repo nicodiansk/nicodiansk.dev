@@ -31,7 +31,7 @@ function Poster({ p, i }: { p: Project; i: number }) {
 
       <div className="absolute inset-x-5 bottom-6">
         <div className={cn('font-display text-[2.6rem] sm:text-[3rem] xl:text-[2.5rem] 2xl:text-[2.8rem] leading-none', accentText[p.accent])}>{hero.value}</div>
-        <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">{t(hero.label)}</div>
+        <div className="mt-1 line-clamp-2 max-w-[80%] font-mono text-[11px] uppercase tracking-[0.16em] text-paper/85">{t(hero.label)}</div>
       </div>
 
       <span className="absolute bottom-5 right-5 grid h-10 w-10 place-items-center rounded-full border-2 border-ink bg-paper transition-transform duration-300 group-hover:rotate-90">
@@ -73,7 +73,8 @@ function CaseDialog({ project, onClose }: { project: Project | null; onClose: ()
           <div className="flex items-start justify-between gap-4">
             <div className="flex flex-wrap items-center gap-2">
               <span className={cn('chip', accentBorder[project.accent], accentText[project.accent])}>{t(project.tag)}</span>
-              <span className="chip border-paper/30 text-paper/70">{t(project.status)}</span>
+              {project.status && <span className="chip border-paper/30 text-paper/70">{t(project.status)}</span>}
+              <span className="chip border-paper/30 text-paper/70">{project.period}</span>
             </div>
             <button
               onClick={onClose}
@@ -95,11 +96,15 @@ function CaseDialog({ project, onClose }: { project: Project | null; onClose: ()
               <div key={`${i}-${m.value}`} className="rounded-md border-2 border-paper/15 p-4">
                 <div className={cn('font-display text-3xl', accentText[project.accent])}>{m.value}</div>
                 <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-paper/60">{t(m.label)}</div>
+                {m.detail && <div className="mt-1 font-sans text-xs text-paper/60">{t(m.detail)}</div>}
               </div>
             ))}
           </div>
 
-          <h4 className="eyebrow mt-10 text-pink">{'// '}{t(ui.work.challenge)}</h4>
+          <h4 className="eyebrow mt-10 text-paper/80">{'// '}{t(ui.work.role)}</h4>
+          <p className="mt-3 font-sans leading-relaxed text-paper/80">{t(project.role)}</p>
+
+          <h4 className="eyebrow mt-8 text-pink">{'// '}{t(ui.work.challenge)}</h4>
           <p className="mt-3 font-sans leading-relaxed text-paper/80">{t(project.challenge)}</p>
 
           <h4 className="eyebrow mt-8 text-teal">{'// '}{t(ui.work.solution)}</h4>
@@ -164,9 +169,15 @@ export default function Work() {
             >
               <Poster p={p} i={i} />
               <div className="mt-4 flex flex-wrap items-center gap-x-2 font-mono text-[11px] uppercase tracking-[0.16em] text-paper/60">
-                <span className={cn('live-dot', accentText[p.accent])} aria-hidden />
-                {t(p.status)} <span>·</span> {t(p.client)}
+                {p.status && (
+                  <>
+                    <span className={cn('live-dot', accentText[p.accent])} aria-hidden />
+                    {t(p.status)} <span>·</span>
+                  </>
+                )}
+                {p.period}
               </div>
+              <p className="mt-1 font-mono text-[11px] uppercase leading-snug tracking-[0.12em] text-paper/60">{t(p.client)}</p>
               <h3 className="display mt-2 text-xl leading-[1.05] text-paper transition-colors group-hover:text-pink">{t(p.title)}</h3>
               <span className="mt-3 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.16em] text-teal">
                 {t(ui.work.open)} <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

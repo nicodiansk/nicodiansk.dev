@@ -83,11 +83,11 @@
     <hr />
     <p class="headline">AI Engineering Lead | Production RAG, Multi-Agent Systems &amp; LLM Evaluation</p>
     <p>
-      AI Engineering Lead with 5 years of experience architecting and deploying production-grade AI systems for Fortune Global 500
-      clients. Built and led a team of 5+ engineers delivering 10+ solutions across legal, e-commerce, retail, and HR domains.
-      Hands-on expert in grounded RAG on specialized corpora (including ~100K Italian legal documents), hybrid retrieval,
-      multi-agent orchestration (LangGraph, LangChain, MCP), LLM fine-tuning and systematic evaluation, deployed on Azure. Track
-      record of 91% retrieval recall@10 on legal RAG and eliminating manual workflows by up to 100%.
+      AI Engineering Lead with 5 years of experience designing and running production AI systems, from an HR
+      assistant used by 12,000 employees worldwide to multi-agent and call-analysis platforms. I lead the AI unit at S.I. 2001
+      (team of 5+) and work hands-on on retrieval (hybrid search, reranking, RAG), multi-agent systems (LangGraph, MCP),
+      evaluation and secure deployment on Azure, for clients in HR, retail, financial services, industry, legal and
+      e-commerce.
     </p>
 
     <hr />
@@ -100,44 +100,46 @@
     </p>
     <ul>
       <li>
-        <b>Architected Legal RAG platform</b> for 5 law firms processing ~100K Italian legal documents (rulings, regulations,
-        statutes). Cross-citation handling via hybrid retrieval combining vector store with LLM-constructed knowledge graph. 91%
-        retrieval recall@10, 89% answer relevance evaluated via LLM-as-judge and legal expert validation. Included automated
-        document generation pipeline.
+        <b>HR assistant used by 12,000 employees</b> for a European data &amp; AI consultancy (architecture and most of the development, 2023–
+        present): topic classification with hybrid search on pgvector (per-language full-text + vectors, RRF, LLM reranker,
+        permission filters), document RAG with a faithfulness judge, LangGraph memory, multi-client deployment on AKS. Used by 12,000
+        employees worldwide in 5 languages; up to 97% of required facts in RAG answers in internal evaluation.
       </li>
       <li>
-        <b>Architected and currently deploying an 8-agent multi-agent platform for a Fortune Global 500 IT group</b> for retail
-        planogram optimization. Each agent handles a specific domain responsibility (planogram analysis, product placement, shelf
-        optimization, reporting). Built on RAG with a fine-tuned LLM for planogram domain comprehension, deployed on Azure.
-        Includes full RAG evaluation pipeline.
+        <b>Multi-agent planogram assistant</b> for a global system integrator’s category-management product: LangGraph
+        supervisor with 5 specialist agents and 27 tools, “no data, no opinion” design on top of an OR-Tools CP-SAT optimiser
+        (contributor). Architecture and development of the LLM orchestrator.
       </li>
       <li>
-        <b>Built multilingual HR AI assistant for an international digital agency</b> (2,000+ employees, scalable group-wide)
-        supporting IT, EN, ES, FR, DE. Handles ~7,000 daily requests across 150+ HR topics (PTO, room booking, company policies,
-        newsletters). Hybrid search (semantic + keyword) with retroactive fine-tuning based on tester feedback. Intelligent topic
-        routing: user queries map to pre-configured topics that navigate to correct app/web pages.
+        <b>New in 2026: AI process platform for software teams</b> (in development): one workspace for PMs, engineers and
+        developers that unifies docs, boards, tracking and Git, with Claude as the engine for task checks, Gantt planning and
+        PR/MR pre-reviews, and Turbocharge as the standard, verifiable workflow with tests and reviews.
       </li>
       <li>
-        <b>Designed GEO/SEO optimization platform</b> for beauty and fashion e-commerce: automated product descriptions, FAQs,
-        structured data (JSON-LD), and multilingual tone-of-voice adaptation in up to 6 languages. Reduced content optimization
-        time by ~80%. Validated AI-generated content discoverability via Google Search Console and GPT shopping domain prompt
-        testing.
+        <b>Sales-call analysis</b> for an international credit insurer: nightly transcription, speaker identification,
+        objection extraction, scoring per campaign and coaching, plus a LangGraph tutor chatbot. Coaching aimed at the wrong
+        speaker cut from 25% to 0% on the same 12 calls.
       </li>
       <li>
-        <b>Built multi-tenant recommendation + RAG platform for charity sector:</b> non-profit organizations discover relevant
-        projects via personalized recommendations and conversational RAG interface. Innovative two-tower-inspired architecture
-        using vector DB instead of traditional serving infrastructure for cost optimization. Recommendations evolve dynamically
-        based on user behavior patterns. Sub-100ms response times in production.
+        <b>Privacy-first employee assistant</b> for an Italian supermarket chain under a cyber-security clearance: no memory or
+        RAG, in-pod anonymiser before every model call, deployed inside the client’s Kubernetes cluster.
       </li>
       <li>
-        <b>Architected MCP-based developer productivity platform</b> integrating Confluence, Slack, and Jira as Single Source of
-        Truth for AI coding assistants. Custom agents with single-scope responsibilities (code review, documentation ingestion,
-        context building) orchestrating multi-model cooperation (Claude + Gemini). Used daily by ~15 developers as the shared
-        context layer for AI-assisted coding.
+        <b>Technical RAG</b> over industrial manuals and standards with page-level citations: corrective RAG, Document
+        Intelligence parsing with table re-joining, cost-based routing across three model sizes.
       </li>
       <li>
-        Designed reliability layers across all LLM systems: guardrails, fallback policies, tool-call constraints, structured
-        outputs, human-in-the-loop escalation, and tracing of latency, cost and hallucination rate (Langfuse).
+        <b>GEO/SEO structured data</b>: multi-tenant Shopify app (JSON-LD, FAQs), WooCommerce JSON-LD pipeline with conflict
+        detection and validation, JSON-LD identity and implementation brief for a credit insurer’s website.
+      </li>
+      <li>
+        Also: recommender + RAG for a platform linking companies and non-profits (co-developer), competitive intelligence on ad
+        campaigns with a vision LLM (sole developer), text and image search for a fashion catalogue, contributions to a legal
+        RAG and document-generation platform used by several Italian law firms (300K+ documents, growing).
+      </li>
+      <li>
+        Reliability layers across LLM systems: anonymisers, guardrails, fallback policies, tool-call constraints, structured
+        outputs, and tracing of latency, cost and quality (Langfuse).
       </li>
     </ul>
 
