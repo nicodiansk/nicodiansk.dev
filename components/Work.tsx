@@ -146,7 +146,7 @@ export default function Work() {
             <span className="block text-teal"><GlitchWord index={2}>{t(ui.work.title[1])}</GlitchWord></span>
           </h2>
         </div>
-        <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper/50">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper/60">
           {String(projects.length).padStart(2, '0')} / {t({ en: 'projects', it: 'progetti' })}
         </span>
       </Reveal>
@@ -163,7 +163,7 @@ export default function Work() {
               aria-haspopup="dialog"
             >
               <Poster p={p} i={i} />
-              <div className="mt-4 flex flex-wrap items-center gap-x-2 font-mono text-[11px] uppercase tracking-[0.16em] text-paper/50">
+              <div className="mt-4 flex flex-wrap items-center gap-x-2 font-mono text-[11px] uppercase tracking-[0.16em] text-paper/60">
                 <span className={cn('live-dot', accentText[p.accent])} aria-hidden />
                 {t(p.status)} <span>·</span> {t(p.client)}
               </div>

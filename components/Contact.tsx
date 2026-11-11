@@ -36,7 +36,7 @@ export default function Contact() {
             <a href={`mailto:${profile.email}`} className="btn-sticker">
               <Mail className="icon-wiggle h-4 w-4" /> {t(ui.contact.cta)}
             </a>
-            <span className="font-mono text-xs uppercase tracking-[0.18em] text-paper/50">{t(ui.contact.note)}</span>
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-paper/60">{t(ui.contact.note)}</span>
           </div>
           <div className="mt-8 flex gap-3">
             <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-11 w-11 place-items-center rounded-md border-2 border-paper/40 transition-colors hover:border-teal hover:bg-teal hover:text-ink">
@@ -50,7 +50,7 @@ export default function Contact() {
 
         <Reveal delay={100} className="grid grid-cols-2 gap-8 self-end">
           <div>
-            <p className="eyebrow !text-paper/50">{t(ui.contact.navigate)}</p>
+            <p className="eyebrow !text-paper/60">{t(ui.contact.navigate)}</p>
             <ul className="mt-5 space-y-3">
               {nav.map((n) => (
                 <li key={n.href}>
@@ -62,7 +62,7 @@ export default function Contact() {
             </ul>
           </div>
           <div>
-            <p className="eyebrow !text-paper/50">{t(ui.contact.connect)}</p>
+            <p className="eyebrow !text-paper/60">{t(ui.contact.connect)}</p>
             <ul className="mt-5 space-y-3">
               {connect.map((c) => (
                 <li key={c.label}>
@@ -83,7 +83,7 @@ export default function Contact() {
 
       <div className="mt-24 flex flex-col items-start justify-between gap-6 border-t border-paper/10 pt-8 sm:flex-row sm:items-center">
         <Logo />
-        <p className="font-mono text-xs text-paper/50">
+        <p className="font-mono text-xs text-paper/60">
           © 2026 {profile.name}. {t(ui.contact.rights)}
         </p>
       </div>

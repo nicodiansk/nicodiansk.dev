@@ -18,7 +18,7 @@ export default function Experience() {
           </h2>
           <div className="mt-10 hidden items-center gap-4 lg:flex">
             <Sparkle className="h-10 w-10 animate-wobble text-pink" />
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper/50">2021 → {t({ en: 'now', it: 'oggi' })}</span>
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper/60">2021 → {t({ en: 'now', it: 'oggi' })}</span>
           </div>
         </Reveal>
 
