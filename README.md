@@ -1,122 +1,60 @@
 # nicodiansk.dev
 
-**Cyberpunk-themed portfolio website** for Nicholas Previtali - AI Engineer & Multi-Agent Systems Architect
+Personal portfolio of **Nicholas Previtali**, AI Engineering Lead / Head of AI at S.I. 2001.
 
 Live at: [nicodiansk.github.io/nicodiansk.dev](https://nicodiansk.github.io/nicodiansk.dev/)
 
-## 🚀 Tech Stack
+## Stack
 
-- **Framework:** Next.js 16.0.7+ (Static Export)
-- **Language:** TypeScript 5.6+
-- **Styling:** Tailwind CSS 3.4+ with custom cyberpunk theme
-- **Animations:** Framer Motion 12.23+, TsParticles 3.0+, React Three Fiber 9.4+
-- **Effects:** Canvas API, requestAnimationFrame optimization
-- **Deployment:** GitHub Pages with automated CI/CD
+- Next.js 16 (static export) + TypeScript
+- Tailwind CSS 3
+- Self-hosted fonts via Fontsource: Archivo Black (display), Space Mono (mono), Inter (body)
+- Deployed to GitHub Pages by `.github/workflows/deploy.yml` on push to `master`
 
-## 🎨 Features
+## Design
 
-### Visual Effects
-- **Matrix Rain** - Falling cyberpunk code characters (Japanese katakana + binary)
-- **CRT Scanlines** - Retro monitor aesthetic with animated sweep
-- **Interactive Particles** - TsParticles with mouse repulsion physics
-- **Glitch Effects** - RGB split, text scramble, image distortion
-- **Terminal Boot Sequence** - Typewriter animation with Magic UI components
-- **Background Orchestrator** - Centralized effects management with dynamic imports
+A zine / sticker look: black paper, cream, pink, teal and mustard. Torn-paper cards (`tornClip` in `lib/utils.ts`), rough SVG
+paint filters (`RoughFilters` in `components/primitives.tsx`), offset “sticker” buttons, a moving tape marquee and film grain.
 
-### Content
-- **Bilingual Support** - Italian/English language toggle
-- **Project Showcase** - 6+ AI/ML projects with evolution timelines
-- **Skills Dashboard** - 4 categories (LLMs & Gen AI, ML & Vision, MLOps, Vector DBs)
-- **Work Experience** - Head of AI @ S.I. 2001 SpA timeline
-- **Contact Section** - Professional links and social profiles
+## Editing content
 
-### UX/Performance
-- Responsive design optimized for all devices
-- Performance-optimized animations (GPU-accelerated)
-- Dynamic imports to prevent SSR issues
-- Lazy-loaded heavy components
-- Smooth scroll navigation
+All copy lives in **`data/content.ts`**, bilingual (`{ en, it }`). Projects, experience, stack, education: edit there.
+The downloadable CV is the **public** version (no phone, clients anonymised), rendered from `scripts/cv/cv.html`
+with `npm run cv` (needs Playwright + Chromium) into `public/docs/Nicholas_Previtali_CV.pdf`. Keep it in sync with `data/content.ts`.
 
-## 📦 Development
+## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
-npm run dev
-
-# Run dev server without Turbopack (Windows workaround)
-npm run dev:no-turbo
-
-# Build static export
-npm run build
-
-# Lint code
-npm run lint
+npm run dev        # dev server with hot reload → http://localhost:3000
+npm run preview    # production build served at the root → http://localhost:4173
+npm run lint       # ESLint (flat config, next/core-web-vitals + typescript)
+npm run typecheck  # tsc --noEmit
+npm run check      # lint + typecheck + build (same as CI)
+npm run build      # static export in ./out, basePath /nicodiansk.dev
 ```
 
-## 🏗️ Project Structure
+`PAGES_BASE_PATH` overrides the base path (`npm run preview` sets it to empty).
+
+## Workflow
+
+`feature branch → PR to master → CI (lint, typecheck, build) + Claude code review → merge → GitHub Pages deploy`.
+Mention `@claude` in a PR comment to ask Claude for changes.
+
+## Motion
+
+Inspired by stop-motion zines: collage pieces pop in and “boil” (an SVG turbulence filter re-seeded ~7×/s while the hero is
+on screen), doodles jitter between poses and the cursor blinks irregularly. Everything respects `prefers-reduced-motion`.
+
+## Structure
 
 ```
-nicodiansk.dev/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout with effects
-│   ├── page.tsx           # Main portfolio page
-│   └── globals.css        # Tailwind + cyberpunk styles
-├── components/
-│   ├── effects/           # Visual effects (Matrix, Glitch, Particles, etc.)
-│   ├── layout/            # Header, Footer, BackgroundEffects
-│   ├── sections/          # Hero, Projects, Skills, About, Contact
-│   ├── ui/                # Reusable UI components (Terminal, etc.)
-│   └── providers/         # LanguageProvider, ErrorBoundary
-├── data/                  # JSON content files (bilingual)
-│   ├── projects.json
-│   ├── skills.json
-│   ├── about.json
-│   └── translations.json
-├── lib/                   # Utility functions
-└── public/                # Static assets
+app/            layout (fonts, metadata) + page (section order) + globals.css
+components/     Nav, Hero, Marquee, Pillars, Work (+ case dialog), Experience, Stack, About, Contact
+                primitives.tsx (Eyebrow, Headline, Reveal, doodles, SVG filters)
+                LanguageProvider.tsx (EN/IT toggle, persisted)
+data/content.ts all text
+public/         images/nicholas.jpg, og.jpg, docs/Nicholas_Previtali_CV.pdf
+scripts/        preview.mjs (local prod preview), build-cv.mjs + cv/cv.html (public CV),
+                build-og.mjs + og/og.html (social preview card → public/og.jpg, `npm run og`)
 ```
-
-## 🌐 Deployment
-
-This project uses GitHub Actions to automatically deploy to GitHub Pages on push to the `master` branch.
-
-**Git Flow:**
-- `feature/*` → `develop` → `master` (production)
-- Only `master` branch triggers deployment
-- PR reviews required before merging to develop
-
-**Deployment Workflow:**
-1. Create feature branch from `develop`
-2. Implement changes
-3. Create PR to `develop` (triggers code review)
-4. Merge to `develop` after approval
-5. Merge `develop` → `master` for production deployment
-
-## 🎯 Implementation Status
-
-- ✅ **Phase 1:** Foundation & MVP
-- ✅ **Phase 2:** Full Content & Enhanced UI
-- ✅ **Phase 3:** Visual Effects (Matrix, Particles, Scanlines, Glitch)
-- ⏳ **Phase 4:** Content Modernization & Magic UI Integration
-- 🔜 **Phase 5:** Performance Optimization & Polish
-
-## 📄 License
-
-See [LICENSE](LICENSE) for details.
-
-## 👤 Author
-
-**Nicholas Previtali**
-Head of AI Business Unit @ S.I. 2001 SpA
-Specialized in Generative AI, RAG, and Multi-Agent Systems
-
-- LinkedIn: [nicholas-previtali](https://www.linkedin.com/in/nicholas-previtali-660b83190/)
-- GitLab: [@nicodiansk](https://gitlab.com/nicodiansk)
-- Email: nicholasprevitali96@gmail.com
-
----
-
-Built with ⚡ and cyberpunk aesthetics | Powered by AI-driven development

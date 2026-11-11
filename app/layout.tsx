@@ -1,47 +1,59 @@
-// ABOUTME: Root layout component with metadata and HTML structure
-// ABOUTME: Provides font loading and base HTML template
+import type { Metadata, Viewport } from 'next';
+import '@fontsource/archivo-black/400.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
+import '@fontsource-variable/inter';
+import './globals.css';
+import { LanguageProvider } from '@/components/LanguageProvider';
+import { RoughFilters } from '@/components/primitives';
 
-import type { Metadata } from "next";
-import { Share_Tech_Mono } from "next/font/google";
-import { LanguageProvider } from "@/components/providers/LanguageProvider";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import BackgroundEffects from "@/components/layout/BackgroundEffects";
-import BackToTop from "@/components/ui/BackToTop";
-import "./globals.css";
+const description =
+  'Head of AI at S.I. 2001 in Bergamo. RAG, multi-agent systems and LLM evaluation, built for production.';
 
-const shareTechMono = Share_Tech_Mono({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-share-tech-mono",
-});
+// Public URL of the deployed site (GitHub Pages). Social cards need absolute URLs.
+const siteUrl = 'https://nicodiansk.github.io/nicodiansk.dev';
+const shareTitle = 'Nicholas Previtali — AI engineer';
+// Rebuild with `npm run og` (scripts/og/og.html).
+const ogImage = { url: `${siteUrl}/og.jpg`, width: 1200, height: 630, alt: 'Nicholas Previtali — AI Engineering Lead' };
 
 export const metadata: Metadata = {
-  title: "Nicholas Previtali | AI Engineer & Multi-Agent Systems Architect",
-  description: "Head of AI with 4+ years in Generative AI, RAG, Multi-Agent Systems, and LLM orchestration. Building production AI solutions.",
-  keywords: ["AI Engineer", "Generative AI", "RAG", "LangChain", "LangGraph", "Multi-Agent Systems", "LLM"],
+  metadataBase: new URL(`${siteUrl}/`),
+  title: 'Nicholas Previtali — AI Engineering Lead',
+  description,
+  keywords: ['AI Engineer', 'RAG', 'Multi-Agent Systems', 'LangGraph', 'MCP', 'LLM Evaluation', 'Head of AI', 'Bergamo'],
+  authors: [{ name: 'Nicholas Previtali' }],
+  openGraph: {
+    title: shareTitle,
+    description,
+    type: 'website',
+    url: `${siteUrl}/`,
+    siteName: 'Nicholas Previtali',
+    locale: 'en_US',
+    alternateLocale: ['it_IT'],
+    images: [ogImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: shareTitle,
+    description,
+    images: [ogImage],
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: '#070707',
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${shareTechMono.variable} font-mono antialiased bg-cyber-dark text-white`}>
-        <BackgroundEffects
-          enableMatrixRain={false}
-          enableParticles={false}
-          enableScanlines={false}
-          enableMeshGradient={true}
-        />
-        <BackToTop />
-        <LanguageProvider>
-          <Header />
-          {children}
-          <Footer />
-        </LanguageProvider>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Mark JS as available before paint so scroll-reveal content stays visible without JS. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body>
+        <RoughFilters />
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

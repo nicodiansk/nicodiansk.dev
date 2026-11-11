@@ -1,31 +1,27 @@
-// ABOUTME: Main portfolio page - single-page scrollable application with all portfolio sections
-// ABOUTME: Wrapped in error boundaries for graceful failure handling and cyberpunk styling
-
-import { ErrorBoundary } from '@/components/providers/ErrorBoundary';
-import Hero from '@/components/sections/Hero';
-import Projects from '@/components/sections/Projects';
-import Skills from '@/components/sections/Skills';
-import About from '@/components/sections/About';
-import Contact from '@/components/sections/Contact';
+import Nav from '@/components/Nav';
+import Hero from '@/components/Hero';
+import Marquee from '@/components/Marquee';
+import Pillars from '@/components/Pillars';
+import Work from '@/components/Work';
+import Experience from '@/components/Experience';
+import Stack from '@/components/Stack';
+import About from '@/components/About';
+import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
-    <main className="min-h-screen scroll-smooth snap-y snap-mandatory overflow-y-scroll">
-      <ErrorBoundary>
+    <>
+      <Nav />
+      <main>
         <Hero />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <Projects />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <Skills />
-      </ErrorBoundary>
-      <ErrorBoundary>
+        <Marquee />
+        <Pillars />
+        <Work />
+        <Experience />
+        <Stack />
         <About />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <Contact />
-      </ErrorBoundary>
-    </main>
+      </main>
+      <Contact />
+    </>
   );
 }

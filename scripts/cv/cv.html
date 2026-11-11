@@ -1,0 +1,226 @@
+<!doctype html>
+<!-- Public CV (no phone, clients anonymised). Rebuild the PDF with: npm run cv -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nicholas Previtali — CV</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 16mm 17mm 16mm 17mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, 'Liberation Sans', Helvetica, sans-serif;
+        font-size: 10.4pt;
+        line-height: 1.32;
+        color: #111;
+        margin: 0;
+      }
+      h1 {
+        font-size: 27pt;
+        margin: 0 0 4pt;
+        letter-spacing: 0.2pt;
+      }
+      .contact {
+        font-size: 9.4pt;
+        margin-bottom: 12pt;
+      }
+      .contact a {
+        color: #1155cc;
+      }
+      hr {
+        border: 0;
+        border-top: 1.2pt solid #111;
+        margin: 12pt 0;
+      }
+      .headline {
+        font-size: 14.5pt;
+        font-weight: bold;
+        margin: 0 0 4pt;
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: 17pt;
+        margin: 0 0 7pt;
+      }
+      h3 {
+        font-size: 12pt;
+        margin: 0 0 2pt;
+      }
+      .role {
+        margin: 8pt 0 3pt;
+      }
+      p {
+        margin: 0 0 5pt;
+      }
+      ul {
+        margin: 3pt 0 6pt;
+        padding-left: 20pt;
+      }
+      li {
+        margin-bottom: 3.5pt;
+      }
+      .skills p {
+        margin-bottom: 4pt;
+      }
+      .avoid {
+        break-inside: avoid;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>NICHOLAS PREVITALI</h1>
+    <div class="contact">
+      Bergamo, Italy &nbsp;•&nbsp; nicholasprevitali96@gmail.com &nbsp;•&nbsp;
+      <a href="https://www.linkedin.com/in/nicholas-previtali-660b83190">LinkedIn</a> &nbsp;•&nbsp;
+      <a href="https://github.com/nicodiansk">GitHub</a> &nbsp;•&nbsp;
+      <a href="https://nicodiansk.github.io/nicodiansk.dev/">Portfolio</a>
+    </div>
+
+    <hr />
+    <p class="headline">AI Engineering Lead | Production RAG, Multi-Agent Systems &amp; LLM Evaluation</p>
+    <p>
+      AI Engineering Lead with 5 years of experience architecting and deploying production-grade AI systems for Fortune Global 500
+      clients. Built and led a team of 5+ engineers delivering 10+ solutions across legal, e-commerce, retail, and HR domains.
+      Hands-on expert in grounded RAG on specialized corpora (including ~100K Italian legal documents), hybrid retrieval,
+      multi-agent orchestration (LangGraph, LangChain, MCP), LLM fine-tuning and systematic evaluation, deployed on Azure. Track
+      record of 91% retrieval recall@10 on legal RAG and eliminating manual workflows by up to 100%.
+    </p>
+
+    <hr />
+    <h2>Work Experience</h2>
+    <h3>S.I. 2001 SpA, Bergamo</h3>
+    <p class="role"><b>Head of AI Business Unit</b> &nbsp;|&nbsp; Jan 2023 – Present</p>
+    <p>
+      Leading the AI division end-to-end: strategy, architecture, delivery, and client management across multiple concurrent
+      enterprise projects.
+    </p>
+    <ul>
+      <li>
+        <b>Architected Legal RAG platform</b> for 5 law firms processing ~100K Italian legal documents (rulings, regulations,
+        statutes). Cross-citation handling via hybrid retrieval combining vector store with LLM-constructed knowledge graph. 91%
+        retrieval recall@10, 89% answer relevance evaluated via LLM-as-judge and legal expert validation. Included automated
+        document generation pipeline.
+      </li>
+      <li>
+        <b>Architected and currently deploying an 8-agent multi-agent platform for a Fortune Global 500 IT group</b> for retail
+        planogram optimization. Each agent handles a specific domain responsibility (planogram analysis, product placement, shelf
+        optimization, reporting). Built on RAG with a fine-tuned LLM for planogram domain comprehension, deployed on Azure.
+        Includes full RAG evaluation pipeline.
+      </li>
+      <li>
+        <b>Built multilingual HR AI assistant for an international digital agency</b> (2,000+ employees, scalable group-wide)
+        supporting IT, EN, ES, FR, DE. Handles ~7,000 daily requests across 150+ HR topics (PTO, room booking, company policies,
+        newsletters). Hybrid search (semantic + keyword) with retroactive fine-tuning based on tester feedback. Intelligent topic
+        routing: user queries map to pre-configured topics that navigate to correct app/web pages.
+      </li>
+      <li>
+        <b>Designed GEO/SEO optimization platform</b> for beauty and fashion e-commerce: automated product descriptions, FAQs,
+        structured data (JSON-LD), and multilingual tone-of-voice adaptation in up to 6 languages. Reduced content optimization
+        time by ~80%. Validated AI-generated content discoverability via Google Search Console and GPT shopping domain prompt
+        testing.
+      </li>
+      <li>
+        <b>Built multi-tenant recommendation + RAG platform for charity sector:</b> non-profit organizations discover relevant
+        projects via personalized recommendations and conversational RAG interface. Innovative two-tower-inspired architecture
+        using vector DB instead of traditional serving infrastructure for cost optimization. Recommendations evolve dynamically
+        based on user behavior patterns. Sub-100ms response times in production.
+      </li>
+      <li>
+        <b>Architected MCP-based developer productivity platform</b> integrating Confluence, Slack, and Jira as Single Source of
+        Truth for AI coding assistants. Custom agents with single-scope responsibilities (code review, documentation ingestion,
+        context building) orchestrating multi-model cooperation (Claude + Gemini). Used daily by ~15 developers as the shared
+        context layer for AI-assisted coding.
+      </li>
+      <li>
+        Designed reliability layers across all LLM systems: guardrails, fallback policies, tool-call constraints, structured
+        outputs, human-in-the-loop escalation, and tracing of latency, cost and hallucination rate (Langfuse).
+      </li>
+    </ul>
+
+    <div class="avoid">
+      <p class="role"><b>Senior AI Engineer &amp; Team Lead</b> &nbsp;|&nbsp; Apr 2022 – Dec 2022</p>
+      <p>Managed 5+ engineers while maintaining hands-on architecture and delivery.</p>
+      <ul>
+        <li>
+          <b>Built CNN web page classifier</b> for e-commerce SEO: full ML pipeline (data collection, labeling, training,
+          validation, monitoring) achieving 98% accuracy and F1 0.95. Eliminated 100% of manual classification across thousands of
+          web pages, enabling downstream SEO automation.
+        </li>
+        <li>
+          Delivered corporate AI training to ~50 employees. Scaled team from scratch, establishing Agile/Scrum workflows and
+          delivery standards for enterprise clients.
+        </li>
+      </ul>
+    </div>
+
+    <div class="avoid">
+      <p class="role"><b>AI Engineer</b> &nbsp;|&nbsp; Apr 2021 – Mar 2022</p>
+      <p>
+        First AI hire. Built and fine-tuned CNN-based computer vision models (image classification, object detection, similarity
+        search) using transfer learning. Integrated AI workflows into production using FastAPI microservices, Docker, and Azure AKS
+        with load balancing, caching, and distributed inference. Built monitoring pipelines tracking latency, throughput, model
+        accuracy, and failure modes. Translated business processes into automated ML workflows by collaborating with operations,
+        HR, finance, and technical teams.
+      </p>
+    </div>
+
+    <hr />
+    <div class="skills avoid">
+      <h2>Technical Skills</h2>
+      <p>
+        <b>AI &amp; LLMs:</b> LangChain, LangGraph, MCP, Azure OpenAI (GPT-5 / GPT-6 family), Claude, Gemini • Multi-Agent
+        Orchestration, Guardrails, HITL • Prompt Engineering, Function Calling, Structured Outputs
+      </p>
+      <p>
+        <b>RAG &amp; Search:</b> Hybrid Search (Dense + BM25, RRF), Reranking, Knowledge Graphs • pgvector, Supabase, Pinecone,
+        Qdrant, Weaviate • Docling, Document Ingestion &amp; Chunking
+      </p>
+      <p>
+        <b>Evaluation:</b> RAGAS (faithfulness, answer relevance, context precision/recall) • Recall@k, MRR, nDCG • LLM-as-Judge,
+        Golden Sets with Domain Experts, Regression Testing
+      </p>
+      <p>
+        <b>ML &amp; CV:</b> CNNs, Transfer Learning • LLM Fine-tuning (OpenAI models, Flan-T5) • PyTorch, TensorFlow •
+        Recommendation Systems (Two-Tower, Collaborative Filtering)
+      </p>
+      <p>
+        <b>AI-Assisted Engineering:</b> Claude Code (daily use in delivery) • Plugin development: skills, subagents, hooks, slash
+        commands • MCP integration
+      </p>
+      <p>
+        <b>Infra:</b> Python, FastAPI • Docker, Kubernetes (Azure AKS) • Azure Cloud • CI/CD, Git • LLMOps, Observability &amp;
+        Tracing (Langfuse)
+      </p>
+    </div>
+
+    <hr />
+    <div class="avoid">
+      <h2>Education</h2>
+      <p>
+        <b>MSc Computer Engineering</b>, Summa Cum Laude (110/110) &nbsp;|&nbsp; Università di Bergamo &nbsp;|&nbsp; 2019–2022
+        <br />Thesis: <i>Extraction of Semantic Topological Maps from 2D Occupational Maps.</i> Co-authored with C. Celestino, B.
+        Caglioni, D. Brugali.
+      </p>
+      <p><b>BSc Computer Engineering</b> &nbsp;|&nbsp; Università di Bergamo &nbsp;|&nbsp; 2016–2019</p>
+    </div>
+
+    <hr />
+    <div class="avoid">
+      <h2>Research &amp; Open Source</h2>
+      <p>
+        LLM-powered recommendation and agentic retrieval: 50+ papers studied (neural CF, retrieval-augmented recommendations).
+      </p>
+      <p>
+        <b>Turbocharge</b> (github.com/nicodiansk/turbocharge): open-source Claude Code plugin I built and published (10 skills, 6
+        agents, 2 hooks): brainstorm → plan → build → review pipeline for test-driven AI-assisted development.
+      </p>
+    </div>
+
+    <hr />
+    <p><b>Italian</b> (Native) &nbsp;•&nbsp; <b>English</b> Professional working proficiency (Cambridge First Certificate)</p>
+  </body>
+</html>
