@@ -105,10 +105,9 @@ export default function Hero() {
 
         <dl className="drop-in mt-14 grid max-w-xl grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4" style={{ animationDelay: '940ms' }}>
           {ui.stats.map((s) => (
-            <div key={s.value + s.label.en} className="border-l-2 border-pink/70 pl-3">
-              <dt className="sr-only">{t(s.label)}</dt>
+            <div key={s.value + s.label.en} className="flex flex-col-reverse border-l-2 border-pink/70 pl-3">
+              <dt className="mt-1 font-mono text-[10px] uppercase leading-snug tracking-[0.14em] text-paper/60">{t(s.label)}</dt>
               <dd className="font-display text-3xl text-paper">{s.value}</dd>
-              <dd className="mt-1 font-mono text-[10px] uppercase leading-snug tracking-[0.14em] text-paper/60">{t(s.label)}</dd>
             </div>
           ))}
         </dl>

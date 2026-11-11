@@ -4,7 +4,7 @@
 import { spawnSync } from 'node:child_process';
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
-import { extname, join, normalize, resolve } from 'node:path';
+import { extname, join, normalize, resolve, sep } from 'node:path';
 
 const root = resolve('out');
 const port = Number(process.env.PORT) || 4173;
@@ -36,9 +36,14 @@ const types = {
 };
 
 createServer((req, res) => {
-  const url = decodeURIComponent((req.url || '/').split('?')[0]);
+  let url;
+  try {
+    url = decodeURIComponent((req.url || '/').split('?')[0]);
+  } catch {
+    return res.writeHead(400).end();
+  }
   let file = normalize(join(root, url));
-  if (!file.startsWith(root)) return res.writeHead(403).end();
+  if (file !== root && !file.startsWith(root + sep)) return res.writeHead(403).end();
   if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
   if (!existsSync(file)) file = join(root, '404.html');
   res.writeHead(existsSync(file) ? (file.endsWith('404.html') && !url.endsWith('404.html') ? 404 : 200) : 404, {
