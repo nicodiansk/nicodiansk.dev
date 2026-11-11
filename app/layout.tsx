@@ -1,47 +1,37 @@
-// ABOUTME: Root layout component with metadata and HTML structure
-// ABOUTME: Provides font loading and base HTML template
+import type { Metadata, Viewport } from 'next';
+import '@fontsource/archivo-black/400.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
+import '@fontsource-variable/inter';
+import './globals.css';
+import { LanguageProvider } from '@/components/LanguageProvider';
+import { RoughFilters } from '@/components/primitives';
 
-import type { Metadata } from "next";
-import { Share_Tech_Mono } from "next/font/google";
-import { LanguageProvider } from "@/components/providers/LanguageProvider";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import BackgroundEffects from "@/components/layout/BackgroundEffects";
-import BackToTop from "@/components/ui/BackToTop";
-import "./globals.css";
-
-const shareTechMono = Share_Tech_Mono({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-share-tech-mono",
-});
+const description =
+  'AI Engineering Lead and Head of AI at S.I. 2001. Production RAG, multi-agent systems and LLM evaluation for Fortune Global 500 clients.';
 
 export const metadata: Metadata = {
-  title: "Nicholas Previtali | AI Engineer & Multi-Agent Systems Architect",
-  description: "Head of AI with 4+ years in Generative AI, RAG, Multi-Agent Systems, and LLM orchestration. Building production AI solutions.",
-  keywords: ["AI Engineer", "Generative AI", "RAG", "LangChain", "LangGraph", "Multi-Agent Systems", "LLM"],
+  title: 'Nicholas Previtali — AI Engineering Lead',
+  description,
+  keywords: ['AI Engineer', 'RAG', 'Multi-Agent Systems', 'LangGraph', 'MCP', 'LLM Evaluation', 'Head of AI', 'Bergamo'],
+  authors: [{ name: 'Nicholas Previtali' }],
+  openGraph: {
+    title: 'Nicholas Previtali — AI that ships. Not just demos.',
+    description,
+    type: 'website',
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: '#070707',
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${shareTechMono.variable} font-mono antialiased bg-cyber-dark text-white`}>
-        <BackgroundEffects
-          enableMatrixRain={false}
-          enableParticles={false}
-          enableScanlines={false}
-          enableMeshGradient={true}
-        />
-        <BackToTop />
-        <LanguageProvider>
-          <Header />
-          {children}
-          <Footer />
-        </LanguageProvider>
+      <body>
+        <RoughFilters />
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
