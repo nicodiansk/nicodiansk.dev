@@ -41,7 +41,7 @@ export const ui = {
   },
   stats: [
     { value: '5', label: { en: 'years in AI', it: 'anni in AI' } },
-    { value: '10+', label: { en: 'projects delivered or in rollout', it: 'progetti consegnati o in rilascio' } },
+    { value: '12', label: { en: 'AI projects since 2023', it: 'progetti AI dal 2023' } },
     { value: '12K', label: { en: 'employees on one AI assistant', it: 'dipendenti su un solo assistente AI' } },
     { value: '8', label: { en: 'industries', it: 'settori' } },
   ],
@@ -60,7 +60,7 @@ export const ui = {
     eyebrow: { en: '// selected work', it: '// progetti scelti' },
     title: [
       { en: 'Selected work', it: 'Progetti scelti' },
-      { en: '2021 – today.', it: '2021 – oggi.' },
+      { en: '2023 – today.', it: '2023 – oggi.' },
     ],
     open: { en: 'Read the case', it: 'Leggi il caso' },
     close: { en: 'Close', it: 'Chiudi' },
