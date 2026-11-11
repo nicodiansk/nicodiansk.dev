@@ -19,7 +19,8 @@ paint filters (`RoughFilters` in `components/primitives.tsx`), offset “sticker
 ## Editing content
 
 All copy lives in **`data/content.ts`**, bilingual (`{ en, it }`). Projects, experience, stack, education: edit there.
-The downloadable CV is `public/docs/Nicholas_Previtali_CV.pdf`. Keep the two in sync.
+The downloadable CV is the **public** version (no phone, clients anonymised), rendered from `scripts/cv/cv.html`
+with `npm run cv` (needs Playwright + Chromium) into `public/docs/Nicholas_Previtali_CV.pdf`. Keep it in sync with `data/content.ts`.
 
 ## Development
 
@@ -57,5 +58,5 @@ components/     Nav, Hero, Marquee, Pillars, Work (+ case dialog), Experience, S
                 LanguageProvider.tsx (EN/IT toggle, persisted)
 data/content.ts all text
 public/         images/nicholas.jpg (+ nicholas-loop.webp), docs/Nicholas_Previtali_CV.pdf
-scripts/        preview.mjs (local prod preview), make-portrait-loop.py
+scripts/        preview.mjs (local prod preview), make-portrait-loop.py, build-cv.mjs + cv/cv.html (public CV)
 ```

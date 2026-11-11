@@ -212,10 +212,10 @@ export const projects: Project[] = [
     accent: 'pink',
   },
   {
-    id: 'ntt-planogram',
+    id: 'retail-planogram',
     tag: { en: 'Multi-agent', it: 'Multi-agente' },
     status: { en: 'Deploying', it: 'In rilascio' },
-    client: { en: 'NTT · Fortune Global 500', it: 'NTT · Fortune Global 500' },
+    client: { en: 'Fortune Global 500 IT group · retail', it: 'Gruppo IT Fortune Global 500 · retail' },
     title: {
       en: 'Eight agents. One shelf.',
       it: 'Otto agenti. Uno scaffale.',
@@ -253,7 +253,7 @@ export const projects: Project[] = [
     id: 'hr-assistant',
     tag: { en: 'HR assistant', it: 'Assistente HR' },
     status: { en: 'Live', it: 'Live' },
-    client: { en: 'Jakala · 2,000+ employees', it: 'Jakala · 2.000+ dipendenti' },
+    client: { en: 'International digital agency', it: 'Agenzia digitale internazionale' },
     title: {
       en: '7,000 questions a day. Five languages.',
       it: '7.000 domande al giorno. Cinque lingue.',
@@ -263,8 +263,8 @@ export const projects: Project[] = [
       it: 'Assistente HR multilingua (IT, EN, ES, FR, DE) su 150+ temi, da ferie e prenotazione sale a policy aziendali e newsletter.',
     },
     challenge: {
-      en: 'Thousands of employees across countries asking the same HR questions, scattered across apps and intranet pages. Built to scale to 12,000.',
-      it: 'Migliaia di dipendenti in più paesi con le stesse domande HR, sparse tra app e pagine intranet. Pensato per scalare a 12.000.',
+      en: 'Thousands of employees across countries asking the same HR questions, scattered across apps and intranet pages. Built to scale group-wide.',
+      it: 'Migliaia di dipendenti in più paesi con le stesse domande HR, sparse tra app e pagine intranet. Pensato per scalare a tutto il gruppo.',
     },
     solution: [
       {
@@ -477,8 +477,8 @@ export const experience: {
     },
     points: [
       { en: 'Legal RAG for 5 law firms (~100K docs, 91% recall@10).', it: 'RAG legale per 5 studi (~100K documenti, 91% recall@10).' },
-      { en: '8-agent planogram platform for NTT (Fortune Global 500).', it: 'Piattaforma a 8 agenti sui planogrammi per NTT (Fortune Global 500).' },
-      { en: 'Multilingual HR assistant for Jakala (~7,000 requests/day).', it: 'Assistente HR multilingua per Jakala (~7.000 richieste/giorno).' },
+      { en: '8-agent planogram platform for a Fortune Global 500 IT group.', it: 'Piattaforma a 8 agenti sui planogrammi per un gruppo IT Fortune Global 500.' },
+      { en: 'Multilingual HR assistant for an international agency (~7,000 requests/day).', it: 'Assistente HR multilingua per un’agenzia internazionale (~7.000 richieste/giorno).' },
       { en: 'GEO/SEO, recommendation and MCP developer platforms.', it: 'Piattaforme GEO/SEO, di raccomandazione e MCP per sviluppatori.' },
     ],
     accent: 'pink',

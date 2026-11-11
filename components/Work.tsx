@@ -53,7 +53,11 @@ function CaseDialog({ project, onClose }: { project: Project | null; onClose: ()
   }, [project]);
 
   useEffect(() => {
-    document.body.style.overflow = project ? 'hidden' : '';
+    if (!project) return;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [project]);
 
   return (
@@ -87,8 +91,8 @@ function CaseDialog({ project, onClose }: { project: Project | null; onClose: ()
           <p className="mt-5 font-sans text-[17px] leading-relaxed text-paper/85">{t(project.summary)}</p>
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {project.metrics.map((m) => (
-              <div key={m.value} className="rounded-md border-2 border-paper/15 p-4">
+            {project.metrics.map((m, i) => (
+              <div key={`${i}-${m.value}`} className="rounded-md border-2 border-paper/15 p-4">
                 <div className={cn('font-display text-3xl', accentText[project.accent])}>{m.value}</div>
                 <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-paper/60">{t(m.label)}</div>
               </div>
