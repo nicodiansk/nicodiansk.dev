@@ -355,7 +355,7 @@ export const projects: Project[] = [
         it: 'Turbocharge alla base: un unico standard di lavoro verificabile, con test solidi e review su ogni modifica.',
       },
     ],
-    metrics: [{ value: '4→1', label: { en: 'docs, boards, tracker and Git in one place', it: 'documenti, board, tracker e Git in un posto solo' } }],
+    metrics: [{ value: '4→1', label: { en: 'docs, boards, tracker and Git in one place', it: 'documenti, board, tracker e Git insieme' } }],
     role: {
       en: 'Product design and architecture, leading development with the team.',
       it: 'Design del prodotto e architettura, guidando lo sviluppo con il team.',
@@ -602,7 +602,7 @@ export const projects: Project[] = [
         it: 'Dashboard Next.js con filtri e conteggi calcolati nel database.',
       },
     ],
-    metrics: [{ value: '6', label: { en: 'scoring dimensions per creative', it: 'dimensioni di valutazione per creatività' } }],
+    metrics: [{ value: '6', label: { en: 'scoring dimensions per creative', it: 'dimensioni di valutazione' } }],
     role: { en: 'Sole developer, full stack.', it: 'Unico sviluppatore, full stack.' },
     stack: ['FastAPI', 'Next.js', 'Supabase', 'Azure OpenAI', 'SerpAPI', 'Firecrawl'],
     accent: 'pink',
