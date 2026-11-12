@@ -392,8 +392,8 @@ export const projects: Project[] = [
         it: 'Anonimizzatore nel pod (nomi, email, telefoni, codici fiscali, IBAN, carte, documenti) prima di ogni embedding o chiamata al modello.',
       },
       {
-        en: 'Measured what happens if the question text never reaches the database: top-1 accuracy 70.4% against 70.6%, so full-text search could go without a measurable loss.',
-        it: 'Misurato cosa succede se il testo della domanda non arriva mai al database: accuratezza top-1 70,4% contro 70,6%, quindi la ricerca full-text si è potuta togliere senza perdite misurabili.',
+        en: 'Measured what happens if the question text never reaches the database: on the earlier benchmark, 70.4% top-1 against 70.6%, so full-text search could go without a measurable loss.',
+        it: 'Misurato cosa succede se il testo della domanda non arriva mai al database: sul benchmark precedente 70,4% top-1 contro 70,6%, quindi la ricerca full-text si è potuta togliere senza perdite misurabili.',
       },
       {
         en: 'Runs inside the client’s cluster (ClusterIP only, no ingress, default-deny network policies), with the model in a dedicated tenant.',
@@ -401,7 +401,8 @@ export const projects: Project[] = [
       },
     ],
     metrics: [
-      { value: '70.4%', label: { en: 'top-1 accuracy, no query text in the DB', it: 'accuratezza top-1, nessun testo nel DB' }, detail: { en: '70.6% with the query text', it: '70,6% con il testo della domanda' } },
+      { value: '88.5%', label: { en: 'top-1 topic accuracy, stateless', it: 'accuratezza top-1, stateless' }, detail: { en: '655 synthetic queries in 5 languages, mean of 3 runs', it: '655 query sintetiche in 5 lingue, media di 3 run' } },
+      { value: '7', label: { en: 'types of personal data anonymised', it: 'tipi di dati personali anonimizzati' }, detail: { en: 'names, emails, phones, tax codes, IBANs, cards, ID documents, before every model call', it: 'nomi, email, telefoni, codici fiscali, IBAN, carte, documenti, prima di ogni chiamata al modello' } },
     ],
     role: {
       en: 'Architecture, the architecture/cost/data-residency document for the client, code changes for the security conditions, release pipeline.',
