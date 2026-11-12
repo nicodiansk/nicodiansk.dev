@@ -215,6 +215,7 @@ export const projects: Project[] = [
     ],
     metrics: [
       { value: '12K', label: { en: 'employees worldwide', it: 'dipendenti nel mondo' } },
+      { value: '88.5%', label: { en: 'top-1 topic accuracy', it: 'accuratezza top-1 sui topic' }, detail: { en: '655 synthetic queries in 5 languages, 131-topic catalogue, mean of 3 runs', it: '655 query sintetiche in 5 lingue, catalogo di 131 topic, media di 3 run' } },
       { value: '97%', label: { en: 'required facts in RAG answers', it: 'fatti richiesti nelle risposte RAG' }, detail: { en: 'internal evaluation', it: 'valutazione interna' } },
       { value: '5', label: { en: 'languages', it: 'lingue' } },
     ],
