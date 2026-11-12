@@ -11,7 +11,7 @@ export const profile = {
   role: { en: 'AI Engineering Lead', it: 'AI Engineering Lead' },
   location: 'Bergamo, Italy',
   email: 'nicholasprevitali96@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/nicholas-previtali-660b83190',
+  linkedin: 'https://www.linkedin.com/in/nicholasprevitali',
   github: 'https://github.com/nicodiansk',
   cv: '/docs/Nicholas_Previtali_CV.pdf',
   photo: '/images/nicholas.jpg',
