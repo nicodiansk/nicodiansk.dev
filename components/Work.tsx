@@ -13,6 +13,7 @@ import {
   Scale,
   ShieldCheck,
   Shirt,
+  Sparkles,
   SquareKanban,
   Store,
   X,
@@ -54,7 +55,7 @@ const halftonePos = [
 
 function Poster({ p, i }: { p: Project; i: number }) {
   const { t } = useLang();
-  const Icon = icons[p.id];
+  const Icon = icons[p.id] ?? Sparkles; // fallback for a project added without a pictogram
   const hero = p.metrics[0];
   const v = i % 4;
   return (
@@ -65,16 +66,14 @@ function Poster({ p, i }: { p: Project; i: number }) {
         className="absolute -inset-x-px -bottom-px h-[46%] bg-ink sm:h-[38%]"
         style={{ clipPath: tornTopClip(i + 5) }}
       />
-      {Icon && (
-        <Icon
-          aria-hidden
-          strokeWidth={1.75}
-          className={cn(
-            'absolute right-[8%] top-[13%] h-[38%] w-[38%] text-ink/85 transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105',
-            iconTilt[v],
-          )}
-        />
-      )}
+      <Icon
+        aria-hidden
+        strokeWidth={1.75}
+        className={cn(
+          'absolute right-[8%] top-[13%] h-[38%] w-[38%] text-ink/85 transition-transform duration-300 motion-reduce:transition-none group-hover:rotate-0 group-hover:scale-105',
+          iconTilt[v],
+        )}
+      />
 
       <span className="absolute left-3 top-3 rounded-sm bg-ink px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-paper">
         <span className={accentText[p.accent]}>●</span> {t(p.tag)}

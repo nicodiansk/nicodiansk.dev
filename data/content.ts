@@ -402,7 +402,7 @@ export const projects: Project[] = [
     ],
     metrics: [
       { value: '88.5%', label: { en: 'top-1 topic accuracy, stateless', it: 'accuratezza top-1, stateless' }, detail: { en: '655 synthetic queries in 5 languages, mean of 3 runs', it: '655 query sintetiche in 5 lingue, media di 3 run' } },
-      { value: '0', label: { en: 'personal data sent to the model', it: 'dati personali inviati al modello' }, detail: { en: 'anonymised in the pod before every call', it: 'anonimizzati nel pod prima di ogni chiamata' } },
+      { value: '7', label: { en: 'types of personal data anonymised', it: 'tipi di dati personali anonimizzati' }, detail: { en: 'names, emails, phones, tax codes, IBANs, cards, ID documents, before every model call', it: 'nomi, email, telefoni, codici fiscali, IBAN, carte, documenti, prima di ogni chiamata al modello' } },
     ],
     role: {
       en: 'Architecture, the architecture/cost/data-residency document for the client, code changes for the security conditions, release pipeline.',
