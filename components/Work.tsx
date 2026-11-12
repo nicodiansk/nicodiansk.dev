@@ -1,29 +1,80 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Plus, X } from 'lucide-react';
+import {
+  ArrowUpRight,
+  AudioWaveform,
+  Braces,
+  FileSearch,
+  HeartHandshake,
+  Megaphone,
+  MessagesSquare,
+  Plus,
+  Scale,
+  ShieldCheck,
+  Shirt,
+  SquareKanban,
+  Store,
+  X,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { projects, ui, type Project } from '@/data/content';
 import { useLang } from './LanguageProvider';
-import { Asterisk, Eyebrow, Reveal, Scribble, Sparkle } from './primitives';
-import { accentBg, accentBorder, accentText, cn, tornClip } from '@/lib/utils';
+import { Eyebrow, Reveal } from './primitives';
+import { accentBg, accentBorder, accentText, cn, tornClip, tornTopClip } from '@/lib/utils';
 
 const tilt = ['-rotate-1', 'rotate-[0.7deg]', '-rotate-[0.4deg]', 'rotate-1'];
-const doodles = [Asterisk, Sparkle, Scribble];
+
+/** One pictogram per project, so each poster says what the project is about at a glance. */
+const icons: Record<string, LucideIcon> = {
+  'hr-assistant': MessagesSquare,
+  'call-analysis': AudioWaveform,
+  'planogram-agents': Store,
+  'team-platform': SquareKanban,
+  'privacy-first-hr': ShieldCheck,
+  'technical-rag': FileSearch,
+  'structured-data': Braces,
+  'legal-rag': Scale,
+  'nonprofit-recsys': HeartHandshake,
+  'ad-intelligence': Megaphone,
+  'fashion-search': Shirt,
+  turbocharge: Zap,
+};
+
+/* Small per-card variations so the posters read as a set, not as clones. */
+const iconTilt = ['-rotate-6', 'rotate-3', '-rotate-2', 'rotate-6'];
+const halftonePos = [
+  '-right-10 -top-10 rotate-12',
+  '-left-12 top-6 -rotate-6',
+  'right-0 top-1/4 rotate-45',
+  '-right-6 -top-16 -rotate-12',
+];
 
 function Poster({ p, i }: { p: Project; i: number }) {
   const { t } = useLang();
-  const Doodle = doodles[i % doodles.length];
+  const Icon = icons[p.id];
   const hero = p.metrics[0];
+  const v = i % 4;
   return (
     <div className={cn('relative aspect-[4/3] overflow-hidden sm:aspect-[4/5] rounded-[6px] text-ink', accentBg[p.accent])}>
-      <div aria-hidden className="halftone absolute -right-10 -top-10 h-2/3 w-2/3 rotate-12 text-ink/20" />
+      <div aria-hidden className={cn('halftone absolute h-2/3 w-2/3 text-ink/20', halftonePos[v])} />
       <div
         aria-hidden
-        className="absolute -bottom-[15%] -left-[10%] h-[55%] w-[80%] rounded-full bg-ink/90"
-        style={{ filter: 'url(#rough-strong)' }}
+        className="absolute -inset-x-px -bottom-px h-[46%] bg-ink sm:h-[38%]"
+        style={{ clipPath: tornTopClip(i + 5) }}
       />
-      <Doodle className="boil absolute right-5 top-14 h-12 w-12 text-ink/80 [animation-play-state:paused] group-hover:[animation-play-state:running]" />
+      {Icon && (
+        <Icon
+          aria-hidden
+          strokeWidth={1.75}
+          className={cn(
+            'absolute right-[8%] top-[13%] h-[38%] w-[38%] text-ink/85 transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105',
+            iconTilt[v],
+          )}
+        />
+      )}
 
       <span className="absolute left-3 top-3 rounded-sm bg-ink px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-paper">
         <span className={accentText[p.accent]}>●</span> {t(p.tag)}

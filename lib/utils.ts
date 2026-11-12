@@ -31,6 +31,19 @@ export const accentBorder: Record<Accent, string> = {
   cream: 'border-paper',
 };
 
+/** Torn top edge only (straight sides and bottom): a strip of paper stuck along the bottom of a card. */
+export function tornTopClip(seed = 1, teeth = 22, depth = 9): string {
+  let s = seed * 9301 + 49297;
+  const rand = () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+  const pts: string[] = [];
+  for (let i = 0; i <= teeth; i++) pts.push(`${(i / teeth) * 100}% ${rand() * depth}%`);
+  pts.push('100% 100%', '0% 100%');
+  return `polygon(${pts.join(',')})`;
+}
+
 /**
  * Deterministic jagged “torn paper” polygon for clip-path.
  * Same seed → same edge, so server and client render identically.
